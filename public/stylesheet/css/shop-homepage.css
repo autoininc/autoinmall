@@ -1,0 +1,51 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/templates/shop-homepage)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.list-group a:hover{
+  background-color:#fed136;
+}
+.list-group a{
+  text-decoration: none;
+}
+.list-group .list-group-item{
+  color:black!important;
+}
+#mainNav{
+  background-color:#212529;
+}
+
+.dropdown-item:hover{
+  background-color: silver!important;
+}
+
+
+.dropright .dropdown-item:hover{
+  background-color: #fed136!important;
+}
+
+.country{
+  color:black!important;
+  text-decoration: none!important;
+}
+.country-card:hover{
+  background-color:#fed136!important;
+}
+
+.navbaritem{
+  color:white;
+}
+
+.navbarmenu{
+  background-color:#212529;
+}
+
+#item_slot a{
+  size: 15px;
+  color:black;
+}
