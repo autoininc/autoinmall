@@ -2,21 +2,13 @@
 var http = require('http');
 var express = require('express');
 var path = require('path');
-var static = require('serve-static');
 var bodyParser = require('body-parser');
 var cors = require('cors'); // 다른 서버로 접근하기위해서 사용
-var fs = require('fs');
-var hostname = '0.0.0.0';
-const { constant, reject } = require('async');
 var session = require('express-session');
 var mysqlDB = require("./DB/db");
-var nodemailer = require("./mail/mail");
-var crypto = require('crypto');
-var multer = require('multer');
-const { resolve } = require('path');
 
 var app = express();
-var indexRouter = require('./routes/index')(app, mysqlDB, multer);
+var indexRouter = require('./routes/index')(mysqlDB);
 // var usersRouter = require('./routes/users');
 
 app.use(session({

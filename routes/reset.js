@@ -1,4 +1,4 @@
-exports.password = function(req, res, db) {
+exports.password = function(req, res, db, crypto, nodemailer) {
 	var sess = req.session;
 	console.log(req.body);
 

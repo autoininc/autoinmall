@@ -1,4 +1,4 @@
-exports.certification = function(req, res, db) {
+exports.certification = function(req, res, db, nodemailer) {
 	// console.log("setting");
 	var attr = req.body;
 	console.log(attr);
@@ -54,7 +54,7 @@ exports.setting = function(req, res, db) {
 }
 
 
-exports.password = function(req, res, db) {
+exports.password = function(req, res, db, crypto) {
 	var data = req.body;
 	//hash salt
 	var u_salt = Math.round((new Date().valueOf() * Math.random())) + "";

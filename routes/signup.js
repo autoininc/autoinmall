@@ -1,21 +1,3 @@
-//send check email before signup
-async function checkEmail(param) {
-	var data = {
-		fromEmail: "service@autoinmall.com",
-		toEmail: param.EMAIL,
-		subject: "Email Verification-AutoinMall",
-		html: "<p>Hello " + param.NAME + "</p>" +
-			"<p>Thank you for sign up to AutoinMall!</p>" +
-			"<p>Please use the verification button below to confirm your email address</p>" +
-			"<a href='https://autoinmall.com/signup/checkaccount?email=" + param.EMAIL + "&id=" + param.ID + "' target = '_blank'><img src = 'https://ifh.cc/g/bXCkYZ.png' style='width:300px;height:100px'></a>" +
-			"<p>Thank you</p>" +
-			"<p>Autoinmall</p>"
-
-	};
-	await nodemailer.sendmail(data);
-}
-
-
 exports.show = function(req, res, db) {
 	res.render("signup.html");
 }
@@ -40,7 +22,7 @@ exports.checkaccount = function(req, res, db) {
 }
 
 
-exports.confirm = function(req, res, db) {
+exports.confirm = function(req, res, db, crypto, nodemailer) {
 	//console.log(req.body);
 	var data = req.body;
 	//sign up data
@@ -71,7 +53,7 @@ exports.confirm = function(req, res, db) {
 				NAME: userName,
 				ID: userId
 			}
-			checkEmail(data);
+			checkEmail(nodemailer, data);
 			res.send("success");
 		}
 

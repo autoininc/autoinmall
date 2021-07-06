@@ -41,7 +41,7 @@ exports.info = function(req, res, db) {
 	})
 }
 
-exports.contact = function(req, res, db) {
+exports.contact = function(req, res, db, nodemailer) {
 	var sess = req.session;
 	console.log(req.body);
 	var data = {

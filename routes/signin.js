@@ -3,7 +3,7 @@ exports.show = function(req, res, db) {
 	res.render("signin.html", { flag: '', username: sess.username });
 }
 
-exports.confirm = function(req, res, db) {
+exports.confirm = function(req, res, db, crypto) {
 	console.log(req.body);
 	var userid = req.body.userId;
 	var userpw = req.body.userPw;

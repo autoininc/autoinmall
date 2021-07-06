@@ -10,7 +10,7 @@ exports.carbrand_show = function(req, res, db) {
 }
 
 
-exports.carbrand_delete = function(req, res, db) {
+exports.carbrand_delete = function(req, res, db, fs) {
 	db.query("DELETE FROM CAR_BRAND WHERE NAME = ?", [req.body.name], (err, row) => {
 		if (err) {
 			console.log(err);
@@ -139,7 +139,7 @@ exports.itembrand_add = function(req, res, db) {
 }
 
 
-exports.itembrand_delete = function(req, res, db) {
+exports.itembrand_delete = function(req, res, db, fs) {
 	db.query("DELETE FROM ITEM_BRAND WHERE NAME = ?", [req.body.name], (err, row) => {
 		if (err) {
 			console.log(err);
@@ -220,7 +220,7 @@ exports.item_show = function(req, res, db) {
 }
 
 
-exports.item_add = function(req, res, db) {
+exports.item_add = function(req, res, db, crypto) {
 	// console.log("add");
 	//console.log(req.body);
 	//console.log(req.files);
@@ -294,7 +294,7 @@ exports.item_add = function(req, res, db) {
 }
 
 
-exports.item_delete = function(req, res, db) {
+exports.item_delete = function(req, res, db, fs) {
 	console.log(req.body);
 	var img_list = ["", "", "", "", ""];
 	//delete item img
@@ -440,7 +440,7 @@ exports.item_setting = function(req, res, db) {
 }
 
 
-exports.file_delete = function(req, res, db) {
+exports.file_delete = function(req, res, db, fs) {
 	db.query('SELECT FILE_LIST FROM ITEMINFO WHERE ITEM_NUM = ?', [req.body.pin], (err, row) => {
 		if (err) {
 			res.send(err);
@@ -480,7 +480,7 @@ exports.file_delete = function(req, res, db) {
 }
 
 
-exports.img_delete = function(req, res, db) {
+exports.img_delete = function(req, res, db, fs) {
 	console.log(req.body);
 	switch (req.body.img) {
 		case "IMG1":
