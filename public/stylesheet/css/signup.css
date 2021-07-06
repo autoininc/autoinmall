@@ -1,30 +1,31 @@
 .brand_logo{
-    margin-left:40%;
-    margin-right:40%;
-    width:20%;
-    height:30%!important;
+  margin-left:40%;
+  margin-right:40%;
+  width:20%;
+  height:30%!important;
+  padding-top: 4%;
+  padding-bottom:4%;
 }
 #signup_box{
-    margin-top: 0.5%;
-    width:40%;
-    margin-left:30%;
-    margin-right:30%;
-    margin-bottom:5%;
-    border-radius: 5%;
-    background-color:gray;
-    padding:3%;
-    padding-bottom: 1%;
+  margin-top: 0.5%;
+  width:50%;
+  margin-left:25%;
+  margin-right:25%;
+  margin-bottom:5%;
+  border-radius: 6%;
+  background-color:lightgray;
+  padding:3%;
+  padding-bottom: 1%;
 }
 #mainNav{
-  background-color:#212529;
+background-color:#212529;
 }
 .dropdown-menu{
-    background-color:#212529;
-  }
-  .dropdown-item{
-    color:white!important;
-  }
-  .dropdown-item:hover{
-    background-color: silver!important;
-  }
-  
+  background-color:#212529;
+}
+.dropdown-item{
+  color:white!important;
+}
+.dropdown-item:hover{
+  background-color: silver!important;
+}
