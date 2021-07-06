@@ -1,9 +1,9 @@
-var mysql = require('mysql2');
+var mysql = require('mysql');
 var connection = mysql.createConnection({
     host:'127.0.0.1',
     port:3306,
-    user:'admin',
-    password:'autoin1020#',
+    user:'root',
+    password:'',
     database:'autoinmall'
 });
 connection.connect(function(err){
