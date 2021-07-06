@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    
+
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -17,6 +17,7 @@
     <link href="../stylesheet/css/styles.css" rel="stylesheet" />
     <link href="../stylesheet/css/index.css" rel="stylesheet" />
     <!--sweetalert2-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"
         rel="stylesheet">
@@ -36,14 +37,14 @@
             <input type="button" id="delete-main-btn" class ="btn btn-secondary" value="delete">
     </div>
     <form>
-    <div class="input-group mb-1">    
+    <div class="input-group mb-1">
         <span class="input-group-text" >Main</span>
         <input type="text" id = "main" name = "MAIN" class = "form-control">
-        
+
         <span class="input-group-text" >Sub</span>
             <input type="text" id = "sub" name = "SUB" class = "form-control">
             <input type="button" id="add-btn" class ="btn btn-secondary" value="add">
-      
+
     </div>
     </form>
 <table class="table">
@@ -67,13 +68,13 @@
 
     <script>
         var data =JSON.parse('<%- data %>');
-        
+
         for(var i=0;i<data.length;i++){
             $("tbody").append(
                 '<tr>'+
                 '<td>'+data[i].MAIN+'</td>'+
-                '<td>'+data[i].SUB+'</td>'+         
-                '<td><input type = "button" class = "btn btn-warning" value = "delete" onclick="del_sub('+i+');"></td>'+   
+                '<td>'+data[i].SUB+'</td>'+
+                '<td><input type = "button" class = "btn btn-warning" value = "delete" onclick="del_sub('+i+');"></td>'+
                 '</tr>'
             )
             if(i==0){
@@ -85,10 +86,10 @@
                     '<option value="'+data[i].MAIN+'">'+data[i].MAIN+'</option> '
                 )
             }
-           
+
         }
         //delete sub category
-      function del_sub(i){       
+      function del_sub(i){
         var mainc = data[i].MAIN;
         var subc = data[i].SUB;
         $.ajax({
@@ -98,48 +99,48 @@
                 MAIN: mainc,
                 SUB: subc
             },
-            success:()=>{
+            success:function() {
                 location.reload();
             },
-            error:()=>{
+            error:function() {
                 location.reload();
             }
         })
       }
 
-      //delete main category -> delete all sub category 
-      $("#delete-main-btn").off("click").on("click",()=>{
+      //delete main category -> delete all sub category
+      $("#delete-main-btn").off("click").on("click",function() {
         $.ajax({
             url:'/admin/category/delete/main',
             type:'post',
             data:{
                 MAIN: $("#delete-main").val()
             },
-            success:()=>{
+            success:function() {
                 location.reload();
             },
-            error:()=>{
+            error:function() {
                 location.reload();
             }
         })
       })
 
       //add category
-      $("#add-btn").off("click").on("click",()=>{
+      $("#add-btn").off("click").on("click",function() {
           $.ajax({
               url:"/admin/category/add",
               type:"post",
               data:$("form").serialize(),
-              success:()=>{
+              success:function() {
                 location.reload();
               },
-                error:()=>{
+                error:function() {
                     location.reload();
                 }
           })
       })
     </script>
-    
+
 </body>
 
 </html>

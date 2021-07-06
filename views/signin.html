@@ -51,17 +51,17 @@
             <div class="collapse navbar-collapse" data-hover="dropdown" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#home">Home</a></li>
-           
+
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#rank">Rank</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#brands">Brands</a></li>
-                    <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/shop?page=1">Mall</a></li>--> 
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/shop?page=1">Mall</a></li>                  
+                    <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/shop?page=1">Mall</a></li>-->
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/shop?page=1">Mall</a></li>
                     <li class="nav-item" id="resizemenu">
                         <div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="accountMenu">
                                 <a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>
-                                <a class="dropdown-item" href="/cart">Cart</a>                                
+                                <a class="dropdown-item" href="/cart">Cart</a>
                             </div>
                         </div>
                     </li>
@@ -73,7 +73,7 @@
     <div class="container">
         <div class="brand_logo_container">
             <img src="../stylesheet/img/autoinlogo/autoin_icon.png" class="brand_logo" alt="Logo">
-           
+
         </div>
         <div id="signup_box">
             <form>
@@ -83,7 +83,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id=""><i class="far fa-id-card"></i></span>
                         </div>
-                        
+
                             <input type="text" class="form-control" id="userId" name="userId"
                                 placeholder="insert your id">
 
@@ -128,15 +128,15 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-left">Copyright © 2020 AUTOINMall </div>
-            
+
             <div class="col-lg-4 my-3 my-lg-0">
                 <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/autoin_mall/" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="col-lg-4 text-lg-right">
-               <div>E-mail:&nbsp;service@autoinmall.com</div> 
-           
+               <div>E-mail:&nbsp;service@autoinmall.com</div>
+
             </div>
         </div>
     </div>
@@ -208,7 +208,7 @@
                         'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
                         '<a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>' +
-                        '<a class="dropdown-item" href="/cart">Cart</a>'                 
+                        '<a class="dropdown-item" href="/cart">Cart</a>'
 
             );
                 }
@@ -221,10 +221,10 @@
                 icon: 'error',
                 title: 'Wrong',
                 text: 'You have to Sign in first!!',
-    
+
             })
         }
-        $("#findpw").off("click").on("click",()=>{
+        $("#findpw").off("click").on("click",function() {
             Swal.fire({
                 title: 'Setting new Password',
                 html:
@@ -241,7 +241,7 @@
                     ,
                 showCancelButton: true,
                 showConfirmbutton:true,
-                preConfirm:()=>{
+                preConfirm:function() {
                     $.ajax({
                         url:'/reset/password',
                         type:"post",
@@ -250,7 +250,7 @@
                             to:$("#email").val(),
                             id:$("#id").val()
                         },
-                        success:(msg)=>{
+                        success:function(msg) {
                             if(msg){
                                 Swal.fire({
                                     icon:'error',
@@ -263,9 +263,9 @@
                                     title: 'Setting new Password',
                                     text: 'Please check your e-mail'
                                 })
-                            }                         
+                            }
                         },
-                        error:()=>{
+                        error:function() {
                             Swal.fire({
                                 icon:'error',
                                 title: 'Setting new Password',
@@ -273,7 +273,7 @@
                             })
                         }
                     })
-                }   
+                }
             })
         })
     </script>

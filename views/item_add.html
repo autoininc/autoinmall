@@ -19,6 +19,7 @@
     <link href="../stylesheet/css/styles.css" rel="stylesheet" />
 
     <!--sweetalert2-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"
         rel="stylesheet">
@@ -29,14 +30,14 @@
     <script src="https://unpkg.com/swiper@5.4.5/js/swiper.min.js"></script>
 
     <style>
-      
-          body {            
+
+          body {
             font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
             font-size: 14px;
             color: #000;
             margin: 0;
             padding: 0;
-          }      
+          }
           .swiper-container {
             background:silver;
             width: 100%;
@@ -44,13 +45,13 @@
             margin-left: auto;
             margin-right: auto;
           }
-      
+
           .swiper-slide {
-             
+
             background-size: cover;
             background-position: center;
           }
-      
+
           .gallery-top {
             border-top:black solid 1px;
             border-left:black solid 1px;
@@ -59,7 +60,7 @@
             height: 60%;
             width: 100%;
           }
-      
+
           .gallery-thumbs {
             border-bottom:black solid 1px;
             border-left:black solid 1px;
@@ -68,12 +69,12 @@
             box-sizing: border-box;
             padding: 10px 0;
           }
-      
+
           .gallery-thumbs .swiper-slide {
             height: 100%;
             opacity: 0.4;
           }
-      
+
           .gallery-thumbs .swiper-slide-thumb-active {
             opacity: 1;
           }
@@ -83,7 +84,7 @@
 
 <body>
     <div class="container">
-        <div class="row" id="item_info_row">            
+        <div class="row" id="item_info_row">
             <div class="col-sm-6">
                 <!-- Swiper -->
                 <div class="swiper-container gallery-top">
@@ -213,7 +214,7 @@
             <textarea class="form-control" name="item_desc" id="item_desc"
                 style="resize: none;height:200px;width:100%"></textarea>
         </div>
-       
+
         <input type="button" class="btn btn-success btn-block" value="add" id="add_item">
 
 
@@ -234,7 +235,7 @@
     <script src="../stylesheet/mail/jqBootstrapValidation.js"></script>
     <script src="../stylesheet/mail/contact_me.js"></script>
     <script>
-        $(document).ready(() => {
+        $(document).ready(function()  {
             var category = JSON.parse('<%- category %>');
             var carbrand=JSON.parse('<%- carbrand %>');
             var itembrand=JSON.parse('<%- itembrand %>');
@@ -256,7 +257,7 @@
                 );
             }
 
-            $("#category_main").change(() => {
+            $("#category_main").change(function()  {
                 var main = $("#category_main option:selected").val();
                 if (main != "") {
                     $("#category_sub").html('<option selected></option>');
@@ -265,7 +266,7 @@
                         url: "/item/add/category",
                         type: "post",
                         data: { main: main },
-                        success: (data) => {
+                        success: function(data)  {
                             var sub = JSON.parse(data);
                             for (var j = 0; j < sub.length; j++) {
                                 $("#category_sub").append(
@@ -280,10 +281,10 @@
 
             })
 
-            //insert img and check it     
-            $("#item_img").on("change", () => {                
+            //insert img and check it
+            $("#item_img").on("change", function()  {
                 var file = $('#item_img')[0].files;
-                var img_file;                                 
+                var img_file;
               //  console.log(file.length);
                 if(file.length>5){
                     alert("size over");
@@ -293,18 +294,18 @@
                     for(var i=0;i<file.length;i++){
                     img_file = file[i];
                     var src = URL.createObjectURL(img_file);
-                   
+
                     $("#top-img-"+i+" img").attr('src',src);
-                    
-                    $("#thumb-img-"+i+" img").attr('src',src); 
-            
+
+                    $("#thumb-img-"+i+" img").attr('src',src);
+
                 }
-               
+
                 }
-              
-               
+
+
             })
-            $("#add_item").off("click").on("click", () => {
+            $("#add_item").off("click").on("click", function()  {
                 const formdata = new FormData($("form")[0]);
                 formdata.append("item_img", $('#item_img')[0].files[0]);
                 formdata.append("item_img", $('#item_img')[0].files[1]);
@@ -324,24 +325,24 @@
                         data: formdata,
                         contentType: false,
                         processData: false,
-                        success: (data) => {
+                        success: function(data)  {
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Add item',
                                 text: 'PIN: ' + data,
 
-                            }).then(() => {
+                            }).then(function()  {
                                 location.reload();
-                            }) 
+                            })
                         },
-                        error: () => {
+                        error: function()  {
                             alert("error");
                         }
                     })
                 }else{
                     alert("too many files");
                 }
-              
+
             })
 
             var galleryThumbs = new Swiper('.gallery-thumbs', {

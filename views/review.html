@@ -53,7 +53,7 @@
                     $("#star4").html("&#9734;");
                     $("#star5").html("&#9734;");
                 break;
-                   
+
                 case 2:
                     $("#rate").val(2);
                     $("#star1").html("&#9733;");
@@ -62,7 +62,7 @@
                     $("#star4").html("&#9734;");
                     $("#star5").html("&#9734;");
                 break;
-                   
+
                 case 3:
                     $("#rate").val(3);
                     $("#star1").html("&#9733;");
@@ -126,7 +126,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container" style="margin-top:10%">
         <div class="card card-outline-secondary my-4">
             <div class="card-header">
@@ -141,9 +141,9 @@
                         <a onClick="rating(3);" id="star3">&#9733;</a>&nbsp;
                         <a onClick="rating(4);" id="star4">&#9734;</a>&nbsp;
                         <a onClick="rating(5);" id="star5">&#9734;</a>
-                        <input type="hidden" id="rate" value = "3">                 
+                        <input type="hidden" id="rate" value = "3">
                     </div>
-                    
+
                     <textarea class="form-control" style="resize:none;height:300px" id="review">
 
                     </textarea>
@@ -251,7 +251,7 @@
             }
         });
 
-        $("#confirm").off("click").on("click",()=>{
+        $("#confirm").off("click").on("click",function() {
             var url = location.href;
             var pin = url.split("=")[1];
             $.ajax({
@@ -262,25 +262,25 @@
                     rate:$("#rate").val(),
                     review:$("#review").val()
                 },
-                success:()=>{
+                success:function() {
                     Swal.fire({
                             icon: 'success',
                             title: 'Review',
                             text: 'Review sending success',
 
-                        }).then(() => {
+                        }).then(function()  {
                            location.href="/item/info?pin="+pin;
                         })
                 },
-                error:()=>{
+                error:function() {
                     Swal.fire({
                             icon: 'error',
                             title: 'Review',
                             text: 'Review sending error',
 
-                        }).then(() => {
+                        }).then(function()  {
                             location.reload();
-                        }) 
+                        })
                 }
             })
         })

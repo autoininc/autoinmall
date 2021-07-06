@@ -11,12 +11,12 @@
         <input type="button" class="btn" value="btn">
     </body>
     <script>
-        $(".btn").off("click").on("click",()=>{
+        $(".btn").off("click").on("click",function() {
             for(var i=0;i<$("input[name='test']:checked").length;i++){
                 alert($("input[name='test']:checked")[i].val());
-            }   
-           
+            }
+
         })
-        
+
     </script>
 </html>

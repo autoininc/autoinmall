@@ -19,6 +19,7 @@
     <link href="../stylesheet/css/styles.css" rel="stylesheet" />
     <link href="../stylesheet/css/index.css" rel="stylesheet" />
     <!--sweetalert2-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"
         rel="stylesheet">
@@ -135,79 +136,74 @@
                 <h3 class="section-subheading text-muted" id="theme1"><strong></strong></h3>
             </div>
             <div class="row">
-                <div class="col-md-2half text-center">
+                <div class="col-md-3 text-center">
                     <div>
                         <a id="theme1_top1_link">
                             <h4 class="my-3">TOP 1</h4>
                             <span class="text-center">
-                                <img id="theme1_top1" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
+                                <img id="theme1_top1" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme1_top1_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                            <p class="text-muted" id="theme1_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                 <strong></strong>
                             </p>
                         </a>
                     </div>
+
                 </div>
-                <div class="col-md-2half text-center">
+                <div class="col-md-3 text-center">
                     <div>
                         <a id="theme1_top2_link">
                             <h4 class="my-3">TOP 2</h4>
                             <span class="text-center">
-                                <img id="theme1_top2" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
+                                <img id="theme1_top2" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme1_top2_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                            <p class="text-muted" id="theme1_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                 <strong></strong>
                             </p>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme1_top3_link">
-                            <h4 class="my-3">TOP 3</h4>
-                            <span class="text-center">
-                                <img id="theme1_top3" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme1_top3_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme1_top4_link">
-                            <h4 class="my-3">TOP 4</h4>
-                            <span class="text-center">
-                                <img id="theme1_top4" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme1_top4_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme1_top5_link">
-                            <h4 class="my-3">TOP 5</h4>
-                            <span class="text-center">
-                                <img id="theme1_top5" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme1_top5_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme1_top3_link">
+                                    <h4 class="my-3">TOP 3</h4>
+                                    <span class="text-center">
+                                        <img id="theme1_top3" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme1_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme1_top4_link">
+                                    <h4 class="my-3">TOP 4</h4>
+                                    <span class="text-center">
+                                        <img id="theme1_top4" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme1_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme1_top5_link">
+                                    <h4 class="my-3">TOP 5</h4>
+                                    <span class="text-center">
+                                        <img id="theme1_top5" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme1_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,79 +212,73 @@
                 </h3>
             </div>
             <div class="row">
-                <div class="col-md-2half text-center">
+                <div class="col-md-3 text-center">
                     <div>
                         <a id="theme2_top1_link">
                             <h4 class="my-3">TOP 1</h4>
                             <span class="text-center">
-                                <img id="theme2_top1" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
+                                <img id="theme2_top1" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme2_top1_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                            <p class="text-muted" id="theme2_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                 <strong></strong>
                             </p>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2half text-center">
+                <div class="col-md-3 text-center">
                     <div>
                         <a id="theme2_top2_link">
                             <h4 class="my-3">TOP 2</h4>
                             <span class="text-center">
-                                <img id="theme2_top2" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
+                                <img id="theme2_top2" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme2_top2_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                            <p class="text-muted" id="theme2_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                 <strong></strong>
                             </p>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme2_top3_link">
-                            <h4 class="my-3">TOP 3</h4>
-                            <span class="text-center">
-                                <img id="theme2_top3" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme2_top3_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme2_top4_link">
-                            <h4 class="my-3">TOP 4</h4>
-                            <span class="text-center">
-                                <img id="theme2_top4" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme2_top4_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme2_top5_link">
-                            <h4 class="my-3">TOP 5</h4>
-                            <span class="text-center">
-                                <img id="theme2_top5" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme2_top5_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme2_top3_link">
+                                    <h4 class="my-3">TOP 3</h4>
+                                    <span class="text-center">
+                                        <img id="theme2_top3" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme2_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme2_top4_link">
+                                    <h4 class="my-3">TOP 4</h4>
+                                    <span class="text-center">
+                                        <img id="theme2_top4" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme2_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme2_top5_link">
+                                    <h4 class="my-3">TOP 5</h4>
+                                    <span class="text-center">
+                                        <img id="theme2_top5" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme2_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -297,82 +287,79 @@
                 </h3>
             </div>
             <div class="row">
-                <div class="col-md-2half text-center">
+                <div class="col-md-3 text-center">
                     <div>
                         <a id="theme3_top1_link">
                             <h4 class="my-3">TOP 1</h4>
                             <span class="text-center">
-                                <img id="theme3_top1" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
+                                <img id="theme3_top1" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme3_top1_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                            <p class="text-muted" id="theme3_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                 <strong></strong>
                             </p>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2half text-center">
+                <div class="col-md-3 text-center">
                     <div>
                         <a id="theme3_top2_link">
                             <h4 class="my-3">TOP 2</h4>
                             <span class="text-center">
-                                <img id="theme3_top2" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
+                                <img id="theme3_top2" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme3_top2_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                            <p class="text-muted" id="theme3_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                 <strong></strong>
                             </p>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme3_top3_link">
-                            <h4 class="my-3">TOP 3</h4>
-                            <span class="text-center">
-                                <img id="theme3_top3" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme3_top3_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme3_top4_link">
-                            <h4 class="my-3">TOP 4</h4>
-                            <span class="text-center">
-                                <img id="theme3_top4" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme3_top4_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme3_top5_link">
-                            <h4 class="my-3">TOP 5</h4>
-                            <span class="text-center">
-                                <img id="theme3_top5" class="img-fluid rounded" alt="No image"
-                                    style="width:400px;height:150px">
-                            </span>
-                            <p class="text-muted" id="theme3_top5_name"
-                                style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
+                <div class="col-md-6">
+                    <div class="row">
+
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme3_top3_link">
+                                    <h4 class="my-3">TOP 3</h4>
+                                    <span class="text-center">
+                                        <img id="theme3_top3" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme3_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme3_top4_link">
+                                    <h4 class="my-3">TOP 4</h4>
+                                    <span class="text-center">
+                                        <img id="theme3_top4" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme3_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4  text-center">
+                            <div>
+                                <a id="theme3_top5_link">
+                                    <h4 class="my-3">TOP 5</h4>
+                                    <span class="text-center">
+                                        <img id="theme3_top5" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+                                    </span>
+                                    <p class="text-muted" id="theme3_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong></strong>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </section>
     <!-- brands-->
@@ -468,12 +455,9 @@
                 <div class="col-lg-4 text-lg-left">Copyright © 2020 AUTOINMall </div>
 
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall"
-                        target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall"
-                        target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/autoin_mall/"
-                        target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/autoin_mall/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-right">
                     <div>E-mail:&nbsp;service@autoinmall.com</div>
@@ -502,119 +486,120 @@
         var ranking = JSON.parse('<%- ranking %>');
         var main_img = '<%- main_img %>';
         //alert(main_img);
-        //ranking
-        $(document).ready(() => {
-            // alert("url("+main_img+")");
-            $(".masthead").css("background-image", "url('" + main_img + "')");
+           //ranking
+        $(document).ready(function() {
+           // alert("url("+main_img+")");
+            $(".masthead").css("background-image","url('"+main_img+"')");
         })
         for (var m = 0; m < ranking.length; m++) {
-            if (m < 5) {
-                console.log(m + "is small");
-                console.log(ranking[m].TOP1);
-                // console.log(ranking[m].TOP2); 
-                // console.log(ranking[m].TOP3);
-                console.log(ranking[m].PIN);
+            if(m <5){
+               console.log(m+"is small");
+               console.log(ranking[m].TOP1);
+              // console.log(ranking[m].TOP2);
+              // console.log(ranking[m].TOP3);
+               console.log(ranking[m].PIN);
                 if (ranking[m].TOP1 == ranking[m].PIN) {
                     console.log("small top1");
                     $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top1_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme1_top1").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme1_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme1_top1").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme1_top1_name strong").html(ranking[m].ITEM_NAME);
                 } else if (ranking[m].TOP2 == ranking[m].PIN) {
                     console.log("small top2");
                     $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top2_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme1_top2").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme1_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme1_top2").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme1_top2_name strong").html(ranking[m].ITEM_NAME);
 
                 } else if (ranking[m].TOP3 == ranking[m].PIN) {
                     console.log("small top3");
                     $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top3_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme1_top3").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme1_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme1_top3").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme1_top3_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP4 == ranking[m].PIN) {
+                }
+                else if (ranking[m].TOP4 == ranking[m].PIN) {
                     console.log("small top4");
                     $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top4_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme1_top4").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme1_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme1_top4").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme1_top4_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP5 == ranking[m].PIN) {
+                }
+                else if (ranking[m].TOP5 == ranking[m].PIN) {
                     console.log("small top5");
                     $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top5_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme1_top5").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme1_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme1_top5").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme1_top5_name strong").html(ranking[m].ITEM_NAME);
                 }
-            } else if (m >= 5 && m < 10) {
-                //console.log(m+"is smae");      
+            }else if(m>=5 && m<10){
+                //console.log(m+"is smae");
                 if (ranking[m].TOP1 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top1_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme2_top1").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme2_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme2_top1").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme2_top1_name strong").html(ranking[m].ITEM_NAME);
                 } else if (ranking[m].TOP2 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top2_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme2_top2").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme2_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme2_top2").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme2_top2_name strong").html(ranking[m].ITEM_NAME);
 
                 } else if (ranking[m].TOP3 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top3_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme2_top3").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme2_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme2_top3").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme2_top3_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP4 == ranking[m].PIN) {
+                }else if (ranking[m].TOP4 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top4_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme2_top4").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme2_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme2_top4").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme2_top4_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP5 == ranking[m].PIN) {
+                }else if (ranking[m].TOP5 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top5_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme2_top5").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme2_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme2_top5").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme2_top5_name strong").html(ranking[m].ITEM_NAME);
                 }
-            } else if (m >= 10 && m < 15) {
-                //console.log(m+"is big");      
+            }else if(m>=10 && m<15){
+               //console.log(m+"is big");
                 if (ranking[m].TOP1 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top1_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme3_top1").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme3_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme3_top1").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme3_top1_name strong").html(ranking[m].ITEM_NAME);
                 } else if (ranking[m].TOP2 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top2_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme3_top2").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme3_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme3_top2").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme3_top2_name strong").html(ranking[m].ITEM_NAME);
 
                 } else if (ranking[m].TOP3 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top3_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme3_top3").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme3_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme3_top3").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme3_top3_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP4 == ranking[m].PIN) {
+                }else if (ranking[m].TOP4 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top4_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme3_top4").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme3_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme3_top4").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme3_top4_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP5 == ranking[m].PIN) {
+                }else if (ranking[m].TOP5 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top5_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
-                    $("#theme3_top5").attr("src", "../stylesheet/img/item/" + ranking[m].IMG1);
+                    $("#theme3_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
+                    $("#theme3_top5").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
                     $("#theme3_top5_name strong").html(ranking[m].ITEM_NAME);
                 }
             }
 
         }
-        //print carbrand      
+         //print carbrand
         for (var l = 0; l < carbrand.length; l++) {
             if (carbrand[l].IMG === null) {
                 carbrand.splice(l, 1);
             }
             $(".swiper-wrapper").append(
-                '<div class="swiper-slide brand_slide"><a href="/search?brands=' + carbrand[l].NAME +
-                '"><img class="img-fluid d-block mx-auto"' +
+                '<div class="swiper-slide brand_slide"><a href="/search?brands=' + carbrand[l].NAME + '"><img class="img-fluid d-block mx-auto"' +
                 'src="../stylesheet/img/car_brands/' + carbrand[l].IMG + '" alt="" /></a></div>'
             )
         }
@@ -632,33 +617,27 @@
             }
             switch (flag) {
                 case 0:
-                    $("#ib_section0").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' +
-                        itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+                    $("#ib_section0").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
                         'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 1:
-                    $("#ib_section1").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' +
-                        itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+                    $("#ib_section1").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
                         'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 2:
-                    $("#ib_section2").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' +
-                        itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+                    $("#ib_section2").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
                         'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 3:
-                    $("#ib_section3").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' +
-                        itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+                    $("#ib_section3").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
                         'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 4:
-                    $("#ib_section4").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' +
-                        itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+                    $("#ib_section4").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
                         'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 5:
-                    $("#ib_section5").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' +
-                        itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+                    $("#ib_section5").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
                         'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img"  /></a></div><br>');
                     break;
             }
@@ -680,7 +659,8 @@
                     $("optgroup[label = '" + main + "']").append(
                         '<option value="' + category[i].ID + '">' + sub + '</option>'
                     );
-                } else if (i != (category.length) - 1 && main != String(category[i - 1].ID).split('_')[0]) {
+                }
+                else if (i != (category.length) - 1 && main != String(category[i - 1].ID).split('_')[0]) {
                     $("#category").append(
                         '<optgroup label ="' + main + '">' +
                         '<option value="' + category[i].ID + '">' + sub + '</option>'
@@ -694,7 +674,8 @@
             $("#account_ctrl").html('Signout');
             $("#account_ctrl").attr("href", "/signout");
             $("#accountMenu").append('<a class="dropdown-item" id="management" href="/management">Management</a>');
-        } else {
+        }
+        else {
             $("#account_ctrl").html('Signin');
             $("#account_ctrl").attr("href", "/signin");
             $("#accountMenu").remove("#management");
@@ -725,8 +706,7 @@
                 } else {
                     $("#resizemenu").html(
                         '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-                        '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>'
-                    );
+                        '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>');
                 }
 
             } else {
@@ -752,6 +732,7 @@
                 }
             }
         });
+
     </script>
 </body>
 

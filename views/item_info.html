@@ -132,7 +132,7 @@
                         <input type="file" class="form-control" name = "file4" id="file4" disabled>
                     </div>
                     <div class="col-md-2"  style="border:1px solid silver;background-color: silver;">
-                        
+
                     </div>
                 </div>
             </div>
@@ -156,11 +156,11 @@
                         <input type="file" class="form-control" name = "img5" id="img5" accept="image/*" disabled>
                     </div>
                     <div class="col-md-2"  style="border:1px solid silver;background-color: silver;">
-                        
+
                     </div>
                 </div>
             </div>
-           
+
             <!-- /.card -->
             <div class="input-group mb-1">
                 <div class="input-group-text">Item Desc</div>
@@ -185,7 +185,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
     <script>
-        $(document).ready(() => {
+        $(document).ready(function()  {
             var info;
             var category = JSON.parse('<%- category %>');
             var carbrand = JSON.parse('<%- carbrand %>');
@@ -194,7 +194,7 @@
             var subc;
             var temp;
 
-            $("#search-item").off("click").on("click", () => {
+            $("#search-item").off("click").on("click", function()  {
                 $("#btn_set").css("display","none");
                 $.ajax(
                     {
@@ -203,8 +203,8 @@
                         data: {
                             pin: $("#pin").val()
                         },
-                        success: (data) => {
-                           
+                        success: function(data)  {
+
                              //init
                             $("#item_info .form-control").val("");
                             $("#category_main").val("");
@@ -277,7 +277,7 @@
                                 }
 
                             }
-                            $("#category_main").change(() => {
+                            $("#category_main").change(function()  {
                                 var main = $("#category_main option:selected").val();
 
                                 $("#category_sub").html('<option selected></option>');
@@ -285,7 +285,7 @@
                                     url: "/item/add/category",
                                     type: "post",
                                     data: { main: main },
-                                    success: (data) => {
+                                    success: function(data)  {
                                         var sub = JSON.parse(data);
                                         for (var j = 0; j < sub.length; j++) {
                                             if (j === 0) {
@@ -332,14 +332,14 @@
                                         pin:$("#pin").val(),
                                         filename:file_list.split(';')[Number(id)]
                                     },
-                                    success:()=>{
+                                    success:function() {
                                         $("#download_file_"+id).html(
                                             '<input type="file" class="form-control" name = "file'+id+'" id="file'+id+'" >'+
                                             '<br>'
                                         )
                                     }
                                 })
-                                
+
                             })
                             //img
                             if(data[0].IMG1 != 'no_img.png'){
@@ -353,32 +353,32 @@
                                 '<p>'+data[0].IMG2+'</p>'+
                                 '<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
                             )
-                            }    
-                            
+                            }
+
                             if(data[0].IMG3 != 'no_img.png'){
                                 $("#img_file_3").html(
                                 '<p>'+data[0].IMG3+'</p>'+
                                 '<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
                             )
-                            }   
+                            }
 
                             if(data[0].IMG4 != 'no_img.png'){
                                 $("#img_file_4").html(
                                 '<p>'+data[0].IMG4+'</p>'+
                                 '<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
                             )
-                            }   
+                            }
 
                             if(data[0].IMG5 != 'no_img.png'){
                                 $("#img_file_5").html(
                                 '<p>'+data[0].IMG5+'</p>'+
                                 '<input type="button" class="btn btn-secondary img-file" value="delete" disabled>'
                             )
-                            }   
-                                                 
+                            }
+
                             //delete img file
-                            $(".img-file").off("click").on("click",(event)=>{                               
-                                var id = event.target.id;                      
+                            $(".img-file").off("click").on("click",(event)=>{
+                                var id = event.target.id;
                                 id = Number(id.substring(3,4));
                                 //alert(id);
                                // alert(Number(id));
@@ -421,11 +421,11 @@
                                                 '<br>'
                                             )
                                         },
-                                        error:()=>{
+                                        error:function() {
                                             alert("send err");
                                         }
                                     })
-                                
+
                             })
 
                             $("#item_name").val(data[0].ITEM_NAME);
@@ -444,15 +444,15 @@
                             $(top.document).find(".capsulate-window").css("height", $("body").height() + "px");
                             $(top.document).find(".body-container").css("height", $("body").height() + "px");
 
-        
+
                         }
                     }
                 )
 
             })
-            
+
             //delete
-            $(".delete-btn").off("click").on("click", () => {
+            $(".delete-btn").off("click").on("click", function()  {
                 var pin =  $("#pin").val();
                 $.ajax({
                     url:"/admin/item/delete",
@@ -460,13 +460,13 @@
                     data:{
                         pin:pin
                     },
-                    success:()=>{
+                    success:function() {
                         location.reload();
                     }
                 })
             })
                 //change
-                $(".setting-btn").off("click").on("click", () => {
+                $(".setting-btn").off("click").on("click", function()  {
                 if ($(".setting-btn").val() === "setting") {
                     $("#item_info .form-control").attr("disabled", false);
                     $("#category_main").attr("disabled",false);
@@ -571,22 +571,22 @@
                         data: formdata,
                         contentType: false,
                         processData: false,
-                        success: () => {
+                        success: function()  {
                             alert("update success");
 
                             location.reload();
                         },
-                        error: () => {
+                        error: function()  {
                             alert("update fail");
                         }
                     })
                 }
-                
+
 
 
             })
 
-            
+
         })
 
 

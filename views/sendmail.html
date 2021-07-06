@@ -31,7 +31,7 @@
 
 <body>
     <div style="background-color: #212529;height:80px;width:100%" >
-            <img src="../stylesheet/img/autoinlogo/autoin_logo.png" alt="" style="width:200px;height:50px;margin-left:2%;margin-top:2%"/>     
+            <img src="../stylesheet/img/autoinlogo/autoin_logo.png" alt="" style="width:200px;height:50px;margin-left:2%;margin-top:2%"/>
     </div>
     <br>
   <div class="container">
@@ -51,7 +51,7 @@
             <span class="input-group-text" >Title</span></div>
             <input type="text" id="title" name = "title" class = "form-control" value="Ask about item without price" readonly>
     </div>
-    <div class="input-group mb-1">        
+    <div class="input-group mb-1">
         <textarea class = "form-control" name="text" style="width:100%;height:250px;resize:none"></textarea>
     </div>
     <div class="input-group mb-1">
@@ -87,17 +87,17 @@
     <script src="../stylesheet/mail/jqBootstrapValidation.js"></script>
     <script src="../stylesheet/mail/contact_me.js"></script>
     <!-- Core theme JS-->
-   
+
     <script>
-       $(document).ready(()=>{
+       $(document).ready(function() {
         var from = "<%- from %>";
         $("#from").val(from);
-        $("#send_btn").off("click").on("click",()=>{
+        $("#send_btn").off("click").on("click",function() {
             $.ajax({
                 url:"/item/contact/send",
                 type:"post",
                 data:$("form").serialize(),
-                success:()=>{
+                success:function() {
                     Swal.fire({
                         icon: 'success',
                         title: 'send email',
@@ -108,9 +108,9 @@
         })
 
        })
-       
 
-  
+
+
     </script>
 </body>
 

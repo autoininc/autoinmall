@@ -121,7 +121,7 @@
                     </table>
                 </div>
             </div>
-           
+
         </div>
         <h3 style="border-bottom:#212529 solid 1px">&nbsp;&nbsp;Destination</h3>
         <div class="card card-outline-secondary my-4">
@@ -148,14 +148,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" style="width:120px;">Email</span></div>
                         <input type="text" class="form-control" id="email" name="email" disabled>
-                </div>                
+                </div>
                 <div style="float:right">
                     <input type="button" value="change" id="change_contact" class="btn btn-secondary">
                 </div>
             </div>
         </div>
         <div style="text-align: center;">
-            <input type="button" class="btn btn-primary mt-2 mb-2" value="Payment" id="payment" style="font-size:25px">  
+            <input type="button" class="btn btn-primary mt-2 mb-2" value="Payment" id="payment" style="font-size:25px">
         </div>
         </div>
 
@@ -196,14 +196,14 @@
             var cart = JSON.parse('<%- cart %>');
             var email = '<%- email %>';
             var dest = JSON.parse('<%- dest %>');
-            var name_list="";//list of items 
+            var name_list="";//list of items
             var cost;
             $("#zipcode").val(dest[0].ZIPCODE);
             $("#address").val(dest[0].ADDRESS);
             $("#email").val(email);
 
             //change destination
-            $("#change_dest").off("click").on("click",()=>{
+            $("#change_dest").off("click").on("click",function() {
                 if($("#change_dest").val() === "change"){
                     $("#change_dest").val("finish");
                     $("#change_dest").css("background-color","red");
@@ -218,7 +218,7 @@
                 }
             })
             //change contact
-            $("#change_contact").off("click").on("click",()=>{
+            $("#change_contact").off("click").on("click",function() {
                 if($("#change_contact").val() === "change"){
                     $("#change_contact").val("finish");
                     $("#change_contact").css("background-color","red");
@@ -228,7 +228,7 @@
                     $("#change_contact").css("background-color","gray");
                     $("#email").attr("disabled",true);
                 }
-            })  
+            })
 
             if (username) {
                 $("#account_ctrl").html('Signout');
@@ -322,7 +322,7 @@
                     }else{
                         name_list = name_list+ name_list+cart[i].ITEM+"\n"+cart[i].PIN+"\n";
                     }
-                    
+
                     //
                 }
                 $("tbody").append(
@@ -336,9 +336,9 @@
             }
 
 
-            $("#payment").off("click").on("click",()=>{
+            $("#payment").off("click").on("click",function() {
                 if($("#zipcode").val() && $("#address").val()){
-                    var name = name_list.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');     
+                    var name = name_list.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
                 var data = {
                     name:username,
                     email:$("#email").val(),
@@ -356,7 +356,7 @@
                         text:"Please check your Address or Zipcode"
                     })
                 }
-               
+
             })
         </script>
 </body>

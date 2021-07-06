@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-       
-    
+
+
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -30,18 +30,18 @@
     <body>
         <div class="container">
             <div class="row" style="border:1px solid silver">
-                
+
                     <div class="col-md-6" style="padding:0">
                         <img src="../stylesheet/img/item/no_img.png" id="thumb1" style="width:100%;height:200px">
                     </div>
                     <div class="col-md-6" style="padding:0">
-                        <input type="file" name="img1" class="form-control" style="width:100%!important">              
+                        <input type="file" name="img1" class="form-control" style="width:100%!important">
                         <input type="text" name="img1_url" placeholder="URL" class="form-control mt-2" style="width:100%!important" >
                     </div>
-                       
+
             </div>
             <div class="row" style="border:1px solid silver">
-                
+
                 <div class="col-md-6" style="padding:0">
                     <img src="../stylesheet/img/item/no_img.png" id="thumb2" style="width:100%;height:200px">
                 </div>
@@ -49,11 +49,11 @@
                     <input type="file" name="img2" class="form-control">
                     <input type="text" name="img2_url" placeholder="URL" class="form-control mt-2">
                 </div>
-                   
+
             </div>
-            
+
             <div class="row" style="border:1px solid silver">
-                
+
                 <div class="col-md-6" style="padding:0">
                     <img src="../stylesheet/img/item/no_img.png" id="thumb3" style="width:100%;height:200px">
                 </div>
@@ -61,15 +61,15 @@
                     <input type="file" name="img3" class="form-control">
                     <input type="text" name="img3_url" placeholder="URL" class="form-control mt-2">
                 </div>
-                   
+
             </div>
-           
-         
+
+
                 <input type="button" class="btn btn-secondary mt-3 btn-block" value="setting">
-        
-         
-           
-            
+
+
+
+
         </div>
          <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -77,45 +77,45 @@
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script>
-        $(document).ready(()=>{
+        $(document).ready(function() {
             var img_list = JSON.parse('<%- img_list %>');
             if(img_list){
-               
+
                 $("#thumb1").attr('src',"../stylesheet/img/mall/"+img_list[0].IMG1);
                 $("#thumb2").attr('src',"../stylesheet/img/mall/"+img_list[0].IMG2);
                 $("#thumb3").attr('src',"../stylesheet/img/mall/"+img_list[0].IMG3);
                 $("input[name='img1_url']").val(img_list[0].URL1);
                 $("input[name='img2_url']").val(img_list[0].URL2);
                 $("input[name='img3_url']").val(img_list[0].URL3);
-              
+
             }
-             //insert img and check it     
-             $("input[name='img1']").on("change", () => {                
+             //insert img and check it
+             $("input[name='img1']").on("change", () => {
                 var file =  $("input[name='img1']")[0].files;
-                var img_file;                               
+                var img_file;
                 img_file = file[0];
                 var src = URL.createObjectURL(img_file);
                 $("#thumb1").attr("src",src);
             })
 
-            $("input[name='img2']").on("change", () => {                
+            $("input[name='img2']").on("change", () => {
                 var file =  $("input[name='img2']")[0].files;
-                var img_file;                               
+                var img_file;
                 img_file = file[0];
                 var src = URL.createObjectURL(img_file);
                 $("#thumb2").attr("src",src);
             })
-            
-            $("input[name='img3']").on("change", () => {                
+
+            $("input[name='img3']").on("change", () => {
                 var file =  $("input[name='img3']")[0].files;
-                var img_file;                               
+                var img_file;
                 img_file = file[0];
                 var src = URL.createObjectURL(img_file);
                 $("#thumb3").attr("src",src);
             })
-            
 
-            $(".btn").off("click").on("click",()=>{
+
+            $(".btn").off("click").on("click",function() {
                 var formdata = new FormData();
                 formdata.append("img",$("input[name='img1']")[0].files[0]);
                 formdata.append("img",$("input[name='img2']")[0].files[0]);
@@ -132,10 +132,10 @@
                     data:formdata,
                     contentType: false,
                         processData: false,
-                    success:()=>{
+                    success:function() {
                         location.reload();
                     },
-                    error:()=>{
+                    error:function() {
                         alert("fail");
                     }
                 })
