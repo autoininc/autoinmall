@@ -9,6 +9,7 @@ var mysqlDB = require("./DB/db");
 
 var app = express();
 var indexRouter = require('./routes/index')(mysqlDB);
+var adminRouter = require('./routes/admin')(mysqlDB);
 
 app.use(session({
     secret: '@#@$sessKEY#@$#$',
@@ -27,6 +28,7 @@ app.set('views engin', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
 
 //express run
 http.createServer(app).listen(app.get('port'), function () {
