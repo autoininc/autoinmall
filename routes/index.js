@@ -33,7 +33,7 @@ module.exports = function(db) {
 	const shop_img = multer({
 		storage: multer.diskStorage({
 			destination: function (req, file, cb) {
-				cb(null, 'public/stylesheet/img/mall');
+				cb(null, 'public/img/mall');
 			},
 			filename: function (req, file, cb) {
 				cb(null, file.originalname);

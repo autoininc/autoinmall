@@ -41,7 +41,7 @@ exports.delete = function(req, res, db, fs) {
 			console.log(err);
 		} else {
 			//delete car brand img
-			fs.unlink("./public/stylesheet/img/car_brands/" + req.body.img, (err2) => {
+			fs.unlink("./public/img/car_brands/" + req.body.img, (err2) => {
 				if (err2) {
 					console.log(err2);
 				} else {

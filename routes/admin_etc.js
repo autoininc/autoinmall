@@ -65,7 +65,7 @@ exports.file_delete = function(req, res, db, fs) {
 			var new_list = "";
 			for (var i = 0; i < list.length; i++) {
 				if (list[i] === req.body.filename) {
-					fs.unlink("./public/stylesheet/img/item/" + list[i], (del_file_err) => {
+					fs.unlink("./public/img/item/" + list[i], (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
 						} else {
@@ -103,7 +103,7 @@ exports.img_delete = function(req, res, db, fs) {
 					res.send("err");
 					console.log(err);
 				} else {
-					fs.unlink("./public/stylesheet/img/item/" + req.body.name, (del_file_err) => {
+					fs.unlink("./public/img/item/" + req.body.name, (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
 						} else {
@@ -120,7 +120,7 @@ exports.img_delete = function(req, res, db, fs) {
 					res.send("err");
 					console.log(err);
 				} else {
-					fs.unlink("./public/stylesheet/img/item/" + req.body.name, (del_file_err) => {
+					fs.unlink("./public/img/item/" + req.body.name, (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
 						} else {
@@ -137,7 +137,7 @@ exports.img_delete = function(req, res, db, fs) {
 					res.send("err");
 					console.log(err);
 				} else {
-					fs.unlink("./public/stylesheet/img/item/" + req.body.name, (del_file_err) => {
+					fs.unlink("./public/img/item/" + req.body.name, (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
 						} else {
@@ -154,7 +154,7 @@ exports.img_delete = function(req, res, db, fs) {
 					res.send("err");
 					console.log(err);
 				} else {
-					fs.unlink("./public/stylesheet/img/item/" + req.body.name, (del_file_err) => {
+					fs.unlink("./public/img/item/" + req.body.name, (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
 						} else {
@@ -171,7 +171,7 @@ exports.img_delete = function(req, res, db, fs) {
 					res.send("err");
 					console.log(err);
 				} else {
-					fs.unlink("./public/stylesheet/img/item/" + req.body.name, (del_file_err) => {
+					fs.unlink("./public/img/item/" + req.body.name, (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
 						} else {

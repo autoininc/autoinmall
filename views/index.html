@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>AUTOINMall</title>
-    <link rel="icon" type="image/x-icon" href="../stylesheet/img/autoinlogo/autoin_icon.png" />
+    <link rel="icon" type="image/x-icon" href="../img/autoinlogo/autoin_icon.png" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -16,8 +16,8 @@
         type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../stylesheet/css/styles.css" rel="stylesheet" />
-    <link href="../stylesheet/css/index.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/index.css" rel="stylesheet" />
     <!--sweetalert2-->
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -35,7 +35,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a id="home_title" class="navbar-brand js-scroll-trigger" href="/" style="margin-left:7%">
-                <img src="../stylesheet/img/autoinlogo/autoin_logo.png" alt="" /></a>
+                <img src="../img/autoinlogo/autoin_logo.png" alt="" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -408,7 +408,7 @@
                         dedicated to more reasonable prices, convenient purchasing processes, fast delivery and various
                         services. We will provide a variety of promotions with the opening and we will always strive to
                         satisfy our customers based on our expertise in the automotive industry.
-                        <img src="../stylesheet/img/autoinlogo/autoin_logo.png" alt=""
+                        <img src="../img/autoinlogo/autoin_logo.png" alt=""
                             style="width:50%;margin-left:25%;margin-top:15%;margin-bottom:10%" />
 
                     </div>
@@ -419,7 +419,7 @@
                         continuous development of future technologies such as big data and blockchain based on its
                         expertise in the automotive industry.
                         <a href="https://autoinspec.com" target="_blank"><img
-                                src="../stylesheet/img/autoinlogo/autoinspec.jpg" alt=""
+                                src="../img/autoinlogo/autoinspec.jpg" alt=""
                                 style="width:50%;margin-left:25%;margin-top:5%" /></a>
 
                     </div>
@@ -456,10 +456,10 @@
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Contact form JS-->
-    <script src="../stylesheet/mail/jqBootstrapValidation.js"></script>
-    <script src="../stylesheet/mail/contact_me.js"></script>
+    <script src="../mail/jqBootstrapValidation.js"></script>
+    <script src="../mail/contact_me.js"></script>
     <!-- Core theme JS-->
-    <script src="../stylesheet/js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 
     <script>
         var username = '<%- username %>';
@@ -485,34 +485,34 @@
                     console.log("small top1");
                     $("#theme1 strong").html(ranking[m].THEME);
                     $("#theme1_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top1").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme1_top1").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme1_top1_name strong").html(ranking[m].ITEM_NAME);
                 } else if (ranking[m].TOP2 == ranking[m].PIN) {
                     console.log("small top2");
                     $("#theme1 strong").html(ranking[m].THEME);
                     $("#theme1_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top2").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme1_top2").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme1_top2_name strong").html(ranking[m].ITEM_NAME);
 
                 } else if (ranking[m].TOP3 == ranking[m].PIN) {
                     console.log("small top3");
                     $("#theme1 strong").html(ranking[m].THEME);
                     $("#theme1_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top3").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme1_top3").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme1_top3_name strong").html(ranking[m].ITEM_NAME);
                 }
                 else if (ranking[m].TOP4 == ranking[m].PIN) {
                     console.log("small top4");
                     $("#theme1 strong").html(ranking[m].THEME);
                     $("#theme1_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top4").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme1_top4").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme1_top4_name strong").html(ranking[m].ITEM_NAME);
                 }
                 else if (ranking[m].TOP5 == ranking[m].PIN) {
                     console.log("small top5");
                     $("#theme1 strong").html(ranking[m].THEME);
                     $("#theme1_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top5").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme1_top5").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme1_top5_name strong").html(ranking[m].ITEM_NAME);
                 }
             }else if(m>=5 && m<10){
@@ -520,28 +520,28 @@
                 if (ranking[m].TOP1 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
                     $("#theme2_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top1").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme2_top1").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme2_top1_name strong").html(ranking[m].ITEM_NAME);
                 } else if (ranking[m].TOP2 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
                     $("#theme2_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top2").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme2_top2").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme2_top2_name strong").html(ranking[m].ITEM_NAME);
 
                 } else if (ranking[m].TOP3 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
                     $("#theme2_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top3").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme2_top3").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme2_top3_name strong").html(ranking[m].ITEM_NAME);
                 }else if (ranking[m].TOP4 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
                     $("#theme2_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top4").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme2_top4").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme2_top4_name strong").html(ranking[m].ITEM_NAME);
                 }else if (ranking[m].TOP5 == ranking[m].PIN) {
                     $("#theme2 strong").html(ranking[m].THEME);
                     $("#theme2_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top5").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme2_top5").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme2_top5_name strong").html(ranking[m].ITEM_NAME);
                 }
             }else if(m>=10 && m<15){
@@ -549,28 +549,28 @@
                 if (ranking[m].TOP1 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
                     $("#theme3_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top1").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme3_top1").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme3_top1_name strong").html(ranking[m].ITEM_NAME);
                 } else if (ranking[m].TOP2 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
                     $("#theme3_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top2").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme3_top2").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme3_top2_name strong").html(ranking[m].ITEM_NAME);
 
                 } else if (ranking[m].TOP3 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
                     $("#theme3_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top3").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme3_top3").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme3_top3_name strong").html(ranking[m].ITEM_NAME);
                 }else if (ranking[m].TOP4 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
                     $("#theme3_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top4").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme3_top4").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme3_top4_name strong").html(ranking[m].ITEM_NAME);
                 }else if (ranking[m].TOP5 == ranking[m].PIN) {
                     $("#theme3 strong").html(ranking[m].THEME);
                     $("#theme3_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top5").attr("src","../stylesheet/img/item/"+ranking[m].IMG1);
+                    $("#theme3_top5").attr("src","../img/item/"+ranking[m].IMG1);
                     $("#theme3_top5_name strong").html(ranking[m].ITEM_NAME);
                 }
             }
@@ -583,7 +583,7 @@
             }
             $(".swiper-wrapper").append(
                 '<div class="swiper-slide brand_slide"><a href="/search?brands=' + carbrand[l].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                'src="../stylesheet/img/car_brands/' + carbrand[l].IMG + '" alt="" /></a></div>'
+                'src="../img/car_brands/' + carbrand[l].IMG + '" alt="" /></a></div>'
             )
         }
         for (var i = 0; i < carbrand.length; i++) {
@@ -601,27 +601,27 @@
             switch (flag) {
                 case 0:
                     $("#ib_section0").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 1:
                     $("#ib_section1").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 2:
                     $("#ib_section2").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 3:
                     $("#ib_section3").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 4:
                     $("#ib_section4").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
                     break;
                 case 5:
                     $("#ib_section5").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../stylesheet/img/item_brands/' + itembrand[k].IMG + '" alt="img"  /></a></div><br>');
+                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img"  /></a></div><br>');
                     break;
             }
 

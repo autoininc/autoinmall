@@ -20,7 +20,7 @@ module.exports = function(db) {
 	const upload = multer({
 		storage: multer.diskStorage({
 			destination: function (req, file, cb) {
-				cb(null, 'public/stylesheet/img/item');
+				cb(null, 'public/img/item');
 			},
 			filename: function (req, file, cb) {
 				cb(null, file.originalname);
@@ -31,7 +31,7 @@ module.exports = function(db) {
 	const upload_item_brand = multer({
 		storage: multer.diskStorage({
 			destination: function (req, file, cb) {
-				cb(null, 'public/stylesheet/img/item_brands');
+				cb(null, 'public/img/item_brands');
 			},
 			filename: function (req, file, cb) {
 				cb(null, file.originalname);
@@ -43,7 +43,7 @@ module.exports = function(db) {
 	const upload_car_brand = multer({
 		storage: multer.diskStorage({
 			destination: function (req, file, cb) {
-				cb(null, 'public/stylesheet/img/car_brands');
+				cb(null, 'public/img/car_brands');
 			},
 			filename: function (req, file, cb) {
 				cb(null, file.originalname);

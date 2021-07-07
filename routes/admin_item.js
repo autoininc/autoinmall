@@ -113,7 +113,7 @@ exports.delete = function(req, res, db, fs) {
 			if(row[0].FILE_LIST){
 				var file_list = row[0].FILE_LIST.split(";");
 				for (var j = 0; j < file_list.length; j++) {
-					fs.unlink("./public/stylesheet/img/item/" + file_list[i], (del_file_err) => {
+					fs.unlink("./public/img/item/" + file_list[i], (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
 						} else {
@@ -133,7 +133,7 @@ exports.delete = function(req, res, db, fs) {
 						} else {
 							for (var i = 0; i < 5; i++) {
 								if (img_list[i] !== "no_img.png") {
-									fs.unlink("./public/stylesheet/img/item/" + img_list[i], (del_err) => {
+									fs.unlink("./public/img/item/" + img_list[i], (del_err) => {
 										if (del_err) {
 											console.log(err);
 										} else {

@@ -3,7 +3,7 @@ exports.change = function(req, res, db) {
 	console.log(req.body);
 	var img1;
 	if(req.file){
-		img1 = '../../stylesheet/img/mall/'+req.file.filename;
+		img1 = '../../img/mall/'+req.file.filename;
 	}else{
 		img1 = req.body.org1
 	}
