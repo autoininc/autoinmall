@@ -6,8 +6,8 @@
    (function ($) {
     "use strict"; // Start of use strict
     $(document).ready(function () {
-       
-  
+
+
          // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
         if (
@@ -33,20 +33,20 @@
     });
 
     //selected value
-    $("#category").change(()=>{
-        var categ = $("#category option:selected").val();           
+    $("#category").change(function() {
+        var categ = $("#category option:selected").val();
         categ = categ.split('&');
         if(categ[0] != "accessories"){
             $("#brands").attr("disabled",false);
         }else{
-            
+
             $("#model").attr("disabled",true);
             $("#version").attr("disabled",true);
         }
     })
       //brand select
-      $("#select_brands").change(()=>{
-        var brand = $("#select_brands option:selected").val();  
+      $("#select_brands").change(function() {
+        var brand = $("#select_brands option:selected").val();
         if(brand === ""){
             $("#model").attr("disabled",true);
         }else{
@@ -60,18 +60,18 @@
                         $("#model").append(
                             '<option value="'+data[i].BASE_M+'">'+data[i].BASE_M+'</option>'
                         );
-                    }                 
-                    
+                    }
+
                     $("#model").attr("disabled",false);
                 }
-            })         
-           
+            })
+
         }
-  
+
     })
     //model select
-    $("#model").change(()=>{
-        var model = $("#model option:selected").val();  
+    $("#model").change(function() {
+        var model = $("#model option:selected").val();
         var brand = $("#select_brands option:selected").val();
         if(model === ''){
             $("#version").attr("disabled",true);
@@ -86,17 +86,17 @@
                         $("#version").append(
                             '<option value="'+data[i].DETAIL_M+'">'+data[i].DETAIL_M+'</option>'
                         );
-                    }                 
-                    
+                    }
+
                     $("#version").attr("disabled",false);
                 }
-            }) 
+            })
         }
-           
-       
+
+
     })
 
-    
+
     // Closes responsive menu when a scroll trigger link is clicked
     $(".js-scroll-trigger").click(function () {
         $(".navbar-collapse").collapse("hide");
@@ -107,17 +107,17 @@
         target: "#mainNav",
         offset: 74,
     });
-    
+
     // Collapse Navbar
     var navbarCollapse = function () {
         var windowwidth = $(window).width();
         if ($("#mainNav").offset().top > 100) {
-            $("#mainNav").addClass("navbar-shrink");      
-           
-           
+            $("#mainNav").addClass("navbar-shrink");
+
+
         } else {
-            $("#mainNav").removeClass("navbar-shrink");        
-                
+            $("#mainNav").removeClass("navbar-shrink");
+
         }
     };
     // Collapse now if page is not at top

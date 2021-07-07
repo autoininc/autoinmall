@@ -9,7 +9,6 @@ var mysqlDB = require("./DB/db");
 
 var app = express();
 var indexRouter = require('./routes/index')(mysqlDB);
-// var usersRouter = require('./routes/users');
 
 app.use(session({
     secret: '@#@$sessKEY#@$#$',

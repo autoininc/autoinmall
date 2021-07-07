@@ -50,7 +50,7 @@ exports.contact = function(req, res, db, nodemailer) {
 		subject: "Item price enquiry",
 		text: "From: " + sess.email + "\n" + "Item name: " + req.body.name + "\nParts number: " + req.body.parts_num + "\nPin: " + req.body.pin
 	};
-	nodemailer.sendmail(data, () => {
+	nodemailer.sendmail(data, function()  {
 		res.send("success");
 	});
 }

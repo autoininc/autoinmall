@@ -6,7 +6,7 @@
    (function ($) {
     "use strict"; // Start of use strict
     $(document).ready(function () {
-       
+
          // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
         if (
@@ -42,8 +42,8 @@
         target: "#mainNav",
         offset: 74,
     });
-    
-    $(window).resize(function() { 
+
+    $(window).resize(function() {
         if($(window).width() <976) {
             $("#resizemenu").html(
                 '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout" id="account_ctrl">Signout</a></li>'+
@@ -60,7 +60,7 @@
                 '<a class="dropdown-item" href="/management">Management</a></div></div>'
 
             );
-         }  
+         }
      });
 
      if($(window).width() <976) {
@@ -70,17 +70,17 @@
             '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
         );
      }
- 
+
     // Collapse Navbar
     var navbarCollapse = function () {
         var windowwidth = $(window).width();
         if ($("#mainNav").offset().top > 100) {
-            $("#mainNav").addClass("navbar-shrink");      
-           
-           
+            $("#mainNav").addClass("navbar-shrink");
+
+
         } else {
-            $("#mainNav").removeClass("navbar-shrink");        
-                
+            $("#mainNav").removeClass("navbar-shrink");
+
         }
     };
     // Collapse now if page is not at top
@@ -90,14 +90,14 @@
 
     })
 
-    $("#cart").off("click").on("click",()=>{
+    $("#cart").off("click").on("click",function() {
         $("#receipt").css("background-color","rgb(197, 208, 219)");
         $("#cart").css("background-color","white");
         $("#receipt_view").css("display","none");
         $("#table_view").css("display","block");
     })
 
-    $("#receipt").off("click").on("click",()=>{
+    $("#receipt").off("click").on("click",function() {
         $("#cart").css("background-color","rgb(197, 208, 219)");
         $("#receipt").css("background-color","white");
         $("#table_view").css("display","none");

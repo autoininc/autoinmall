@@ -185,7 +185,7 @@
                     text: 'You have to check Password Effectiveness'
                 })
             }
-            //check name is not null                   
+            //check name is not null
             else if (!name) {
                 Swal.fire({
                     icon: 'error',
@@ -228,7 +228,7 @@
                             icon: 'success',
                             title: 'Sign up',
                             text:  'You have to check your E-mail and confirm to use this account',
-                        }).then(() => {
+                        }).then(function()  {
                             location.href = "/signin";
                         })
                     },
@@ -277,7 +277,7 @@
         target: "#mainNav",
         offset: 74,
     });
-    
+
     $(window).resize(function () {
         if ($(window).width() < 976) {
             $("#resizemenu").html(
@@ -326,17 +326,17 @@
         $(".brand_logo").css("margin-right","20%");
         $(".brand_logo").css("width","60%");
     }
- 
+
     // Collapse Navbar
     var navbarCollapse = function () {
         var windowwidth = $(window).width();
         if ($("#mainNav").offset().top > 100) {
-            $("#mainNav").addClass("navbar-shrink");      
-           
-           
+            $("#mainNav").addClass("navbar-shrink");
+
+
         } else {
-            $("#mainNav").removeClass("navbar-shrink");        
-                
+            $("#mainNav").removeClass("navbar-shrink");
+
         }
     };
     // Collapse now if page is not at top
@@ -344,5 +344,5 @@
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
     })
-   
+
 })(jQuery); // End of use strict

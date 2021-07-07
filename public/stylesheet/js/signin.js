@@ -3,8 +3,8 @@
     "use strict"; // Start of use strict
     $(document).ready(function () {
 
-        //send sign in data to server      
-        $("#userPw").keypress(function(e) { 
+        //send sign in data to server
+        $("#userPw").keypress(function(e) {
 
             if (e.keyCode == 13){
                 var userid = $("#userId").val();
@@ -44,7 +44,7 @@
                                 icon: 'success',
                                 title: 'Sign in',
                                 text: 'Welcome ' + data + "!!!",
-                            }).then(() => {
+                            }).then(function()  {
                                 location.href = "/";
                             })
 
@@ -61,11 +61,11 @@
                     }
                 })
             }
-        
-            }    
+
+            }
         });
-                
-        
+
+
         $("#confirm").off("click").on("click", function () {
             var userid = $("#userId").val();
             var userpw = $("#userPw").val();
@@ -104,7 +104,7 @@
                                 icon: 'success',
                                 title: 'Sign in',
                                 text: 'Welcome ' + data + "!!!",
-                            }).then(() => {
+                            }).then(function()  {
                                 location.href = "/";
                             })
 

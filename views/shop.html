@@ -30,7 +30,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
       <a id="home_title" class="navbar-brand js-scroll-trigger" href="/" style="margin-left:7%">
-        <img src="../stylesheet/img/autoinlogo/autoin_logo2.png" alt="" /></a>
+        <img src="../stylesheet/img/autoinlogo/autoin_logo.png" alt="" /></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
       <div class="collapse navbar-collapse" data-hover="dropdown" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#home">Home</a></li>
-      
+
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#rank">Rank</a></li>
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#brands">Brands</a></li>
           <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/shop?page=1">Mall</a></li>-->
@@ -65,20 +65,20 @@
       <div class="col-lg-3">
         <h1 class="my-4" style="text-align: center;">AUTOINMall</h1>
         <div class="list-group" id="left-group">
-          
+
 
         </div>
         <!--search item-->
         <br>
         <h2 style="text-align: center;"><small>SEARCH</small></h2>
-     
+
         <form action="/search" method="GET" id="search_form">
-          <input type="hidden" name="page" value="1">          
+          <input type="hidden" name="page" value="1">
               <div class="input-group mb-1">
                   <div class="input-group-prepend">
                       <span class="input-group-text" style="width:120px;">PARTS NUM</span></div>
                   <input type="text" class="form-control" name="parts_num">
-              </div>                
+              </div>
               <div class="input-group mb-1">
                   <div class="input-group-prepend">
                       <span class="input-group-text" style="width:120px;">CATEGORY</span></div>
@@ -92,7 +92,7 @@
                       <span class="input-group-text" style="width:120px;">BRANDS</span></div>
                   <select name="brands" class="custom-select" id="select_brands">
                       <option value="">Choose...</option>
-                     
+
                   </select>
               </div>
               <div class="input-group mb-1">
@@ -100,7 +100,7 @@
                       <span class="input-group-text" style="width:120px;">MODEL</span></div>
                   <select name="model" class="custom-select" id="model" disabled>
                       <option value="">Choose...</option>
-                    
+
                   </select>
               </div>
               <div class="input-group mb-3">
@@ -108,11 +108,11 @@
                       <span class="input-group-text" style="width:120px;">VERSION</span></div>
                   <select name="version" class="custom-select" id="version" disabled>
                       <option value="">Choose...</option>
-                      
+
                   </select>
               </div>
 
-         
+
 
           <input type="submit" value="search" class="btn btn-secondary btn-block" id="search">
       </form>
@@ -155,7 +155,7 @@
             <h3 style="text-align: center;margin-top: 10%;margin-bottom: 15%;">No item<br>Please Search Item</h3>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -170,8 +170,8 @@
                   <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/autoin_mall/" target="_blank"><i class="fab fa-instagram"></i></a>
               </div>
                 <div class="col-lg-4 text-lg-right">
-                   <div>E-mail:&nbsp;service@autoinmall.com</div> 
-               
+                   <div>E-mail:&nbsp;service@autoinmall.com</div>
+
                 </div>
             </div>
         </div>
@@ -197,9 +197,9 @@
     var category = JSON.parse('<%- category %>');
     var imglist = JSON.parse('<%- img_list %>');
 
-    $("#slide1_img").attr("src","../stylesheet/img/mall/"+imglist[0].IMG1);    
-    $("#slide2_img").attr("src","../stylesheet/img/mall/"+imglist[0].IMG2);    
-    $("#slide3_img").attr("src","../stylesheet/img/mall/"+imglist[0].IMG3);    
+    $("#slide1_img").attr("src","../stylesheet/img/mall/"+imglist[0].IMG1);
+    $("#slide2_img").attr("src","../stylesheet/img/mall/"+imglist[0].IMG2);
+    $("#slide3_img").attr("src","../stylesheet/img/mall/"+imglist[0].IMG3);
     $("#url1").attr("href",imglist[0].URL1);
     $("#url2").attr("href",imglist[0].URL2);
     $("#url3").attr("href",imglist[0].URL3);
@@ -210,7 +210,7 @@
             }
     //category
         for(var i=0;i<category.length;i++){
-            var s_c = String(category[i].ID).split('_');           
+            var s_c = String(category[i].ID).split('_');
             var main = s_c[0];
             var sub = s_c[1];
             if(i==0){
@@ -224,13 +224,13 @@
                     '<a href="#" style="color:black!important" class="list-group-item dropdown-toggle"'+
                       'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+main+'</a>'+
                     '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+
-                      '<a class="dropdown-item" href="/shop/item?main='+main+'&sub='+sub+'">'+sub+'</a>'+                      
+                      '<a class="dropdown-item" href="/shop/item?main='+main+'&sub='+sub+'">'+sub+'</a>'+
                     '</div>'+
                '</div>'
                 );
             }else{
                 if(main === String(category[i-1].ID).split('_')[0]){
-                    $("optgroup[label = '"+main+"']").append(    
+                    $("optgroup[label = '"+main+"']").append(
                         '<option value="'+category[i].ID+'">'+sub+'</option>'
                     );
 
@@ -239,7 +239,7 @@
                    );
                 }
                 else if(i != (category.length)-1 && main != String(category[i-1].ID).split('_')[0]){
-                    $("#category").append(                           
+                    $("#category").append(
                         '<optgroup label ="'+main+'">'+
                         '<option value="'+category[i].ID+'">'+sub+'</option>'
                     );
@@ -248,16 +248,16 @@
                     '<a href="#" style="color:black!important" class="list-group-item dropdown-toggle"'+
                       'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+main+'</a>'+
                     '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+
-                      '<a class="dropdown-item" href="/shop/item?main='+main+'&sub='+sub+'">'+sub+'</a>'+                      
+                      '<a class="dropdown-item" href="/shop/item?main='+main+'&sub='+sub+'">'+sub+'</a>'+
                     '</div>'+
                '</div>'
                 );
                 }
             }
-           
+
         }
 
-     
+
     //navbar
     if (username) {
       $("#account_ctrl").html('Signout');
@@ -268,12 +268,12 @@
       $("#account_ctrl").attr("href", "/signin");
       $("#accountMenu").remove("#management");
     }
-    if (info != "undefined") {   
+    if (info != "undefined") {
        //search result
        $(".result").html('<p><small>'+info.length+' results > </small></p>');
       //item
       for (var i = 0; i < length; i++) {
-              
+
         switch (info[i].RATE) {
           case 0:
             rate = "&#9734; &#9734; &#9734; &#9734; &#9734;";
@@ -302,7 +302,7 @@
               '<div class="card h-100">' +
                 '<a href="/item/info?pin=' + info[i].PIN + '">'+
                   '<img class="card-img-top" src="../stylesheet/img/item/'+info[i].IMG1+'" alt="" width="300" height="150"></a>'+
-  
+
               '<div class="card-body">' +
               '<h4 class="card-title">' +
               '<a href="/item/info?pin=' + info[i].PIN + '" data-toggle="tooltip" title="'+info[i].ITEM_NAME+'">' + info[i].ITEM_NAME + '</a>' +
@@ -323,7 +323,7 @@
               '<div class="card h-100">' +
                 '<a href="/item/info?pin=' + info[i].PIN + '">'+
                   '<img class="card-img-top" src="../stylesheet/img/item/'+info[i].IMG1+'" alt="" width="300" height="150"></a>'+
-  
+
               '<div class="card-body">' +
               '<h4 class="card-title">' +
                 '<a href="/item/info?pin=' + info[i].PIN + '" data-toggle="tooltip" title="'+info[i].ITEM_NAME+'">' + info[i].ITEM_NAME + '</a>' +
@@ -333,7 +333,7 @@
               '</p><p class="card-text">' +
                 '<p class="card-text">Item Brand: ' + info[i].BRAND_I +
               '</p><p class="card-text">' +
-              '<a class="btn btn-info btn-block" href="/item/info?pin=' + info[i].PIN + '">Show Detail</a>'+           
+              '<a class="btn btn-info btn-block" href="/item/info?pin=' + info[i].PIN + '">Show Detail</a>'+
               '</div>' +
               '<div class="card-footer">' +
               '<small class="text-muted">' + rate + '</small></div></div></div>'
@@ -347,7 +347,7 @@
               '<div class="card h-100">' +
                 '<a href="/item/info?pin=' + info[i].PIN + '">'+
                   '<img class="card-img-top" src="../stylesheet/img/item/'+info[i].IMG1+'" alt="" width="300" height="150"></a>'+
-  
+
               '<div class="card-body">' +
               '<h4 class="card-title">' +
                 '<a href="/item/info?pin=' + info[i].PIN + '" data-toggle="tooltip" title="'+info[i].ITEM_NAME+'">' + info[i].ITEM_NAME + '</a>' +
@@ -368,7 +368,7 @@
               '<div class="card h-100">' +
                 '<a href="/item/info?pin=' + info[i].PIN + '">'+
                   '<img class="card-img-top" src="../stylesheet/img/item/'+info[i].IMG1+'" alt="" width="300" height="150"></a>'+
-  
+
               '<div class="card-body">' +
               '<h4 class="card-title">' +
                 '<a href="/item/info?pin=' + info[i].PIN + '" data-toggle="tooltip" title="'+info[i].ITEM_NAME+'">' + info[i].ITEM_NAME + '</a>' +
@@ -390,7 +390,7 @@
 
       }
     }
-  
+
 
 
     if ($(window).width() < 976) {
