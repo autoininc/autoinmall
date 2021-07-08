@@ -3475,6 +3475,7 @@ input[type=button].btn-block {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
+
 .input-group-text input[type=radio],
 .input-group-text input[type=checkbox] {
   margin-top: 0;

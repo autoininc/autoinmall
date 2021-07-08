@@ -65,11 +65,12 @@
         for(var i=0;i<data.length;i++){
             $("tbody").append(
                 '<tr>'+
-                    '<td><input type="text" id="name'+i+'" disabled value="'+data[i].NAME+'" style="border:none;background-color:white"</td>'+
+                    '<td><input type="text" id="name'+i+'" disabled value="'+data[i].NAME+'" style="border:none;background-color:white"></td>'+
 
+                    '<td><img src="../img/car_brands/'+data[i].IMG+'" id="img'+i+'" style="width:100px;height:100px"></td>'+
                     '<td><input type="text" id="img'+i+'" disabled value="'+data[i].IMG+'" style="border:none;background-color:white"</td>'+
                     '<td><input type="button" id="setting'+i+'" class="btn btn-info" value="setting" onclick="set_item('+i+');"></td>' +
-                '<td><input type = "button" class = "btn btn-warning" value = "delete" onclick="del_item('+i+');"></td>'+
+                    '<td><input type="button" class="btn btn-warning" value="delete" onclick="del_item('+i+');"></td>'+
                 '</tr>'
             )
         }
@@ -115,7 +116,7 @@
       })
 
 
-       //setting car brand
+    //setting car brand
     function set_item(i){
 
         if($("#setting"+i).val() === "setting"){
