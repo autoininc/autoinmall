@@ -43,10 +43,10 @@
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">NAME</th>
-            <th scope="col">IMG</th>
-            <th></th>
-            <th> </th>
+            <th scope="col" style="width: 25%;">NAME</th>
+            <th scope="col" style="width: 35%;">IMG</th>
+            <th style="width: 10%;"></th>
+            <th style="width: 10%;"></th>
           </tr>
     </thead>
     <tbody>
@@ -60,20 +60,21 @@
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
+
     <script>
         var data = JSON.parse('<%- data %>');
         for(var i=0;i<data.length;i++){
             $("tbody").append(
                 '<tr>'+
-                    '<td><input type="text" id="name'+i+'" disabled value="'+data[i].NAME+'" style="border:none;background-color:white"></td>'+
+                    '<td><input type="text" id="name'+i+'" disabled value="'+data[i].NAME+'" style="border:none;background-color:white; text-align: center;"></td>'+
 
                     '<td><img src="../img/car_brands/'+data[i].IMG+'" id="img'+i+'" style="width:100px;height:100px"></td>'+
-                    '<td><input type="text" id="img'+i+'" disabled value="'+data[i].IMG+'" style="border:none;background-color:white"</td>'+
                     '<td><input type="button" id="setting'+i+'" class="btn btn-info" value="setting" onclick="set_item('+i+');"></td>' +
                     '<td><input type="button" class="btn btn-warning" value="delete" onclick="del_item('+i+');"></td>'+
                 '</tr>'
             )
         }
+        $('td').css('vertical-align', 'inherit');
     //delete carbrand
       function del_item(i){
         var name = data[i].NAME;
