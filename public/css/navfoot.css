@@ -1,0 +1,22 @@
+#mainNav{
+	background-color:#212529;
+}
+#mainNav.navbar-shrink {
+	background-color:#212529;
+}
+#mainNav .navbar-nav .nav-item .nav-link {
+	color: #fff;
+}
+footer{
+	background-color:#212529;
+	color:white;
+}
+.dropdown-menu{
+	background-color:#212529;
+}
+.dropdown-item{
+	color:white!important;
+}
+.dropdown-item:hover{
+	background-color: silver!important;
+}
