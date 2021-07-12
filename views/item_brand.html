@@ -12,9 +12,12 @@
 			<span class="input-group-text">Name</span>
 			<input class="form-control" id="name" name="name" type="text">
 			<span class="input-group-text">Img</span>
-			<span style="border:1px solid silver">
-        <input accept="image/*" class="mt-1 ml-1" id="img" name="brandimg" type="file">
-        </span>
+			<div class="form-control filebox">
+				<label for="img">사진 업로드</label>
+				<input type="file" display="none" class="filebox" accept="image/*" id="img" name="brandimg" />
+				<input type="text" class="upload-name-img" readonly="readonly" disabled="disabled" />
+			</div>
+       
 		</div>
 		<div class="input-group mb-1">
 			<span class="input-group-text">City</span>
@@ -105,6 +108,20 @@
 			}
 		}
 
+		$(document).ready(function () {
+			var imgTarget = $("#img");
+			imgTarget.on("change", function(){ // 값이 변경되면 
+				console.log($(this)[0].files[0].name);
+				if(window.FileReader) { // modern browser 
+					var imgname = $(this)[0].files[0].name; 
+				}
+				else { // old IE 
+					var imgname = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+				} // 추출한 파일명 삽입
+				$(this).siblings(".upload-name-img").val(imgname);
+    	});
+		});
+
 		//delete item brand
 		function del_item(i) {
 			var name = data[i].NAME;
@@ -145,6 +162,7 @@
 				}
 			})
 		})
+ 
 	</script>
 
 </body>
