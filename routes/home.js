@@ -1,4 +1,4 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	db.query("SELECT ID FROM CATEGORY_LIST", (err, row) => {
 		if (err) {
 			console.log(err);
@@ -6,7 +6,6 @@ exports.show = function(req, res, db) {
 			var category = JSON.stringify(row);
 			sess = req.session;
 			sess.category = category;
-			// console.log("username: " + sess.username);
 			db.query("SELECT NAME,IMG FROM ITEM_BRAND", (err2, row2) => {
 				if (err2) {
 					console.log(err2);
@@ -17,21 +16,18 @@ exports.show = function(req, res, db) {
 							console.log(err3);
 						} else {
 							var car = JSON.stringify(row3);
-							db.query("SELECT THEME,TOP1,TOP2,TOP3,TOP4,TOP5,ITEM_NAME,IMG1,PIN FROM ITEM JOIN RANKING ON (PIN = TOP1 OR PIN = TOP2 OR PIN = TOP3 OR PIN = TOP4 OR PIN = TOP5) JOIN ITEMINFO ON PIN = ITEM_NUM ORDER BY THEME",(err4,row4)=>{
-								if(err4){
+							db.query("SELECT THEME,TOP1,TOP2,TOP3,TOP4,TOP5,ITEM_NAME,IMG1,PIN FROM ITEM JOIN RANKING ON (PIN = TOP1 OR PIN = TOP2 OR PIN = TOP3 OR PIN = TOP4 OR PIN = TOP5) JOIN ITEMINFO ON PIN = ITEM_NUM ORDER BY THEME", (err4, row4) => {
+								if (err4) {
 									console.log(err4);
-								}else{
-									//console.log(row4);
+								} else {
 
 									var ranking = JSON.stringify(row4);
-									//console.log(ranking.length);
-									db.query("SELECT MAIN_IMG FROM MALLIMG WHERE IMG_SET = 'mall'",(err5,row5)=>{
-										if(err5){
+									db.query("SELECT MAIN_IMG FROM MALLIMG WHERE IMG_SET = 'mall'", (err5, row5) => {
+										if (err5) {
 											console.log(err5);
-										}else{
+										} else {
 											var main_img = row5[0].MAIN_IMG;
-											console.log(main_img);
-											res.render('index.html', { username: sess.username, category: sess.category, itembrand: data, carbrand: car,ranking:ranking,main_img:main_img});
+											res.render('index.html', {username: sess.username, category: sess.category, itembrand: data, carbrand: car, ranking: ranking, main_img: main_img});
 										}
 									})
 

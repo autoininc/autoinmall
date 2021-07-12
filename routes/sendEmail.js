@@ -1,4 +1,4 @@
-module.exports =  async function checkEmail(nodemailer, param) {
+module.exports = async function checkEmail(nodemailer, param) {
 	var data = {
 		fromEmail: "service@autoinmall.com",
 		toEmail: param.EMAIL,

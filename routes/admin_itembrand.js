@@ -1,19 +1,17 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	db.query("SELECT * FROM ITEM_BRAND", (err, row) => {
 		if (err) {
 			console.log(err);
 		} else {
 			var data = JSON.stringify(row);
-			res.render("item_brand.html", { data: data });
+			res.render("item_brand.html", {data: data});
 		}
 	})
 }
 
 
-exports.add = function(req, res, db) {
-	console.log(req.body);
-	console.log(req.file);
-	if(req.file){
+exports.add = function (req, res, db) {
+	if (req.file) {
 		var data = {
 			NAME: req.body.name,
 			IMG: req.file.filename,
@@ -21,7 +19,7 @@ exports.add = function(req, res, db) {
 			CITY: req.body.city,
 
 		}
-	}else{
+	} else {
 		var data = {
 			NAME: req.body.name,
 
@@ -42,7 +40,7 @@ exports.add = function(req, res, db) {
 }
 
 
-exports.delete = function(req, res, db, fs) {
+exports.delete = function (req, res, db, fs) {
 	db.query("DELETE FROM ITEM_BRAND WHERE NAME = ?", [req.body.name], (err, row) => {
 		if (err) {
 			console.log(err);
@@ -61,10 +59,8 @@ exports.delete = function(req, res, db, fs) {
 }
 
 
-exports.change = function(req, res, db) {
-	//console.log(req.body);
-	//console.log(req.file);
-	if (req.file != null) {
+exports.change = function (req, res, db) {
+	if (req.file !== null) {
 		db.query("UPDATE ITEM_BRAND SET CITY = ?, COUNTRY = ?, IMG = ? WHERE NAME = ?", [req.body.city, req.body.country, req.file.filename, req.body.name], (err, row) => {
 			if (err) {
 				console.log(err);

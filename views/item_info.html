@@ -2,596 +2,547 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+	<%- include('head') %>
+	<link href="/css/index.css" rel="stylesheet">
+	<style>
+		#item_file a p:hover {
+			background-color: silver;
+		}
 
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
-        type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/index.css" rel="stylesheet" />
-    <!--sweetalert2-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"
-        rel="stylesheet">
-    <!--swiper-->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@5.4.5/css/swiper.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@5.4.5/css/swiper.min.css">
-    <script src="https://unpkg.com/swiper@5.4.5/js/swiper.js"></script>
-    <script src="https://unpkg.com/swiper@5.4.5/js/swiper.min.js"></script>
-    <style>
-        #item_file a p:hover {
-            background-color: silver;
-        }
-
-        .input-group-text {
-            background-color: #212529;
-            color: white;
-        }
-    </style>
+		.input-group-text {
+			background-color: #212529;
+			color: white;
+		}
+	</style>
 
 </head>
 
 <body>
-    <div class="input-group mb-1">
-        <div class="input-group-prepend">
-            <span class="input-group-text" style="background-color: #212529;color:white">Pin</span></div>
+	<div class="input-group mb-1">
+		<div class="input-group-prepend">
+			<span class="input-group-text" style="background-color: #212529;color:white">Pin</span></div>
 
-        <input type="text" class="form-control" id="pin">
-        <input type="button" class="btn btn-secondary" value="search" id="search-item">
+		<input class="form-control" id="pin" type="text">
+		<input class="btn btn-secondary" id="search-item" type="button" value="search">
 
-    </div>
-    <div style="width:100%" id="item_info">
-        <form>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Item name</span></div>
-                <input type="text" name="item_name" id="item_name" class="form-control" disabled>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Price</span></div>
-                <input type="text" name="item_price" id="item_price" class="form-control" disabled>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Parts Num</span></div>
-                <input type="text" name="parts_num" id="parts_num" class="form-control" disabled>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Quantity</span></div>
-                <input type="text" name="item_volume" id="item_volume" class="form-control" disabled>
-            </div>
-            <div class="input-group mb-1">
+	</div>
+	<div id="item_info" style="width:100%">
+		<form>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Item name</span></div>
+				<input class="form-control" disabled id="item_name" name="item_name" type="text">
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Price</span></div>
+				<input class="form-control" disabled id="item_price" name="item_price" type="text">
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Parts Num</span></div>
+				<input class="form-control" disabled id="parts_num" name="parts_num" type="text">
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Quantity</span></div>
+				<input class="form-control" disabled id="item_volume" name="item_volume" type="text">
+			</div>
+			<div class="input-group mb-1">
 
-                <span class="input-group-text">Model</span>
-                <input type="text" name="item_model" id="item_model" class="form-control" disabled>
+				<span class="input-group-text">Model</span>
+				<input class="form-control" disabled id="item_model" name="item_model" type="text">
 
-                <span class="input-group-text">Version</span>
-                <input type="text" name="item_version" id="item_version" class="form-control" disabled>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Car Brand</span></div>
-                    <select name="car_brand" class="custom-select" id="car_brand" disabled>
-                        <option selected></option>
-                    </select>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Item Brand</span></div>
-                    <select name="item_brand" class="custom-select" id="item_brand" disabled>
-                        <option selected></option>
-                    </select>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Item manuf</span></div>
-                <input type="text" name="item_manuf" id="item_manuf" class="form-control" disabled>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Category Main</span></div>
-                <select name="category_main" class="custom-select" id="category_main" disabled>
-                    <option selected></option>
-                </select>
-            </div>
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Category Sub</span></div>
-                <select name="category_sub" class="custom-select" id="category_sub" disabled>
-                    <option selected></option>
-                </select>
-            </div>
+				<span class="input-group-text">Version</span>
+				<input class="form-control" disabled id="item_version" name="item_version" type="text">
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Car Brand</span></div>
+				<select class="custom-select" disabled id="car_brand" name="car_brand">
+					<option selected></option>
+				</select>
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Item Brand</span></div>
+				<select class="custom-select" disabled id="item_brand" name="item_brand">
+					<option selected></option>
+				</select>
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Item manuf</span></div>
+				<input class="form-control" disabled id="item_manuf" name="item_manuf" type="text">
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Category Main</span></div>
+				<select class="custom-select" disabled id="category_main" name="category_main">
+					<option selected></option>
+				</select>
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Category Sub</span></div>
+				<select class="custom-select" disabled id="category_sub" name="category_sub">
+					<option selected></option>
+				</select>
+			</div>
 
-        </form>
-            <div class="input-group mt-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Download Files</span></div>
-                <div class="row" id="file_set" style="border:1px solid silver;width:100%;text-align: center;">
-                    <div class="col-md-2" id="download_file_0" style="border:1px solid silver;">
-                        <input type="file" class="form-control" name = "file0" id="file0" disabled>
-                    </div>
-                    <div class="col-md-2" id="download_file_1" style="border:1px solid silver;" >
-                        <input type="file" class="form-control" name = "file1" id="file1" disabled>
-                    </div>
-                    <div class="col-md-2" id="download_file_2" style="border:1px solid silver;">
-                        <input type="file" class="form-control" name = "file2" id="file2" disabled>
-                    </div>
-                    <div class="col-md-2" id="download_file_3" style="border:1px solid silver;" >
-                        <input type="file" class="form-control" name = "file3" id="file3" disabled>
-                    </div>
-                    <div class="col-md-2" id="download_file_4" style="border:1px solid silver;" >
-                        <input type="file" class="form-control" name = "file4" id="file4" disabled>
-                    </div>
-                    <div class="col-md-2"  style="border:1px solid silver;background-color: silver;">
+		</form>
+		<div class="input-group mt-2">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Download Files</span></div>
+			<div class="row" id="file_set" style="border:1px solid silver;width:100%;text-align: center;">
+				<div class="col-md-2" id="download_file_0" style="border:1px solid silver;">
+					<input class="form-control" disabled id="file0" name="file0" type="file">
+				</div>
+				<div class="col-md-2" id="download_file_1" style="border:1px solid silver;">
+					<input class="form-control" disabled id="file1" name="file1" type="file">
+				</div>
+				<div class="col-md-2" id="download_file_2" style="border:1px solid silver;">
+					<input class="form-control" disabled id="file2" name="file2" type="file">
+				</div>
+				<div class="col-md-2" id="download_file_3" style="border:1px solid silver;">
+					<input class="form-control" disabled id="file3" name="file3" type="file">
+				</div>
+				<div class="col-md-2" id="download_file_4" style="border:1px solid silver;">
+					<input class="form-control" disabled id="file4" name="file4" type="file">
+				</div>
+				<div class="col-md-2" style="border:1px solid silver;background-color: silver;">
 
-                    </div>
-                </div>
-            </div>
-            <div class="input-group mt-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Img Files</span></div>
-                <div class="row" id="img_set" style="border:1px solid silver;width:100%;text-align: center;">
-                    <div class="col-md-2" id="img_file_1" style="border:1px solid silver;">
-                        <input type="file" class="form-control" name = "img1" id="img1" accept="image/*" disabled>
-                    </div>
-                    <div class="col-md-2" id="img_file_2" style="border:1px solid silver;">
-                        <input type="file" class="form-control" name = "img2" id="img2" accept="image/*" disabled>
-                    </div>
-                    <div class="col-md-2" id="img_file_3" style="border:1px solid silver;">
-                        <input type="file" class="form-control" name = "img3" id="img3" accept="image/*" disabled>
-                    </div>
-                    <div class="col-md-2" id="img_file_4" style="border:1px solid silver;">
-                        <input type="file" class="form-control" name = "img4" id="img4" accept="image/*" disabled>
-                    </div>
-                    <div class="col-md-2" id="img_file_5" style="border:1px solid silver;">
-                        <input type="file" class="form-control" name = "img5" id="img5" accept="image/*" disabled>
-                    </div>
-                    <div class="col-md-2"  style="border:1px solid silver;background-color: silver;">
+				</div>
+			</div>
+		</div>
+		<div class="input-group mt-2">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Img Files</span></div>
+			<div class="row" id="img_set" style="border:1px solid silver;width:100%;text-align: center;">
+				<div class="col-md-2" id="img_file_1" style="border:1px solid silver;">
+					<input accept="image/*" class="form-control" disabled id="img1" name="img1" type="file">
+				</div>
+				<div class="col-md-2" id="img_file_2" style="border:1px solid silver;">
+					<input accept="image/*" class="form-control" disabled id="img2" name="img2" type="file">
+				</div>
+				<div class="col-md-2" id="img_file_3" style="border:1px solid silver;">
+					<input accept="image/*" class="form-control" disabled id="img3" name="img3" type="file">
+				</div>
+				<div class="col-md-2" id="img_file_4" style="border:1px solid silver;">
+					<input accept="image/*" class="form-control" disabled id="img4" name="img4" type="file">
+				</div>
+				<div class="col-md-2" id="img_file_5" style="border:1px solid silver;">
+					<input accept="image/*" class="form-control" disabled id="img5" name="img5" type="file">
+				</div>
+				<div class="col-md-2" style="border:1px solid silver;background-color: silver;">
 
-                    </div>
-                </div>
-            </div>
+				</div>
+			</div>
+		</div>
 
-            <!-- /.card -->
-            <div class="input-group mb-1">
-                <div class="input-group-text">Item Desc</div>
-                <textarea class="form-control" name="item_desc" id="item_desc"
-                    style="resize: none;height:200px;width:100%" disabled></textarea>
-            </div>
-            <div id="btn_set" style="display:none">
-                <input type="button" class="btn btn-primary  setting-btn" value="setting">
-                <input type="button" class="btn btn-danger delete-btn" value="delete">
-            </div>
-
-
-
-        </div>
-    </div>
+		<!-- /.card -->
+		<div class="input-group mb-1">
+			<div class="input-group-text">Item Desc</div>
+			<textarea class="form-control" disabled id="item_desc"
+					  name="item_desc" style="resize: none;height:200px;width:100%"></textarea>
+		</div>
+		<div id="btn_set" style="display:none">
+			<input class="btn btn-primary  setting-btn" type="button" value="setting">
+			<input class="btn btn-danger delete-btn" type="button" value="delete">
+		</div>
 
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Third party plugin JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	</div>
 
-    <script>
-        $(document).ready(function()  {
-            var info;
-            var category = JSON.parse('<%- category %>');
-            var carbrand = JSON.parse('<%- carbrand %>');
-            var itembrand = JSON.parse('<%- itembrand %>');
-            var mainc;
-            var subc;
-            var temp;
+	<script>
+		$(document).ready(function () {
+			var info;
+			var category = JSON.parse('<%- category %>');
+			var carbrand = JSON.parse('<%- carbrand %>');
+			var itembrand = JSON.parse('<%- itembrand %>');
+			var mainc;
+			var subc;
+			var temp;
 
-            $("#search-item").off("click").on("click", function()  {
-                $("#btn_set").css("display","none");
-                $.ajax(
-                    {
-                        url: "/admin/item/search",
-                        type: "post",
-                        data: {
-                            pin: $("#pin").val()
-                        },
-                        success: function(data)  {
+			$("#search-item").off("click").on("click", function () {
+				$("#btn_set").css("display", "none");
+				$.ajax(
+					{
+						url: "/admin/item/search",
+						type: "post",
+						data: {
+							pin: $("#pin").val()
+						},
+						success: function (data) {
 
-                             //init
-                            $("#item_info .form-control").val("");
-                            $("#category_main").val("");
-                            $("#category_sub").val("");
-                            $("#item_info .form-control").attr("disabled", true);
-                            $("#category_main").attr("disabled",true);
-                            $("#category_sub").attr("disabled",true);
-                            $("#car_brand").attr("disabled",true);
-                            $("#item_brand").attr("disabled",true);
-                            $(".setting-btn").val("setting");
-                            $("#download_file_0").html('<input type="file" class="form-control" name = "file0" id="file0" disabled>');
-                            $("#download_file_1").html('<input type="file" class="form-control" name = "file1" id="file1" disabled>');
-                            $("#download_file_2").html('<input type="file" class="form-control" name = "file2" id="file2" disabled>');
-                            $("#download_file_3").html('<input type="file" class="form-control" name = "file3" id="file3" disabled>');
-                            $("#download_file_4").html('<input type="file" class="form-control" name = "file4" id="file4" disabled>');
-                            $("#img_file_1").html('<input type="file" class="form-control" name = "img1" id="img1" accept="image/*" disabled>');
-                            $("#img_file_2").html('<input type="file" class="form-control" name = "img2" id="img2" accept="image/*" disabled>');
-                            $("#img_file_3").html('<input type="file" class="form-control" name = "img3" id="img3" accept="image/*" disabled>');
-                            $("#img_file_4").html('<input type="file" class="form-control" name = "img4" id="img4" accept="image/*" disabled>');
-                            $("#img_file_5").html('<input type="file" class="form-control" name = "img5" id="img5" accept="image/*" disabled>');
+							//init
+							$("#item_info .form-control").val("");
+							$("#category_main").val("");
+							$("#category_sub").val("");
+							$("#item_info .form-control").attr("disabled", true);
+							$("#category_main").attr("disabled", true);
+							$("#category_sub").attr("disabled", true);
+							$("#car_brand").attr("disabled", true);
+							$("#item_brand").attr("disabled", true);
+							$(".setting-btn").val("setting");
+							$("#download_file_0").html('<input type="file" class="form-control" name = "file0" id="file0" disabled>');
+							$("#download_file_1").html('<input type="file" class="form-control" name = "file1" id="file1" disabled>');
+							$("#download_file_2").html('<input type="file" class="form-control" name = "file2" id="file2" disabled>');
+							$("#download_file_3").html('<input type="file" class="form-control" name = "file3" id="file3" disabled>');
+							$("#download_file_4").html('<input type="file" class="form-control" name = "file4" id="file4" disabled>');
+							$("#img_file_1").html('<input type="file" class="form-control" name = "img1" id="img1" accept="image/*" disabled>');
+							$("#img_file_2").html('<input type="file" class="form-control" name = "img2" id="img2" accept="image/*" disabled>');
+							$("#img_file_3").html('<input type="file" class="form-control" name = "img3" id="img3" accept="image/*" disabled>');
+							$("#img_file_4").html('<input type="file" class="form-control" name = "img4" id="img4" accept="image/*" disabled>');
+							$("#img_file_5").html('<input type="file" class="form-control" name = "img5" id="img5" accept="image/*" disabled>');
 
-                            if(data){
-                                $("#btn_set").css("display","inline-block");
-                            }else{
-                                $("#btn_set").css("display","none");
-                            }
+							if (data) {
+								$("#btn_set").css("display", "inline-block");
+							} else {
+								$("#btn_set").css("display", "none");
+							}
 
-                            for (var i = 0; i < carbrand.length; i++) {
-                                $("#car_brand").append(
-                                    '<option value = "' + carbrand[i].NAME + '">' + carbrand[i].NAME + '</option>'
-                                );
-                            }
+							for (var i = 0; i < carbrand.length; i++) {
+								$("#car_brand").append(
+									'<option value = "' + carbrand[i].NAME + '">' + carbrand[i].NAME + '</option>'
+								);
+							}
 
-                            for (var i = 0; i < itembrand.length; i++) {
-                                $("#item_brand").append(
-                                    '<option value = "' + itembrand[i].NAME + '">' + itembrand[i].NAME + '</option>'
-                                );
-                            }
+							for (var i = 0; i < itembrand.length; i++) {
+								$("#item_brand").append(
+									'<option value = "' + itembrand[i].NAME + '">' + itembrand[i].NAME + '</option>'
+								);
+							}
 
-                            for (var i = 0; i < category.length; i++) {
-                                temp = category[i].ID;
-                                temp = String(temp).split("_");
-                                mainc = temp[0];
-                                subc = temp[1];
-                                if (i === 0) {
-                                    if (data[0].MAIN_C === mainc) {
-                                        $("#category_main").append(
-                                            '<option value = "' + mainc + '" selected>' + mainc + '</option>'
-                                        );
-                                    } else {
-                                        $("#category_main").append(
-                                            '<option value = "' + mainc + '">' + mainc + '</option>'
-                                        );
-                                    }
+							for (var i = 0; i < category.length; i++) {
+								temp = category[i].ID;
+								temp = String(temp).split("_");
+								mainc = temp[0];
+								subc = temp[1];
+								if (i === 0) {
+									if (data[0].MAIN_C === mainc) {
+										$("#category_main").append(
+											'<option value = "' + mainc + '" selected>' + mainc + '</option>'
+										);
+									} else {
+										$("#category_main").append(
+											'<option value = "' + mainc + '">' + mainc + '</option>'
+										);
+									}
 
-                                }
-                                else {
-                                    if (mainc != String(category[i - 1].ID).split("_")[0]) {
-                                        if (data[0].MAIN_C === mainc) {
-                                            $("#category_main").append(
-                                                '<option value = "' + mainc + '" selected>' + mainc + '</option>'
-                                            );
+								} else {
+									if (mainc !== String(category[i - 1].ID).split("_")[0]) {
+										if (data[0].MAIN_C === mainc) {
+											$("#category_main").append(
+												'<option value = "' + mainc + '" selected>' + mainc + '</option>'
+											);
 
-                                        } else {
-                                            $("#category_main").append(
-                                                '<option value = "' + mainc + '">' + mainc + '</option>'
-                                            );
-                                        }
-                                    }
-                                }
+										} else {
+											$("#category_main").append(
+												'<option value = "' + mainc + '">' + mainc + '</option>'
+											);
+										}
+									}
+								}
 
-                            }
-                            $("#category_main").change(function()  {
-                                var main = $("#category_main option:selected").val();
+							}
+							$("#category_main").change(function () {
+								var main = $("#category_main option:selected").val();
 
-                                $("#category_sub").html('<option selected></option>');
-                                $.ajax({
-                                    url: "/item/add/category",
-                                    type: "post",
-                                    data: { main: main },
-                                    success: function(data)  {
-                                        var sub = JSON.parse(data);
-                                        for (var j = 0; j < sub.length; j++) {
-                                            if (j === 0) {
-                                                $("#category_sub").html(
-                                                    '<option selected></option>' +
-                                                    '<option value = "' + sub[j].SUB + '">' + sub[j].SUB + '</option>'
-                                                );
-                                            } else {
-                                                $("#category_sub").append(
-                                                    '<option value = "' + sub[j].SUB + '">' + sub[j].SUB + '</option>'
-                                                );
-                                            }
+								$("#category_sub").html('<option selected></option>');
+								$.ajax({
+									url: "/item/add/category",
+									type: "post",
+									data: {main: main},
+									success: function (data) {
+										var sub = JSON.parse(data);
+										for (var j = 0; j < sub.length; j++) {
+											if (j === 0) {
+												$("#category_sub").html(
+													'<option selected></option>' +
+													'<option value = "' + sub[j].SUB + '">' + sub[j].SUB + '</option>'
+												);
+											} else {
+												$("#category_sub").append(
+													'<option value = "' + sub[j].SUB + '">' + sub[j].SUB + '</option>'
+												);
+											}
 
-                                        }
-                                        $("#category_sub").attr("disabled", false);
-                                    }
-                                })
+										}
+										$("#category_sub").attr("disabled", false);
+									}
+								})
 
-                            })
-                            //file
-                            var file_list = data[0].FILE_LIST;
+							})
+							//file
+							var file_list = data[0].FILE_LIST;
 
-                            if (file_list) {
-                                var file = file_list.split(';');
-                                for (var l = 0; l < file.length; l++) {
-                                    if (file[l]) {
-                                        $("#download_file_"+l).html(
-                                            '<p>'+file[l]+'</p>'+
-                                            '<input type="button" class="btn btn-secondary del-download-file" id="file.'+l+'" value="delete" disabled>'
-                                        )
-                                    }
+							if (file_list) {
+								var file = file_list.split(';');
+								for (var l = 0; l < file.length; l++) {
+									if (file[l]) {
+										$("#download_file_" + l).html(
+											'<p>' + file[l] + '</p>' +
+											'<input type="button" class="btn btn-secondary del-download-file" id="file.' + l + '" value="delete" disabled>'
+										)
+									}
 
-                                }
-                            }
-                            //delete download file
-                            $(".del-download-file").off("click").on("click",(e)=>{
-                                var id = e.target.id;
-                                id = id.substring(5,6);
-                                //alert(id);
-                                $.ajax({
-                                    url:"/admin/file/delete",
-                                    type:"post",
-                                    data:{
-                                        pin:$("#pin").val(),
-                                        filename:file_list.split(';')[Number(id)]
-                                    },
-                                    success:function() {
-                                        $("#download_file_"+id).html(
-                                            '<input type="file" class="form-control" name = "file'+id+'" id="file'+id+'" >'+
-                                            '<br>'
-                                        )
-                                    }
-                                })
+								}
+							}
+							//delete download file
+							$(".del-download-file").off("click").on("click", (e) => {
+								var id = e.target.id;
+								id = id.substring(5, 6);
+								//alert(id);
+								$.ajax({
+									url: "/admin/file/delete",
+									type: "post",
+									data: {
+										pin: $("#pin").val(),
+										filename: file_list.split(';')[Number(id)]
+									},
+									success: function () {
+										$("#download_file_" + id).html(
+											'<input type="file" class="form-control" name = "file' + id + '" id="file' + id + '" >' +
+											'<br>'
+										)
+									}
+								})
 
-                            })
-                            //img
-                            if(data[0].IMG1 != 'no_img.png'){
-                                $("#img_file_1").html(
-                                            '<p>'+data[0].IMG1+'</p>'+
-                                            '<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
-                                )
-                            }
-                            if(data[0].IMG2 != 'no_img.png'){
-                                $("#img_file_2").html(
-                                '<p>'+data[0].IMG2+'</p>'+
-                                '<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
-                            )
-                            }
+							})
+							//img
+							if (data[0].IMG1 !== 'no_img.png') {
+								$("#img_file_1").html(
+									'<p>' + data[0].IMG1 + '</p>' +
+									'<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
+								)
+							}
+							if (data[0].IMG2 !== 'no_img.png') {
+								$("#img_file_2").html(
+									'<p>' + data[0].IMG2 + '</p>' +
+									'<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
+								)
+							}
 
-                            if(data[0].IMG3 != 'no_img.png'){
-                                $("#img_file_3").html(
-                                '<p>'+data[0].IMG3+'</p>'+
-                                '<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
-                            )
-                            }
+							if (data[0].IMG3 !== 'no_img.png') {
+								$("#img_file_3").html(
+									'<p>' + data[0].IMG3 + '</p>' +
+									'<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
+								)
+							}
 
-                            if(data[0].IMG4 != 'no_img.png'){
-                                $("#img_file_4").html(
-                                '<p>'+data[0].IMG4+'</p>'+
-                                '<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
-                            )
-                            }
+							if (data[0].IMG4 !== 'no_img.png') {
+								$("#img_file_4").html(
+									'<p>' + data[0].IMG4 + '</p>' +
+									'<input type="button" class="btn btn-secondary img-file"  value="delete" disabled>'
+								)
+							}
 
-                            if(data[0].IMG5 != 'no_img.png'){
-                                $("#img_file_5").html(
-                                '<p>'+data[0].IMG5+'</p>'+
-                                '<input type="button" class="btn btn-secondary img-file" value="delete" disabled>'
-                            )
-                            }
+							if (data[0].IMG5 !== 'no_img.png') {
+								$("#img_file_5").html(
+									'<p>' + data[0].IMG5 + '</p>' +
+									'<input type="button" class="btn btn-secondary img-file" value="delete" disabled>'
+								)
+							}
 
-                            //delete img file
-                            $(".img-file").off("click").on("click",(event)=>{
-                                var id = event.target.id;
-                                id = Number(id.substring(3,4));
-                                //alert(id);
-                               // alert(Number(id));
-                                var newdata={
-                                    pin:$("#pin").val(),
-                                        img:"",
-                                        name:""
-                                };
-                                //alert(newdata['img']);
-                                switch(id){
-                                   case 1:
-                                       newdata['img']="IMG1";
-                                      newdata['name']=data[0].IMG1;
-                                       break;
-                                    case 2:
-                                    newdata['img']="IMG2";
-                                    newdata['name']=data[0].IMG2;
-                                       break;
-                                    case 3:
-                                    newdata['img']="IMG3";
-                                    newdata['name']=data[0].IMG3;
-                                       break;
-                                    case 4:
-                                    newdata['img']="IMG4";
-                                    newdata['name']=data[0].IMG4;
-                                       break;
-                                    case 5:
-                                    newdata['img']="IMG5";
-                                    newdata['name']=data[0].IMG5;
-                                       break;
-                                }
-                                    $.ajax({
-                                        url:"/admin/img/delete",
-                                        type:"post",
-                                        data:newdata,
-                                        success:(d)=>{
-                                            //alert(d);
-                                            $("#img_file_"+String(id)).html(
-                                                '<input type="file" class="form-control" name = "img'+String(id)+'" id="img'+String(id)+'" accept="image/*" >'+
-                                                '<br>'
-                                            )
-                                        },
-                                        error:function() {
-                                            alert("send err");
-                                        }
-                                    })
+							//delete img file
+							$(".img-file").off("click").on("click", (event) => {
+								var id = event.target.id;
+								id = Number(id.substring(3, 4));
+								//alert(id);
+								// alert(Number(id));
+								var newdata = {
+									pin: $("#pin").val(),
+									img: "",
+									name: ""
+								};
+								//alert(newdata['img']);
+								switch (id) {
+									case 1:
+										newdata['img'] = "IMG1";
+										newdata['name'] = data[0].IMG1;
+										break;
+									case 2:
+										newdata['img'] = "IMG2";
+										newdata['name'] = data[0].IMG2;
+										break;
+									case 3:
+										newdata['img'] = "IMG3";
+										newdata['name'] = data[0].IMG3;
+										break;
+									case 4:
+										newdata['img'] = "IMG4";
+										newdata['name'] = data[0].IMG4;
+										break;
+									case 5:
+										newdata['img'] = "IMG5";
+										newdata['name'] = data[0].IMG5;
+										break;
+								}
+								$.ajax({
+									url: "/admin/img/delete",
+									type: "post",
+									data: newdata,
+									success: (d) => {
+										//alert(d);
+										$("#img_file_" + String(id)).html(
+											'<input type="file" class="form-control" name = "img' + String(id) + '" id="img' + String(id) + '" accept="image/*" >' +
+											'<br>'
+										)
+									},
+									error: function () {
+										alert("send err");
+									}
+								})
 
-                            })
+							})
 
-                            $("#item_name").val(data[0].ITEM_NAME);
-                            $("#item_price").val(data[0].PRICE);
-                            $("#parts_num").val(data[0].PARTS_NUM);
-                            $("#item_volume").val(data[0].VOLUME);
-                            $("#item_model").val(data[0].BASE_M);
-                            $("#item_brand").val(data[0].BRAND_I);
-                            $("#car_brand").val(data[0].CAR_M);
-                            $("#item_version").val(data[0].DETAIL_M);
-                            $("#item_manuf").val(data[0].ITEM_M);
-                            $("#item_desc").val(data[0].ITEM_DESC);
-                            $("#category_sub").html('<option selected value="' + data[0].SUB_C + '">' + data[0].SUB_C + '</option>');
+							$("#item_name").val(data[0].ITEM_NAME);
+							$("#item_price").val(data[0].PRICE);
+							$("#parts_num").val(data[0].PARTS_NUM);
+							$("#item_volume").val(data[0].VOLUME);
+							$("#item_model").val(data[0].BASE_M);
+							$("#item_brand").val(data[0].BRAND_I);
+							$("#car_brand").val(data[0].CAR_M);
+							$("#item_version").val(data[0].DETAIL_M);
+							$("#item_manuf").val(data[0].ITEM_M);
+							$("#item_desc").val(data[0].ITEM_DESC);
+							$("#category_sub").html('<option selected value="' + data[0].SUB_C + '">' + data[0].SUB_C + '</option>');
 
-                            // alert($("body").height());
-                            $(top.document).find(".capsulate-window").css("height", $("body").height() + "px");
-                            $(top.document).find(".body-container").css("height", $("body").height() + "px");
+							// alert($("body").height());
+							$(top.document).find(".capsulate-window").css("height", $("body").height() + "px");
+							$(top.document).find(".body-container").css("height", $("body").height() + "px");
+						}
+					}
+				)
+			})
 
+			//delete
+			$(".delete-btn").off("click").on("click", function () {
+				var pin = $("#pin").val();
+				$.ajax({
+					url: "/admin/item/delete",
+					type: "post",
+					data: {
+						pin: pin
+					},
+					success: function () {
+						location.reload();
+					}
+				})
+			})
+			//change
+			$(".setting-btn").off("click").on("click", function () {
+				if ($(".setting-btn").val() === "setting") {
+					$("#item_info .form-control").attr("disabled", false);
+					$("#category_main").attr("disabled", false);
+					$(".del-download-file").attr("disabled", false);
+					$(".img-file").attr("disabled", false);
+					$(".setting-btn").val("finish");
+					$("#car_brand").attr("disabled", false);
+					$("#item_brand").attr("disabled", false);
+				} else {
+					$(".setting-btn").val("setting");
+					$("#item_info .form-control").attr("disabled", true);
+					$("#category_main").attr("disabled", true);
+					$("#car_brand").attr("disabled", true);
+					$("#item_brand").attr("disabled", true);
+					const formdata = new FormData();
+					formdata.append("name", $("#item_name").val());
+					formdata.append("price", $("#item_price").val());
+					formdata.append("parts_num", $("#parts_num").val());
+					formdata.append("volume", $("#item_volume").val());
+					formdata.append("model", $("#item_model").val());
+					formdata.append("version", $("#item_version").val());
+					formdata.append("car_brand", $("#car_brand").val());
+					formdata.append("item_brand", $("#item_brand").val());
+					formdata.append("item_menuf", $("#item_manuf").val());
+					formdata.append("category_main", $("#category_main").val());
+					formdata.append("category_sub", $("#category_sub").val());
+					var desc = $("#item_desc").val();
+					formdata.append("item_desc", desc);
+					formdata.append("pin", $("#pin").val());
+					var filelist = "";
+					//download file check
+					if ($("#file0")[0]) {
+						formdata.append("file", $("#file0")[0].files[0]);
+					} else {
+						filelist = filelist + $("#download_file_0 p").html() + ";";
+					}
+					if ($("#file1")[0]) {
+						formdata.append("file", $("#file1")[0].files[0]);
+					} else {
+						filelist = filelist + $("#download_file_1 p").html() + ";";
+					}
+					if ($("#file2")[0]) {
+						formdata.append("file", $("#file2")[0].files[0]);
+					} else {
+						filelist = filelist + $("#download_file_2 p").html() + ";";
+					}
+					if ($("#file3")[0]) {
+						formdata.append("file", $("#file3")[0].files[0]);
+					} else {
+						filelist = filelist + $("#download_file_3 p").html() + ";";
+					}
+					if ($("#file4")[0]) {
+						formdata.append("file", $("#file4")[0].files[0]);
+					} else {
+						filelist = filelist + $("#download_file_4 p").html() + ";";
+					}
+					formdata.append("filelist", filelist);
+					var imglist = "";
+					var imgnamelist = "";
+					//img check
+					if ($("#img1")[0]) {
+						formdata.append("img", $("#img1")[0].files[0]);
+					} else {
+						imglist = imglist + "img1" + ";";
+						imgnamelist = imgnamelist + $("#img_file_1 p").html() + ";";
+					}
+					if ($("#img2")[0]) {
+						formdata.append("img", $("#img2")[0].files[0]);
+					} else {
+						imglist = imglist + "img2" + ";";
+						imgnamelist = imgnamelist + $("#img_file_2 p").html() + ";";
+					}
+					if ($("#img3")[0]) {
+						formdata.append("img", $("#img3")[0].files[0]);
+					} else {
+						imglist = imglist + "img3" + ";";
+						imgnamelist = imgnamelist + $("#img_file_3 p").html() + ";";
+					}
+					if ($("#img4")[0]) {
+						formdata.append("img", $("#img4")[0].files[0]);
+					} else {
+						imglist = imglist + "img4" + ";";
+						imgnamelist = imgnamelist + $("#img_file_4 p").html() + ";";
+					}
+					if ($("#img5")[0]) {
+						formdata.append("img", $("#img5")[0].files[0]);
+					} else {
+						imglist = imglist + "img5" + ";";
+						imgnamelist = imgnamelist + $("#img_file_5 p").html() + ";";
+					}
+					formdata.append("imglist", imglist);
+					formdata.append("imgnamelist", imgnamelist);
+					$.ajax({
+						url: "/admin/item/setting",
+						type: "post",
+						data: formdata,
+						contentType: false,
+						processData: false,
+						success: function () {
+							alert("update success");
 
-                        }
-                    }
-                )
-
-            })
-
-            //delete
-            $(".delete-btn").off("click").on("click", function()  {
-                var pin =  $("#pin").val();
-                $.ajax({
-                    url:"/admin/item/delete",
-                    type:"post",
-                    data:{
-                        pin:pin
-                    },
-                    success:function() {
-                        location.reload();
-                    }
-                })
-            })
-                //change
-                $(".setting-btn").off("click").on("click", function()  {
-                if ($(".setting-btn").val() === "setting") {
-                    $("#item_info .form-control").attr("disabled", false);
-                    $("#category_main").attr("disabled",false);
-                    $(".del-download-file").attr("disabled",false);
-                    $(".img-file").attr("disabled",false);
-                    $(".setting-btn").val("finish");
-                    $("#car_brand").attr("disabled",false);
-                    $("#item_brand").attr("disabled",false);
-                } else {
-                    $(".setting-btn").val("setting");
-                    $("#item_info .form-control").attr("disabled", true);
-                    $("#category_main").attr("disabled",true);
-                    $("#car_brand").attr("disabled",true);
-                    $("#item_brand").attr("disabled",true);
-                    const formdata = new FormData();
-                    formdata.append("name",$("#item_name").val());
-                    formdata.append("price",$("#item_price").val());
-                    formdata.append("parts_num",$("#parts_num").val());
-                    formdata.append("volume",$("#item_volume").val());
-                    formdata.append("model",$("#item_model").val());
-                    formdata.append("version",$("#item_version").val());
-                    formdata.append("car_brand",$("#car_brand").val());
-                    formdata.append("item_brand",$("#item_brand").val());
-                    formdata.append("item_menuf",$("#item_manuf").val());
-                    formdata.append("category_main",$("#category_main").val());
-                    formdata.append("category_sub",$("#category_sub").val());
-                   // console.log($("#file1")[0].files);
-                    var desc = $("#item_desc").val();
-                    formdata.append("item_desc", desc);
-                    formdata.append("pin", $("#pin").val());
-                    var filelist="";
-                    //download file check
-                   if($("#file0")[0]){
-                      // console.log($("#file0")[0].files[0]);
-                       formdata.append("file", $("#file0")[0].files[0]);
-                   }else{
-                        filelist = filelist+$("#download_file_0 p").html()+";";
-                   }
-                   if($("#file1")[0]){
-                    //console.log($("#file1")[0].files[0]);
-                    formdata.append("file", $("#file1")[0].files[0]);
-                   }else{
-                        filelist = filelist+$("#download_file_1 p").html()+";";
-                   }
-                   if($("#file2")[0]){
-                    //console.log($("#file2")[0].files[0]);
-                    formdata.append("file", $("#file2")[0].files[0]);
-                   }else{
-                        filelist = filelist+$("#download_file_2 p").html()+";";
-                   }
-                   if($("#file3")[0]){
-                   // console.log($("#file3")[0].files[0]);
-                    formdata.append("file", $("#file3")[0].files[0]);
-                   }else{
-                        filelist = filelist+$("#download_file_3 p").html()+";";
-                   }
-                   if($("#file4")[0]){
-                   // console.log($("#file4")[0].files[0]);
-                    formdata.append("file", $("#file4")[0].files[0]);
-                   }else{
-                        filelist = filelist+$("#download_file_4 p").html()+";";
-                   }
-                   formdata.append("filelist", filelist);
-                   var imglist="";
-                   var imgnamelist="";
-                   //img check
-                   if($("#img1")[0]){
-                    formdata.append("img", $("#img1")[0].files[0]);
-                   }else{
-                      imglist = imglist+ "img1"+";";
-                      imgnamelist = imgnamelist+ $("#img_file_1 p").html()+";";
-                   }
-                   if($("#img2")[0]){
-                    formdata.append("img", $("#img2")[0].files[0]);
-                   }else{
-                      imglist = imglist+  "img2"+";";
-                      imgnamelist = imgnamelist+ $("#img_file_2 p").html()+";";
-                   }
-                   if($("#img3")[0]){
-                    formdata.append("img", $("#img3")[0].files[0]);
-                   }else{
-                      imglist = imglist+  "img3"+";";
-                      imgnamelist = imgnamelist+ $("#img_file_3 p").html()+";";
-                   }
-                   if($("#img4")[0]){
-                    formdata.append("img", $("#img4")[0].files[0]);
-                   }else{
-                      imglist = imglist+  "img4"+";";
-                      imgnamelist = imgnamelist+ $("#img_file_4 p").html()+";";
-                   }
-                   if($("#img5")[0]){
-                    formdata.append("img", $("#img5")[0].files[0]);
-                   }else{
-                      imglist = imglist+  "img5"+";";
-                      imgnamelist = imgnamelist+ $("#img_file_5 p").html()+";";
-                   }
-                   formdata.append("imglist", imglist);
-                   formdata.append("imgnamelist", imgnamelist);
-                    $.ajax({
-                        url: "/admin/item/setting",
-                        type: "post",
-                        data: formdata,
-                        contentType: false,
-                        processData: false,
-                        success: function()  {
-                            alert("update success");
-
-                            location.reload();
-                        },
-                        error: function()  {
-                            alert("update fail");
-                        }
-                    })
-                }
-
-
-
-            })
-
-
-        })
-
-
-    </script>
-
+							location.reload();
+						},
+						error: function () {
+							alert("update fail");
+						}
+					})
+				}
+			})
+		})
+	</script>
 </body>
-
 </html>

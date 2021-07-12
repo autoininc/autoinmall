@@ -1,19 +1,15 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	res.render("signup.html");
 }
 
 
-
-exports.checkaccount = function(req, res, db) {
+exports.checkaccount = function (req, res, db) {
 	var email = req.query.email;
 	var id = req.query.id;
-	console.log(email + "   " + id);
 	db.query("UPDATE USER SET LOCK_ACC = 1 WHERE USER_ID = ? AND EMAIL = ?", [id, email], async function (err, row) {
 		if (err) {
 			console.log(err);
-		}
-		else {
-			// console.log("sign up success");
+		} else {
 			//insert signup email
 			await res.redirect("/");
 		}
@@ -22,8 +18,7 @@ exports.checkaccount = function(req, res, db) {
 }
 
 
-exports.confirm = function(req, res, db, crypto, nodemailer) {
-	//console.log(req.body);
+exports.confirm = function (req, res, db, crypto, nodemailer) {
 	var data = req.body;
 	//sign up data
 	var userId = data.userId;
@@ -39,15 +34,24 @@ exports.confirm = function(req, res, db, crypto, nodemailer) {
 	//password hashing
 	var hashPassword = crypto.createHash("sha512").update(userPw + u_salt).digest("hex");
 
-	var userInfo = { USER_ID: userId, USER_PW: hashPassword, EMAIL: userEmail, SALT: u_salt, NAME: userName, PHONE: userPhone, ZIPCODE: userZipcode, ADDRESS: userAddress, TOKEN: usertoken, LOCK_ACC: 0 };
+	var userInfo = {
+		USER_ID: userId,
+		USER_PW: hashPassword,
+		EMAIL: userEmail,
+		SALT: u_salt,
+		NAME: userName,
+		PHONE: userPhone,
+		ZIPCODE: userZipcode,
+		ADDRESS: userAddress,
+		TOKEN: usertoken,
+		LOCK_ACC: 0
+	};
 
 	db.query("INSERT INTO USER SET ?", userInfo, function (err, row, fields) {
 		if (err) {
 			console.log(err);
 
-		}
-		else {
-			// console.log("sign up success");
+		} else {
 			var data = {
 				EMAIL: userEmail,
 				NAME: userName,
@@ -61,16 +65,13 @@ exports.confirm = function(req, res, db, crypto, nodemailer) {
 }
 
 
-exports.overlap = function(req, res, db) {
-	console.log(req.body.userId);
+exports.overlap = function (req, res, db) {
 	var checkId = req.body.userId;
 	db.query("SELECT USER_ID FROM USER WHERE USER_ID = ?", [checkId], function (err, row, fields) {
 		if (err) {
 			console.log(err);
-		}
-		else {
-			console.log(row[0]);
-			if (row[0] == null) {
+		} else {
+			if (row[0] === null) {
 				res.send("ok");
 			} else {
 				res.send("fail");
@@ -84,9 +85,8 @@ exports.overlap = function(req, res, db) {
 }
 
 
-exports.effectiveness = function(req, res, db) {
+exports.effectiveness = function (req, res, db) {
 	var attr = req.body;
-	console.log(attr)
 	var id = attr.id;
 	var pw = attr.pw;
 	var c_p = attr.c_p;

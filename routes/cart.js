@@ -1,7 +1,7 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	sess = req.session;
 	if (!sess.username) {
-		res.render("signin.html", { flag: 'no', username: sess.username });
+		res.render("signin.html", {flag: 'no', username: sess.username});
 	} else {
 		db.query("SELECT ITEM, VOLUME, PRICE, PARTS_NUM, PIN FROM CART WHERE CART_ID = 'before' AND ID = ?", [sess.userid], (err, row) => {
 			if (err) {
@@ -13,7 +13,7 @@ exports.show = function(req, res, db) {
 						console.log(err2);
 					} else {
 						var data2 = JSON.stringify(row2);
-						res.render("cart.html", { username: sess.username, data: data,receipt:data2 });
+						res.render("cart.html", {username: sess.username, data: data, receipt: data2});
 					}
 				})
 
@@ -24,8 +24,7 @@ exports.show = function(req, res, db) {
 }
 
 
-exports.delete = function(req, res, db) {
-	//console.log(req.body);
+exports.delete = function (req, res, db) {
 	db.query("DELETE FROM CART WHERE PIN = ? AND CART_ID = 'before'", [req.body.PIN], (err, row) => {
 		if (err) {
 			console.log(err);

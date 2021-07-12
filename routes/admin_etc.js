@@ -1,23 +1,23 @@
-exports.add = function(req, res, db) {
+exports.add = function (req, res, db) {
 	db.query("SELECT DISTINCT MAIN FROM CATEGORY_LIST", (err, row) => {
 		if (err) {
 			console.log(err);
 		} else {
 			db.query("SELECT DISTINCT NAME FROM CAR_BRAND", (err2, row2) => {
-				if(err2){
+				if (err2) {
 					console.log(err2);
-				}else{
+				} else {
 					db.query("SELECT DISTINCT NAME FROM ITEM_BRAND", (err3, row3) => {
-						if(err3){
+						if (err3) {
 							console.log(err3);
-						}else{
+						} else {
 							var data = JSON.stringify(row);
 							data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
 							var data2 = JSON.stringify(row2);
 							data2 = data2.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
 							var data3 = JSON.stringify(row3);
 							data3 = data3.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-							res.render("item_add.html", { category: data,carbrand:data2,itembrand:data3 });
+							res.render("item_add.html", {category: data, carbrand: data2, itembrand: data3});
 						}
 					})
 				}
@@ -28,18 +28,19 @@ exports.add = function(req, res, db) {
 }
 
 
-exports.mainimg = function(req, res, db) {
-	db.query("SELECT MAIN_IMG FROM MALLIMG WHERE IMG_SET = 'mall'",(err,row)=>{
-		if(err){
+exports.mainimg = function (req, res, db) {
+	db.query("SELECT MAIN_IMG FROM MALLIMG WHERE IMG_SET = 'mall'", (err, row) => {
+		if (err) {
 			console.log(err);
 			res.send(err);
-		}else{
-			res.render('mainimg.html',{img:row[0].MAIN_IMG});
+		} else {
+			res.render('mainimg.html', {img: row[0].MAIN_IMG});
 		}
-	})}
+	})
+}
 
 
-exports.shopimg = function(req, res, db) {
+exports.shopimg = function (req, res, db) {
 	db.query("SELECT * FROM MALLIMG", (err, row) => {
 		if (err) {
 			console.log(err);
@@ -54,14 +55,12 @@ exports.shopimg = function(req, res, db) {
 }
 
 
-exports.file_delete = function(req, res, db, fs) {
+exports.file_delete = function (req, res, db, fs) {
 	db.query('SELECT FILE_LIST FROM ITEMINFO WHERE ITEM_NUM = ?', [req.body.pin], (err, row) => {
 		if (err) {
 			res.send(err);
 		} else {
 			var list = row[0].FILE_LIST.split(';');
-			//console.log(list);
-			//console.log(req.body.filename);
 			var new_list = "";
 			for (var i = 0; i < list.length; i++) {
 				if (list[i] === req.body.filename) {
@@ -73,14 +72,11 @@ exports.file_delete = function(req, res, db, fs) {
 						}
 					})
 					list.splice(i, 1);
-					// console.log("list slice "+list);
-					// console.log(list[i]);
 					i = i - 1;
 				} else if (list[i] !== "") {
 					new_list = new_list + list[i] + ";";
 				}
 			}
-			//console.log(new_list);
 			db.query('UPDATE ITEMINFO SET FILE_LIST = ? WHERE ITEM_NUM = ?', [new_list, req.body.pin], (err2, row2) => {
 				if (err2) {
 					console.log(err2);
@@ -94,11 +90,10 @@ exports.file_delete = function(req, res, db, fs) {
 }
 
 
-exports.img_delete = function(req, res, db, fs) {
-	console.log(req.body);
+exports.img_delete = function (req, res, db, fs) {
 	switch (req.body.img) {
 		case "IMG1":
-			db.query("UPDATE ITEMINFO SET IMG1 = 'no_img.png' WHERE ITEM_NUM = ?", [ req.body.pin], (err, row) => {
+			db.query("UPDATE ITEMINFO SET IMG1 = 'no_img.png' WHERE ITEM_NUM = ?", [req.body.pin], (err, row) => {
 				if (err) {
 					res.send("err");
 					console.log(err);
@@ -166,7 +161,7 @@ exports.img_delete = function(req, res, db, fs) {
 			break;
 
 		case "IMG5":
-			db.query("UPDATE ITEMINFO SET IMG5 = 'no_img.png' WHERE ITEM_NUM = ?", [ req.body.pin], (err, row) => {
+			db.query("UPDATE ITEMINFO SET IMG5 = 'no_img.png' WHERE ITEM_NUM = ?", [req.body.pin], (err, row) => {
 				if (err) {
 					res.send("err");
 					console.log(err);

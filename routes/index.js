@@ -1,4 +1,4 @@
-module.exports = function(db) {
+module.exports = function (db) {
 
 	var express = require('express');
 	var router = express.Router();
@@ -94,9 +94,9 @@ module.exports = function(db) {
 	router.get("/shop", (req, res) => { shop.show(req, res, db) });
 	router.get("/shop/item", (req, res) => { shop.item(req, res, db) });
 
-	router.post('/mainimg/change',shop_img.single("img"), (req, res) => { mainimg.change(req, res, db) });
+	router.post('/mainimg/change', shop_img.single("img"), (req, res) => { mainimg.change(req, res, db) });
 
-	router.post('/shopimg/change',shop_img.array("img"), (req, res) => { shopimg.change(req, res, db) });
+	router.post('/shopimg/change', shop_img.array("img"), (req, res) => { shopimg.change(req, res, db) });
 
 	return router;
 }

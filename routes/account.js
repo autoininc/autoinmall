@@ -1,10 +1,8 @@
-exports.certification = function(req, res, db, nodemailer) {
-	// console.log("setting");
+exports.certification = function (req, res, db, nodemailer) {
 	var attr = req.body;
-	console.log(attr);
-	if(attr.orgemail === attr.useremail){
+	if (attr.orgemail === attr.useremail) {
 		if (!isNaN(attr.userphone) && !isNaN(attr.userzipcode)) {
-			db.query("UPDATE USER SET NAME = ?, PHONE=?, ADDRESS=?, ZIPCODE=? WHERE USER_ID = ?", [attr.username,attr.userphone, attr.useraddress, attr.userzipcode, attr.userid], function (err, row) {
+			db.query("UPDATE USER SET NAME = ?, PHONE=?, ADDRESS=?, ZIPCODE=? WHERE USER_ID = ?", [attr.username, attr.userphone, attr.useraddress, attr.userzipcode, attr.userid], function (err, row) {
 				if (err) {
 					console.log(err);
 				} else {
@@ -13,11 +11,11 @@ exports.certification = function(req, res, db, nodemailer) {
 					res.send("success");
 				}
 			})
-		}else{
+		} else {
 			console.log("wrong form");
 			res.send("err");
 		}
-	}else{
+	} else {
 		db.query("UPDATE USER SET LOCK_ACC = 0 WHERE USER_ID = ?", [attr.userid], function (err, row) {
 			if (err) {
 				console.log(err);
@@ -28,7 +26,7 @@ exports.certification = function(req, res, db, nodemailer) {
 					subject: "Email Verification-AutoinMall",
 					html:
 						"<p>Please click this button to certification e-mail</p>" +
-						"<a href='https://autoinmall.com/account/setting?email="+attr.useremail+"&id="+attr.userid+"' target = '_blank'><img src = 'https://ifh.cc/g/bXCkYZ.png' style='width:300px;height:100px'></a>" +
+						"<a href='https://autoinmall.com/account/setting?email=" + attr.useremail + "&id=" + attr.userid + "' target = '_blank'><img src = 'https://ifh.cc/g/bXCkYZ.png' style='width:300px;height:100px'></a>" +
 						"<p>Thank you</p>" +
 						"<p>Autoinmall</p>"
 				};
@@ -41,10 +39,10 @@ exports.certification = function(req, res, db, nodemailer) {
 	}
 }
 
-exports.setting = function(req, res, db) {
+exports.setting = function (req, res, db) {
 	var id = req.query.id;
 	var email = req.query.email;
-	db.query("UPDATE USER SET LOCK_ACC = 1, EMAIL = ? WHERE  AND USER_ID = ?", [email,id], function (err, row) {
+	db.query("UPDATE USER SET LOCK_ACC = 1, EMAIL = ? WHERE  AND USER_ID = ?", [email, id], function (err, row) {
 		if (err) {
 			console.log(err);
 		} else {
@@ -54,7 +52,7 @@ exports.setting = function(req, res, db) {
 }
 
 
-exports.password = function(req, res, db, crypto) {
+exports.password = function (req, res, db, crypto) {
 	var data = req.body;
 	//hash salt
 	var u_salt = Math.round((new Date().valueOf() * Math.random())) + "";
@@ -65,7 +63,6 @@ exports.password = function(req, res, db, crypto) {
 		if (err) {
 			console.log(err);
 		} else {
-			console.log(row);
 			res.send("success");
 		}
 	})

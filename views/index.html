@@ -2,721 +2,586 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>AUTOINMall</title>
-    <link rel="icon" type="image/x-icon" href="../img/autoinlogo/autoin_icon.png" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
-        type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/index.css" rel="stylesheet" />
-    <!--sweetalert2-->
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"
-        rel="stylesheet">
-    <!--swiper-->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@5.4.5/css/swiper.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@5.4.5/css/swiper.min.css">
-    <script src="https://unpkg.com/swiper@5.4.5/js/swiper.js"></script>
-    <script src="https://unpkg.com/swiper@5.4.5/js/swiper.min.js"></script>
+	<title>AUTOINMall</title>
+	<%- include('head') %>
+	<link href="/css/index.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a id="home_title" class="navbar-brand js-scroll-trigger" href="/" style="margin-left:7%">
-                <img src="../img/autoinlogo/autoin_logo.png" alt="" /></a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars ml-1"></i>
-            </button>
-            <div class="collapse navbar-collapse" data-hover="dropdown" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#rank">Rank</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#brands">Brands</a></li>
-                    <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/shop?page=1">Mall</a></li>-->
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/shop?page=1">Mall</a></li>
-                    <li class="nav-item" id="resizemenu">
-                        <div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="accountMenu">
-                                <a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>
-                                <a class="dropdown-item" href="/cart">Cart</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Masthead-->
-    <header class="masthead" id="home">
-        <div class="container">
-            <div class="masthead-heading text-uppercase" style="color:deeppink">AUTOIN SHOPPING MALL</div>
-            <input type="button" class="btn  mb-1" value="Parts" id="mode_change_parts"
-                style="float:left !important;margin-left:15%!important;width:35%;border:red solid 2px;background-color: #212529!important;color:white; opacity: 0.9;">
-            <input type="button" class="btn  mb-1" value="Reference" id="mode_change_reference"
-                style="float:right !important;margin-right:15%;width:35%;background-color:silver!important;color:white; opacity: 0.9;">
+	<%- include('body_nav') %>
+	<!-- Masthead-->
+	<header class="masthead" id="home">
+		<div class="container">
+			<div class="masthead-heading text-uppercase" style="color:deeppink">AUTOIN SHOPPING MALL</div>
+			<input class="btn  mb-1" id="mode_change_parts"
+				   style="float:left !important;margin-left:15%!important;width:35%;border:red solid 2px;background-color: #212529!important;color:white; opacity: 0.9;" type="button"
+				   value="Parts">
+			<input class="btn  mb-1" id="mode_change_reference" style="float:right !important;margin-right:15%;width:35%;background-color:silver!important;color:white; opacity: 0.9;" type="button"
+				   value="Reference">
 
-            <form action="/search" method="GET" id="search_form">
-                <input type="hidden" name="page" value="1">
-                <div class="masthead-subheading" id="reference"
-                    style="width:70%;margin-left:15%;margin-right:15%;display:none">
-                    <div class="input-group mb-1">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="width:120px;">PARTS NUM</span></div>
-                        <input type="text" class="form-control" name="parts_num">
-                    </div>
-                </div>
-                <div class="masthead-subheading" id="parts" style="width:70%;margin-left:15%;margin-right:15%;">
-                    <div class="input-group mb-1">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="width:120px;">CATEGORY</span></div>
-                        <select name="category" class="custom-select" id="category">
+			<form action="/search" id="search_form" method="GET">
+				<input name="page" type="hidden" value="1">
+				<div class="masthead-subheading" id="reference"
+					 style="width:70%;margin-left:15%;margin-right:15%;display:none">
+					<div class="input-group mb-1">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width:120px;">PARTS NUM</span></div>
+						<input class="form-control" name="parts_num" type="text">
+					</div>
+				</div>
+				<div class="masthead-subheading" id="parts" style="width:70%;margin-left:15%;margin-right:15%;">
+					<div class="input-group mb-1">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width:120px;">CATEGORY</span></div>
+						<select class="custom-select" id="category" name="category">
 
-                        </select>
-                    </div>
+						</select>
+					</div>
 
-                    <div class="input-group mb-1">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="width:120px;">BRANDS</span></div>
-                        <select name="brands" class="custom-select" id="select_brands">
-                            <option value="">Choose...</option>
+					<div class="input-group mb-1">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width:120px;">BRANDS</span></div>
+						<select class="custom-select" id="select_brands" name="brands">
+							<option value="">Choose...</option>
 
-                        </select>
-                    </div>
-                    <div class="input-group mb-1">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="width:120px;">MODEL</span></div>
-                        <select name="model" class="custom-select" id="model" disabled>
-                            <option value="">Choose...</option>
+						</select>
+					</div>
+					<div class="input-group mb-1">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width:120px;">MODEL</span></div>
+						<select class="custom-select" disabled id="model" name="model">
+							<option value="">Choose...</option>
 
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="width:120px;">VERSION</span></div>
-                        <select name="version" class="custom-select" id="version" disabled>
-                            <option value="">Choose...</option>
+						</select>
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width:120px;">VERSION</span></div>
+						<select class="custom-select" disabled id="version" name="version">
+							<option value="">Choose...</option>
 
-                        </select>
-                    </div>
+						</select>
+					</div>
 
-                </div>
+				</div>
 
-                <input type="submit" value="SHOPPING NOW"
-                    class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="shop_now">
-            </form>
+				<input class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="shop_now"
+					   type="submit" value="SHOPPING NOW">
+			</form>
 
-        </div>
-        <div class="container">
+		</div>
+		<div class="container">
 
-        </div>
-    </header>
+		</div>
+	</header>
 
 
-    <!-- ranking-->
-    <section class="page-section" id="rank">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">Rank</h2>
-                <h3 class="section-subheading text-muted" id="theme1"><strong></strong></h3>
-            </div>
-            <div class="row">
-                <div class="col-md-2half text-center">
-                    <div>
-                        <a id="theme1_top1_link">
-                            <h4 class="my-3">TOP 1</h4>
-                            <span class="text-center">
-                                <img id="theme1_top1" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+	<!-- ranking-->
+	<section class="page-section" id="rank">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Rank</h2>
+				<h3 class="section-subheading text-muted" id="theme1"><strong></strong></h3>
+			</div>
+			<div class="row">
+				<div class="col-md-2half text-center">
+					<div>
+						<a id="theme1_top1_link">
+							<h4 class="my-3">TOP 1</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme1_top1" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme1_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half text-center">
-                    <div>
-                        <a id="theme1_top2_link">
-                            <h4 class="my-3">TOP 2</h4>
-                            <span class="text-center">
-                                <img id="theme1_top2" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme1_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half text-center">
+					<div>
+						<a id="theme1_top2_link">
+							<h4 class="my-3">TOP 2</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme1_top2" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme1_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme1_top3_link">
-                            <h4 class="my-3">TOP 3</h4>
-                            <span class="text-center">
-                                <img id="theme1_top3" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme1_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme1_top3_link">
+							<h4 class="my-3">TOP 3</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme1_top3" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme1_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme1_top4_link">
-                            <h4 class="my-3">TOP 4</h4>
-                            <span class="text-center">
-                                <img id="theme1_top4" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme1_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme1_top4_link">
+							<h4 class="my-3">TOP 4</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme1_top4" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme1_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme1_top5_link">
-                            <h4 class="my-3">TOP 5</h4>
-                            <span class="text-center">
-                                <img id="theme1_top5" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme1_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme1_top5_link">
+							<h4 class="my-3">TOP 5</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme1_top5" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme1_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <h3 class="section-subheading text-muted" style="margin-top:7%;" id="theme2"><strong></strong>
-                </h3>
-            </div>
-            <div class="row">
-                <div class="col-md-2half text-center">
-                    <div>
-                        <a id="theme2_top1_link">
-                            <h4 class="my-3">TOP 1</h4>
-                            <span class="text-center">
-                                <img id="theme2_top1" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme1_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="text-center">
+				<h3 class="section-subheading text-muted" id="theme2" style="margin-top:7%;"><strong></strong>
+				</h3>
+			</div>
+			<div class="row">
+				<div class="col-md-2half text-center">
+					<div>
+						<a id="theme2_top1_link">
+							<h4 class="my-3">TOP 1</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme2_top1" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme2_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half text-center">
-                    <div>
-                        <a id="theme2_top2_link">
-                            <h4 class="my-3">TOP 2</h4>
-                            <span class="text-center">
-                                <img id="theme2_top2" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme2_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half text-center">
+					<div>
+						<a id="theme2_top2_link">
+							<h4 class="my-3">TOP 2</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme2_top2" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme2_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme2_top3_link">
-                            <h4 class="my-3">TOP 3</h4>
-                            <span class="text-center">
-                                <img id="theme2_top3" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme2_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme2_top3_link">
+							<h4 class="my-3">TOP 3</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme2_top3" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme2_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme2_top4_link">
-                            <h4 class="my-3">TOP 4</h4>
-                            <span class="text-center">
-                                <img id="theme2_top4" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme2_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme2_top4_link">
+							<h4 class="my-3">TOP 4</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme2_top4" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme2_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme2_top5_link">
-                            <h4 class="my-3">TOP 5</h4>
-                            <span class="text-center">
-                                <img id="theme2_top5" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme2_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme2_top5_link">
+							<h4 class="my-3">TOP 5</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme2_top5" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme2_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <h3 class="section-subheading text-muted" style="margin-top:7%;" id="theme3"><strong></strong>
-                </h3>
-            </div>
-            <div class="row">
-                <div class="col-md-2half text-center">
-                    <div>
-                        <a id="theme3_top1_link">
-                            <h4 class="my-3">TOP 1</h4>
-                            <span class="text-center">
-                                <img id="theme3_top1" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme2_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="text-center">
+				<h3 class="section-subheading text-muted" id="theme3" style="margin-top:7%;"><strong></strong>
+				</h3>
+			</div>
+			<div class="row">
+				<div class="col-md-2half text-center">
+					<div>
+						<a id="theme3_top1_link">
+							<h4 class="my-3">TOP 1</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme3_top1" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme3_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half text-center">
-                    <div>
-                        <a id="theme3_top2_link">
-                            <h4 class="my-3">TOP 2</h4>
-                            <span class="text-center">
-                                <img id="theme3_top2" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme3_top1_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half text-center">
+					<div>
+						<a id="theme3_top2_link">
+							<h4 class="my-3">TOP 2</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme3_top2" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme3_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme3_top3_link">
-                            <h4 class="my-3">TOP 3</h4>
-                            <span class="text-center">
-                                <img id="theme3_top3" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme3_top2_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme3_top3_link">
+							<h4 class="my-3">TOP 3</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme3_top3" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme3_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme3_top4_link">
-                            <h4 class="my-3">TOP 4</h4>
-                            <span class="text-center">
-                                <img id="theme3_top4" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme3_top3_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme3_top4_link">
+							<h4 class="my-3">TOP 4</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme3_top4" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme3_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2half  text-center">
-                    <div>
-                        <a id="theme3_top5_link">
-                            <h4 class="my-3">TOP 5</h4>
-                            <span class="text-center">
-                                <img id="theme3_top5" class="img-fluid rounded" alt="No image" style="width:400px;height:150px">
+							<p class="text-muted" id="theme3_top4_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2half  text-center">
+					<div>
+						<a id="theme3_top5_link">
+							<h4 class="my-3">TOP 5</h4>
+							<span class="text-center">
+                                <img alt="No image" class="img-fluid rounded" id="theme3_top5" style="width:400px;height:150px">
                             </span>
-                            <p class="text-muted" id="theme3_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                <strong></strong>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- brands-->
-    <div class="page-section" id="brands">
-        <h2 class="section-heading text-uppercase" id="brand">Brands</h2>
-        <br>
-        <div style="text-align: center;">
-            <h3 class="section-subheading text-muted"><strong>Car Brands</strong></h3>
-        </div>
+							<p class="text-muted" id="theme3_top5_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+								<strong></strong>
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- brands-->
+	<div class="page-section" id="brands">
+		<h2 class="section-heading text-uppercase" id="brand">Brands</h2>
+		<br>
+		<div style="text-align: center;">
+			<h3 class="section-subheading text-muted"><strong>Car Brands</strong></h3>
+		</div>
 
-        <div class="swiper-container" id="brand_swiper">
-            <div class="swiper-wrapper">
-
-
-            </div>
-            <br>
-
-        </div>
-        <div style="text-align: center;margin-bottom:3%">
-            <input type="button" class="btn brand-link" value="show more..."
-                style="background-color: #212529!important;color:white;">
-        </div>
-        <br>
-        <div style="text-align: center;">
-            <h3 class="section-subheading text-muted"><strong>Item Brands</strong></h3>
-        </div>
-
-        <div class="container itembrand-container">
-            <div class="row">
-                <div class="col-md-2" id="ib_section0">
-                </div>
-                <div class="col-md-2" id="ib_section1">
-                </div>
-                <div class="col-md-2" id="ib_section2">
-                </div>
-                <div class="col-md-2" id="ib_section3">
-                </div>
-                <div class="col-md-2" id="ib_section4">
-                </div>
-                <div class="col-md-2" id="ib_section5">
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- About
-    <section class="page-section" id="about">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">About</h2>
-                <h3 class=" text-uppercase" style="color:gray">Get the latest Global auto-parts here
-                    at an Best price!</h3>
-                <h4><small>— AUTO-PARTS E-COMMERCE SERVICE</small></h4>
-            </div>
-            <br>
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-6">
-                        AUTOINMall is a shopping mall specializing in automotive A/S parts and accessories, which is
-                        dedicated to more reasonable prices, convenient purchasing processes, fast delivery and various
-                        services. We will provide a variety of promotions with the opening and we will always strive to
-                        satisfy our customers based on our expertise in the automotive industry.
-                        <img src="../img/autoinlogo/autoin_logo.png" alt=""
-                            style="width:50%;margin-left:25%;margin-top:15%;margin-bottom:10%" />
-
-                    </div>
-                    <div class="col-md-6">
-                        Autoin Inc. is a service provider of data-based AUTOINSPEC, exhibition agency, trade transaction
-                        and marketing materials as well as eAUTOIN.com, a global B2B marketplace for small and medium
-                        auto parts manufacturers. Autoin will grow into a global company pursuing change through
-                        continuous development of future technologies such as big data and blockchain based on its
-                        expertise in the automotive industry.
-                        <a href="https://autoinspec.com" target="_blank"><img
-                                src="../img/autoinlogo/autoinspec.jpg" alt=""
-                                style="width:50%;margin-left:25%;margin-top:5%" /></a>
-
-                    </div>
-                </div>
-            </div>
-            <br>
-
-        </div>
-    </section>-->
+		<div class="swiper-container" id="brand_swiper">
+			<div class="swiper-wrapper">
 
 
-    <!-- Footer-->
-    <footer class="footer py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-left">Copyright © 2020 AUTOINMall </div>
+			</div>
+			<br>
 
-                <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/autoinmall" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/autoin_mall/" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div class="col-lg-4 text-lg-right">
-                    <div>E-mail:&nbsp;service@autoinmall.com</div>
+		</div>
+		<div style="text-align: center;margin-bottom:3%">
+			<input class="btn brand-link" style="background-color: #212529!important;color:white;" type="button"
+				   value="show more...">
+		</div>
+		<br>
+		<div style="text-align: center;">
+			<h3 class="section-subheading text-muted"><strong>Item Brands</strong></h3>
+		</div>
 
-                </div>
-            </div>
-        </div>
-    </footer>
+		<div class="container itembrand-container">
+			<div class="row">
+				<div class="col-md-2" id="ib_section0">
+				</div>
+				<div class="col-md-2" id="ib_section1">
+				</div>
+				<div class="col-md-2" id="ib_section2">
+				</div>
+				<div class="col-md-2" id="ib_section3">
+				</div>
+				<div class="col-md-2" id="ib_section4">
+				</div>
+				<div class="col-md-2" id="ib_section5">
+				</div>
+			</div>
+		</div>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Third party plugin JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Contact form JS-->
-    <script src="../mail/jqBootstrapValidation.js"></script>
-    <script src="../mail/contact_me.js"></script>
-    <!-- Core theme JS-->
-    <script src="../js/scripts.js"></script>
+	</div>
 
-    <script>
-        var username = '<%- username %>';
-        var category = JSON.parse('<%- category %>');
-        var itembrand = JSON.parse('<%- itembrand %>');
-        var carbrand = JSON.parse('<%- carbrand %>');
-        var ranking = JSON.parse('<%- ranking %>');
-        var main_img = '<%- main_img %>';
-        //alert(main_img);
-           //ranking
-        $(document).ready(function() {
-           // alert("url("+main_img+")");
-            $(".masthead").css("background-image","url('"+main_img+"')");
-        })
-        for (var m = 0; m < ranking.length; m++) {
-            if(m <5){
-               console.log(m+"is small");
-               console.log(ranking[m].TOP1);
-              // console.log(ranking[m].TOP2);
-              // console.log(ranking[m].TOP3);
-               console.log(ranking[m].PIN);
-                if (ranking[m].TOP1 == ranking[m].PIN) {
-                    console.log("small top1");
-                    $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top1").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme1_top1_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP2 == ranking[m].PIN) {
-                    console.log("small top2");
-                    $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top2").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme1_top2_name strong").html(ranking[m].ITEM_NAME);
+	<!-- Footer-->
+	<%- include('footer') %>
 
-                } else if (ranking[m].TOP3 == ranking[m].PIN) {
-                    console.log("small top3");
-                    $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top3").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme1_top3_name strong").html(ranking[m].ITEM_NAME);
-                }
-                else if (ranking[m].TOP4 == ranking[m].PIN) {
-                    console.log("small top4");
-                    $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top4").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme1_top4_name strong").html(ranking[m].ITEM_NAME);
-                }
-                else if (ranking[m].TOP5 == ranking[m].PIN) {
-                    console.log("small top5");
-                    $("#theme1 strong").html(ranking[m].THEME);
-                    $("#theme1_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme1_top5").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme1_top5_name strong").html(ranking[m].ITEM_NAME);
-                }
-            }else if(m>=5 && m<10){
-                //console.log(m+"is smae");
-                if (ranking[m].TOP1 == ranking[m].PIN) {
-                    $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top1").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme2_top1_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP2 == ranking[m].PIN) {
-                    $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top2").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme2_top2_name strong").html(ranking[m].ITEM_NAME);
+	<!-- Core theme JS-->
+	<script src="/js/scripts.js"></script>
 
-                } else if (ranking[m].TOP3 == ranking[m].PIN) {
-                    $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top3").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme2_top3_name strong").html(ranking[m].ITEM_NAME);
-                }else if (ranking[m].TOP4 == ranking[m].PIN) {
-                    $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top4").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme2_top4_name strong").html(ranking[m].ITEM_NAME);
-                }else if (ranking[m].TOP5 == ranking[m].PIN) {
-                    $("#theme2 strong").html(ranking[m].THEME);
-                    $("#theme2_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme2_top5").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme2_top5_name strong").html(ranking[m].ITEM_NAME);
-                }
-            }else if(m>=10 && m<15){
-               //console.log(m+"is big");
-                if (ranking[m].TOP1 == ranking[m].PIN) {
-                    $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top1_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top1").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme3_top1_name strong").html(ranking[m].ITEM_NAME);
-                } else if (ranking[m].TOP2 == ranking[m].PIN) {
-                    $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top2_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top2").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme3_top2_name strong").html(ranking[m].ITEM_NAME);
+	<script>
+		var username = '<%- username %>';
+		var category = JSON.parse('<%- category %>');
+		var itembrand = JSON.parse('<%- itembrand %>');
+		var carbrand = JSON.parse('<%- carbrand %>');
+		var ranking = JSON.parse('<%- ranking %>');
+		var main_img = '<%- main_img %>';
+		//alert(main_img);
+		//ranking
+		$(document).ready(function () {
+			// alert("url("+main_img+")");
+			$(".masthead").css("background-image", "url('" + main_img + "')");
+		})
+		for (var m = 0; m < ranking.length; m++) {
+			if (m < 5) {
+				if (ranking[m].TOP1 === ranking[m].PIN) {
+					$("#theme1 strong").html(ranking[m].THEME);
+					$("#theme1_top1_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme1_top1").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme1_top1_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP2 === ranking[m].PIN) {
+					$("#theme1 strong").html(ranking[m].THEME);
+					$("#theme1_top2_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme1_top2").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme1_top2_name strong").html(ranking[m].ITEM_NAME);
 
-                } else if (ranking[m].TOP3 == ranking[m].PIN) {
-                    $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top3_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top3").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme3_top3_name strong").html(ranking[m].ITEM_NAME);
-                }else if (ranking[m].TOP4 == ranking[m].PIN) {
-                    $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top4_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top4").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme3_top4_name strong").html(ranking[m].ITEM_NAME);
-                }else if (ranking[m].TOP5 == ranking[m].PIN) {
-                    $("#theme3 strong").html(ranking[m].THEME);
-                    $("#theme3_top5_link").attr("href","/item/info?pin="+ranking[m].PIN);
-                    $("#theme3_top5").attr("src","../img/item/"+ranking[m].IMG1);
-                    $("#theme3_top5_name strong").html(ranking[m].ITEM_NAME);
-                }
-            }
+				} else if (ranking[m].TOP3 === ranking[m].PIN) {
+					$("#theme1 strong").html(ranking[m].THEME);
+					$("#theme1_top3_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme1_top3").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme1_top3_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP4 === ranking[m].PIN) {
+					$("#theme1 strong").html(ranking[m].THEME);
+					$("#theme1_top4_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme1_top4").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme1_top4_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP5 === ranking[m].PIN) {
+					$("#theme1 strong").html(ranking[m].THEME);
+					$("#theme1_top5_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme1_top5").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme1_top5_name strong").html(ranking[m].ITEM_NAME);
+				}
+			} else if (m >= 5 && m < 10) {
+				if (ranking[m].TOP1 === ranking[m].PIN) {
+					$("#theme2 strong").html(ranking[m].THEME);
+					$("#theme2_top1_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme2_top1").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme2_top1_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP2 === ranking[m].PIN) {
+					$("#theme2 strong").html(ranking[m].THEME);
+					$("#theme2_top2_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme2_top2").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme2_top2_name strong").html(ranking[m].ITEM_NAME);
 
-        }
-         //print carbrand
-        for (var l = 0; l < carbrand.length; l++) {
-            if (carbrand[l].IMG === null) {
-                carbrand.splice(l, 1);
-            }
-            $(".swiper-wrapper").append(
-                '<div class="swiper-slide brand_slide"><a href="/search?brands=' + carbrand[l].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                'src="../img/car_brands/' + carbrand[l].IMG + '" alt="" /></a></div>'
-            )
-        }
-        for (var i = 0; i < carbrand.length; i++) {
-            $("#select_brands").append(
-                '<option value = "' + carbrand[i].NAME + '">' + carbrand[i].NAME + '</option>'
-            );
-        }
+				} else if (ranking[m].TOP3 === ranking[m].PIN) {
+					$("#theme2 strong").html(ranking[m].THEME);
+					$("#theme2_top3_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme2_top3").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme2_top3_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP4 === ranking[m].PIN) {
+					$("#theme2 strong").html(ranking[m].THEME);
+					$("#theme2_top4_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme2_top4").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme2_top4_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP5 === ranking[m].PIN) {
+					$("#theme2 strong").html(ranking[m].THEME);
+					$("#theme2_top5_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme2_top5").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme2_top5_name strong").html(ranking[m].ITEM_NAME);
+				}
+			} else if (m >= 10 && m < 15) {
+				if (ranking[m].TOP1 === ranking[m].PIN) {
+					$("#theme3 strong").html(ranking[m].THEME);
+					$("#theme3_top1_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme3_top1").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme3_top1_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP2 === ranking[m].PIN) {
+					$("#theme3 strong").html(ranking[m].THEME);
+					$("#theme3_top2_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme3_top2").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme3_top2_name strong").html(ranking[m].ITEM_NAME);
 
-        //print itembrand
-        for (var k = 0; k < itembrand.length; k++) {
-            var flag = k % 6;
-            if (itembrand[k].IMG === null) {
-                itembrand.splice(k, 1);
-            }
-            switch (flag) {
-                case 0:
-                    $("#ib_section0").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
-                    break;
-                case 1:
-                    $("#ib_section1").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
-                    break;
-                case 2:
-                    $("#ib_section2").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
-                    break;
-                case 3:
-                    $("#ib_section3").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
-                    break;
-                case 4:
-                    $("#ib_section4").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
-                    break;
-                case 5:
-                    $("#ib_section5").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
-                        'src="../img/item_brands/' + itembrand[k].IMG + '" alt="img"  /></a></div><br>');
-                    break;
-            }
+				} else if (ranking[m].TOP3 === ranking[m].PIN) {
+					$("#theme3 strong").html(ranking[m].THEME);
+					$("#theme3_top3_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme3_top3").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme3_top3_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP4 === ranking[m].PIN) {
+					$("#theme3 strong").html(ranking[m].THEME);
+					$("#theme3_top4_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme3_top4").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme3_top4_name strong").html(ranking[m].ITEM_NAME);
+				} else if (ranking[m].TOP5 === ranking[m].PIN) {
+					$("#theme3 strong").html(ranking[m].THEME);
+					$("#theme3_top5_link").attr("href", "/item/info?pin=" + ranking[m].PIN);
+					$("#theme3_top5").attr("src", "/img/item/" + ranking[m].IMG1);
+					$("#theme3_top5_name strong").html(ranking[m].ITEM_NAME);
+				}
+			}
 
-        }
+		}
+		//print carbrand
+		for (var l = 0; l < carbrand.length; l++) {
+			if (carbrand[l].IMG === null) {
+				carbrand.splice(l, 1);
+			}
+			$(".swiper-wrapper").append(
+				'<div class="swiper-slide brand_slide"><a href="/search?brands=' + carbrand[l].NAME + '"><img class="img-fluid d-block mx-auto"' +
+				'src="/img/car_brands/' + carbrand[l].IMG + '" alt="" /></a></div>'
+			)
+		}
+		for (var i = 0; i < carbrand.length; i++) {
+			$("#select_brands").append(
+				'<option value = "' + carbrand[i].NAME + '">' + carbrand[i].NAME + '</option>'
+			);
+		}
 
-        for (var i = 0; i < category.length; i++) {
-            var s_c = String(category[i].ID).split('_');
-            var main = s_c[0];
-            var sub = s_c[1];
-            if (i == 0) {
-                $("#category").html(
-                    '<option value="">Choose...</option>' +
-                    '<optgroup label ="' + main + '">' +
-                    '<option value="' + category[i].ID + '">' + sub + '</option></optgroup>'
-                );
-            } else {
-                if (main === String(category[i - 1].ID).split('_')[0]) {
-                    $("optgroup[label = '" + main + "']").append(
-                        '<option value="' + category[i].ID + '">' + sub + '</option>'
-                    );
-                }
-                else if (i != (category.length) - 1 && main != String(category[i - 1].ID).split('_')[0]) {
-                    $("#category").append(
-                        '<optgroup label ="' + main + '">' +
-                        '<option value="' + category[i].ID + '">' + sub + '</option>'
-                    );
-                }
-            }
+		//print itembrand
+		for (var k = 0; k < itembrand.length; k++) {
+			var flag = k % 6;
+			if (itembrand[k].IMG === null) {
+				itembrand.splice(k, 1);
+			}
+			switch (flag) {
+				case 0:
+					$("#ib_section0").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+						'src="/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+					break;
+				case 1:
+					$("#ib_section1").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+						'src="/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+					break;
+				case 2:
+					$("#ib_section2").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+						'src="/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+					break;
+				case 3:
+					$("#ib_section3").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+						'src="/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+					break;
+				case 4:
+					$("#ib_section4").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+						'src="/img/item_brands/' + itembrand[k].IMG + '" alt="img" /></a></div><br>');
+					break;
+				case 5:
+					$("#ib_section5").append('<div style="height:50px;width:180px;"><a href="/search?itembrand=' + itembrand[k].NAME + '"><img class="img-fluid d-block mx-auto"' +
+						'src="/img/item_brands/' + itembrand[k].IMG + '" alt="img"  /></a></div><br>');
+					break;
+			}
 
-        }
+		}
 
-        if (username) {
-            $("#account_ctrl").html('Signout');
-            $("#account_ctrl").attr("href", "/signout");
-            $("#accountMenu").append('<a class="dropdown-item" id="management" href="/management">Management</a>');
-        }
-        else {
-            $("#account_ctrl").html('Signin');
-            $("#account_ctrl").attr("href", "/signin");
-            $("#accountMenu").remove("#management");
-        }
+		for (var i = 0; i < category.length; i++) {
+			var s_c = String(category[i].ID).split('_');
+			var main = s_c[0];
+			var sub = s_c[1];
+			if (i === 0) {
+				$("#category").html(
+					'<option value="">Choose...</option>' +
+					'<optgroup label ="' + main + '">' +
+					'<option value="' + category[i].ID + '">' + sub + '</option></optgroup>'
+				);
+			} else {
+				if (main === String(category[i - 1].ID).split('_')[0]) {
+					$("optgroup[label = '" + main + "']").append(
+						'<option value="' + category[i].ID + '">' + sub + '</option>'
+					);
+				} else if (i !== (category.length) - 1 && main !== String(category[i - 1].ID).split('_')[0]) {
+					$("#category").append(
+						'<optgroup label ="' + main + '">' +
+						'<option value="' + category[i].ID + '">' + sub + '</option>'
+					);
+				}
+			}
 
-        if ($(window).width() < 976) {
-            if (username) {
-                $("#resizemenu").html(
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout" id="account_ctrl">Signout</a></li>' +
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-                );
-            } else {
-                $("#resizemenu").html(
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>'
-                );
-            }
-        }
-        $(window).resize(function () {
-            if ($(window).width() < 976) {
-                if (username) {
-                    $("#resizemenu").html(
-                        '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout id="account_ctrl">Signout</a></li>' +
-                        '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-                        '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-                    );
-                } else {
-                    $("#resizemenu").html(
-                        '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-                        '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>');
-                }
+		}
 
-            } else {
-                if (username) {
-                    $("#resizemenu").html(
-                        '<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
-                        'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
-                        '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-                        '<a class="dropdown-item" href="/signout" id="account_ctrl">Signout</a>' +
-                        '<a class="dropdown-item" href="/cart">Cart</a>' +
-                        '<a class="dropdown-item" href="/management">Management</a></div></div>'
+		if (username) {
+			$("#account_ctrl").html('Signout');
+			$("#account_ctrl").attr("href", "/signout");
+			$("#accountMenu").append('<a class="dropdown-item" id="management" href="/management">Management</a>');
+		} else {
+			$("#account_ctrl").html('Signin');
+			$("#account_ctrl").attr("href", "/signin");
+			$("#accountMenu").remove("#management");
+		}
 
-                    );
-                } else {
-                    $("#resizemenu").html(
-                        '<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
-                        'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
-                        '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-                        '<a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>' +
-                        '<a class="dropdown-item" href="/cart">Cart</a>'
+		if ($(window).width() < 976) {
+			if (username) {
+				$("#resizemenu").html(
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout" id="account_ctrl">Signout</a></li>' +
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
+				);
+			} else {
+				$("#resizemenu").html(
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>'
+				);
+			}
+		}
+		$(window).resize(function () {
+			if ($(window).width() < 976) {
+				if (username) {
+					$("#resizemenu").html(
+						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout id="account_ctrl">Signout</a></li>' +
+						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
+						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
+					);
+				} else {
+					$("#resizemenu").html(
+						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
+						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>');
+				}
 
-                    );
-                }
-            }
-        });
+			} else {
+				if (username) {
+					$("#resizemenu").html(
+						'<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
+						'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
+						'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+						'<a class="dropdown-item" href="/signout" id="account_ctrl">Signout</a>' +
+						'<a class="dropdown-item" href="/cart">Cart</a>' +
+						'<a class="dropdown-item" href="/management">Management</a></div></div>'
+					);
+				} else {
+					$("#resizemenu").html(
+						'<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
+						'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
+						'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+						'<a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>' +
+						'<a class="dropdown-item" href="/cart">Cart</a>'
+					);
+				}
+			}
+		});
 
-    </script>
+	</script>
 </body>
 
 </html>

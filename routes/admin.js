@@ -1,4 +1,4 @@
-module.exports = function(db) {
+module.exports = function (db) {
 
 	var express = require('express');
 	var router = express.Router();
@@ -58,10 +58,10 @@ module.exports = function(db) {
 	router.post('/img/delete', (req, res) => { admin_etc.img_delete(req, res, db, fs) });
 
 	router.get("/item", (req, res) => { admin_item.show(req, res, db) });
-	router.post("/item/add", upload.fields([{ name: 'item_img', maxCount: 5 }, { name: "file", maxCount: 5 }]), (req, res) => { admin_item.add(req, res, db, crypto) });
+	router.post("/item/add", upload.fields([{name: 'item_img', maxCount: 5}, {name: "file", maxCount: 5}]), (req, res) => { admin_item.add(req, res, db, crypto) });
 	router.post("/item/delete", (req, res) => { admin_item.delete(req, res, db, fs) });
 	router.post("/item/search", (req, res) => { admin_item.search(req, res, db) });
-	router.post("/item/setting", upload.fields([{name:"img", maxCount:5},{name:"file",maxCount:5}]), (req, res) => { admin_item.setting(req, res, db) });
+	router.post("/item/setting", upload.fields([{name: "img", maxCount: 5}, {name: "file", maxCount: 5}]), (req, res) => { admin_item.setting(req, res, db) });
 
 	router.get("/user", (req, res) => { admin_user.show(req, res, db) });
 	router.post("/user/delete", (req, res) => { admin_user.delete(req, res, db) });

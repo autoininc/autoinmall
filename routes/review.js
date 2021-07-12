@@ -1,11 +1,11 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	var pin = req.query.pin;
 	var sess = req.session;
-	res.render("review.html", { username: sess.username, pin: pin, user_id: sess.userid });
+	res.render("review.html", {username: sess.username, pin: pin, user_id: sess.userid});
 }
 
 
-exports.delete = function(req, res, db) {
+exports.delete = function (req, res, db) {
 	var id = req.query.id;
 	db.query("DELETE FROM REVIEW WHERE REVIEW_ID = ?", [id], (err, row) => {
 		if (err) {
@@ -17,8 +17,7 @@ exports.delete = function(req, res, db) {
 }
 
 
-exports.confirm = function(req, res, db) {
-	//console.log(req.body);
+exports.confirm = function (req, res, db) {
 	var pin = req.body.pin;
 	var user_id = req.session.userid;
 	var user_name = req.session.username;
@@ -46,7 +45,6 @@ exports.confirm = function(req, res, db) {
 				if (err2) {
 					console.log(err2);
 				} else {
-					//console.log(row2);
 					var num = Number(row2[0].REVIEW_NUM);
 					var avg = Number(row2[0].RATE);
 					var sum = avg * num;
@@ -54,7 +52,6 @@ exports.confirm = function(req, res, db) {
 
 					avg = parseFloat((sum + Number(rate)) / num);
 					avg = avg.toFixed(0);
-					//console.log(avg);
 					db.query("UPDATE ITEM SET RATE = ?, REVIEW_NUM = ? WHERE PIN = ?", [avg, num, pin], (err3, row3) => {
 						if (err3) {
 							console.log(err3)
@@ -67,4 +64,5 @@ exports.confirm = function(req, res, db) {
 			})
 
 		}
-	})}
+	})
+}

@@ -1,4 +1,4 @@
-exports.do = function(req, res, db) {
+exports.do = function (req, res, db) {
 	var sess = req.session;
 	var category = String(req.query.category).split("_");
 	var main = category[0];
@@ -9,16 +9,16 @@ exports.do = function(req, res, db) {
 	var version = req.query.version;
 	var parts_num = req.query.parts_num;
 	var itembrand = req.query.itembrand;
-	db.query("SELECT NAME FROM CAR_BRAND",(err_brand,row_brand)=>{
-		if(err_brand){
+	db.query("SELECT NAME FROM CAR_BRAND", (err_brand, row_brand) => {
+		if (err_brand) {
 			console.log(err_brand);
-		}else{
+		} else {
 			var carbrand = JSON.stringify(row_brand);
 			carbrand = carbrand.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-			db.query("SELECT * FROM MALLIMG",(mallimg_err,mallimg_row)=>{
-				if(mallimg_err){
+			db.query("SELECT * FROM MALLIMG", (mallimg_err, mallimg_row) => {
+				if (mallimg_err) {
 					console.log(mallimg_err);
-				}else{
+				} else {
 					var mallimg = JSON.stringify(mallimg_row);
 					if (itembrand) {
 						//itembrand
@@ -26,14 +26,12 @@ exports.do = function(req, res, db) {
 							if (err) {
 								console.log(err);
 							} else {
-								//  console.log(itembrand+"\n"+row[0]);
 								var data = JSON.stringify(row);
 								data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-								res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg});
+								res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 							}
 						})
-					}
-					else {
+					} else {
 
 						if (parts_num) {
 							//parts_num
@@ -43,11 +41,10 @@ exports.do = function(req, res, db) {
 								} else {
 									var data = JSON.stringify(row);
 									data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-									res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg });
+									res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 								}
 							})
-						}
-						else if (!req.query.category) {
+						} else if (!req.query.category) {
 							if (!model) {
 								//brand
 
@@ -57,7 +54,7 @@ exports.do = function(req, res, db) {
 									} else {
 										var data = JSON.stringify(row);
 										data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-										res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg });
+										res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 									}
 								})
 
@@ -69,7 +66,7 @@ exports.do = function(req, res, db) {
 									} else {
 										var data = JSON.stringify(row);
 										data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-										res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand ,img_list:mallimg});
+										res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 									}
 								})
 
@@ -81,7 +78,7 @@ exports.do = function(req, res, db) {
 									} else {
 										var data = JSON.stringify(row);
 										data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-										res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg });
+										res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 									}
 								})
 							}
@@ -94,11 +91,10 @@ exports.do = function(req, res, db) {
 									} else {
 										var data = JSON.stringify(row);
 										data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-										res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg });
+										res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 									}
 								})
-							}
-							else if (!model) {
+							} else if (!model) {
 								//brand & category
 								db.query("SELECT * FROM ITEM, ITEMINFO WHERE PIN = ITEM_NUM AND MAIN_C = ? AND SUB_C = ? AND CAR_M = ? ", [main, sub, brand], function (err, row) {
 									if (err) {
@@ -106,7 +102,7 @@ exports.do = function(req, res, db) {
 									} else {
 										var data = JSON.stringify(row);
 										data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-										res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg });
+										res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 									}
 								})
 
@@ -118,7 +114,7 @@ exports.do = function(req, res, db) {
 									} else {
 										var data = JSON.stringify(row);
 										data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-										res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg });
+										res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 									}
 								})
 
@@ -130,7 +126,7 @@ exports.do = function(req, res, db) {
 									} else {
 										var data = JSON.stringify(row);
 										data = data.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-										res.render("shop.html", { username: sess.username, info: data, category: sess.category,carbrand:carbrand,img_list:mallimg });
+										res.render("shop.html", {username: sess.username, info: data, category: sess.category, carbrand: carbrand, img_list: mallimg});
 									}
 								})
 							}

@@ -1,17 +1,16 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	db.query("SELECT USER_ID,NAME,EMAIL,TOKEN,PHONE FROM USER", function (err, row) {
 		if (err) {
 			console.log(err);
 		} else {
 			var data = JSON.stringify(row);
-			res.render("user.html", { data: data });
+			res.render("user.html", {data: data});
 		}
 	})
 }
 
 
-exports.delete = function(req, res, db) {
-	console.log(req.body.id);
+exports.delete = function (req, res, db) {
 	db.query("DELETE FROM USER WHERE USER_ID = ?", [req.body.id], function (err, row) {
 		if (err) {
 			console.log(err);
@@ -24,8 +23,7 @@ exports.delete = function(req, res, db) {
 }
 
 
-exports.change = function(req, res, db) {
-	console.log(req.body);
+exports.change = function (req, res, db) {
 	db.query("UPDATE USER SET NAME = ?, EMAIL = ?, PHONE = ? WHERE USER_ID=?", [req.body.name, req.body.email, req.body.phone, req.body.id], function (err, row) {
 		if (err) {
 			console.log(err);

@@ -1,24 +1,22 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	db.query("SELECT * FROM CAR_BRAND", (err, row) => {
 		if (err) {
 			console.log(err);
 		} else {
 			var data = JSON.stringify(row);
-			res.render("car_brand.html", { data: data });
+			res.render("car_brand.html", {data: data});
 		}
 	});
 }
 
 
-exports.add = function(req, res, db) {
-	console.log(req.body);
-	console.log(req.file);
-	if(req.file){
+exports.add = function (req, res, db) {
+	if (req.file) {
 		var data = {
 			NAME: req.body.name,
 			IMG: req.file.filename,
 		}
-	}else{
+	} else {
 		var data = {
 			NAME: req.body.name,
 
@@ -35,7 +33,7 @@ exports.add = function(req, res, db) {
 }
 
 
-exports.delete = function(req, res, db, fs) {
+exports.delete = function (req, res, db, fs) {
 	db.query("DELETE FROM CAR_BRAND WHERE NAME = ?", [req.body.name], (err, row) => {
 		if (err) {
 			console.log(err);
@@ -54,9 +52,8 @@ exports.delete = function(req, res, db, fs) {
 }
 
 
-exports.change = function(req, res, db) {
-	//  console.log(req.file);
-	if (req.file != null) {
+exports.change = function (req, res, db) {
+	if (req.file !== null) {
 		db.query("UPDATE CAR_BRAND SET IMG = ? WHERE NAME = ?", [req.file.filename, req.body.name], (err, row) => {
 			if (err) {
 				console.log(err);

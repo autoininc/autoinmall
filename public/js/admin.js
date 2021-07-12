@@ -4,69 +4,66 @@
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
     */
 (function ($) {
-    "use strict"; // Start of use strict
-    $(document).ready(function () {
-        var pageflag = false;
-        if ($(window).width() < 976) {
-            $("#resizemenu").html(
-                '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-                '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-                '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-            );
-        }
-
-        
-
-        // Closes responsive menu when a scroll trigger link is clicked
-        $(".js-scroll-trigger").click(function () {
-            $(".navbar-collapse").collapse("hide");
-        });
-
-        // Activate scrollspy to add active class to navbar items on scroll
-        $("body").scrollspy({
-            target: "#mainNav",
-            offset: 74,
-        });
-
-        $(window).resize(function () {
-            if ($(window).width() < 976) {
-                $("#resizemenu").html(
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-                    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-                );
-            } else {
-                $("#resizemenu").html(
-                    '<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
-                    'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
-                    '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-                    '<a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>' +
-                    '<a class="dropdown-item" href="/cart">Cart</a>' +
-                    '<a class="dropdown-item" href="/management">Management</a></div></div>'
-
-                );
-            }
-        });
+	"use strict"; // Start of use strict
+	$(document).ready(function () {
+		var pageflag = false;
+		if ($(window).width() < 976) {
+			$("#resizemenu").html(
+				'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
+				'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
+				'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
+			);
+		}
 
 
+		// Closes responsive menu when a scroll trigger link is clicked
+		$(".js-scroll-trigger").click(function () {
+			$(".navbar-collapse").collapse("hide");
+		});
 
-        // Collapse Navbar
-        var navbarCollapse = function () {
-            var windowwidth = $(window).width();
-            if ($("#mainNav").offset().top > 100) {
-                $("#mainNav").addClass("navbar-shrink");
+		// Activate scrollspy to add active class to navbar items on scroll
+		$("body").scrollspy({
+			target: "#mainNav",
+			offset: 74,
+		});
+
+		$(window).resize(function () {
+			if ($(window).width() < 976) {
+				$("#resizemenu").html(
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
+					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
+				);
+			} else {
+				$("#resizemenu").html(
+					'<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
+					'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
+					'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+					'<a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>' +
+					'<a class="dropdown-item" href="/cart">Cart</a>' +
+					'<a class="dropdown-item" href="/management">Management</a></div></div>'
+				);
+			}
+		});
 
 
-            } else {
-                $("#mainNav").removeClass("navbar-shrink");
+		// Collapse Navbar
+		var navbarCollapse = function () {
+			var windowwidth = $(window).width();
+			if ($("#mainNav").offset().top > 100) {
+				$("#mainNav").addClass("navbar-shrink");
 
-            }
-        };
-        // Collapse now if page is not at top
-        navbarCollapse();
-        // Collapse the navbar when page is scrolled
-        $(window).scroll(navbarCollapse);
 
-    })
+			} else {
+				$("#mainNav").removeClass("navbar-shrink");
+
+			}
+		};
+		// Collapse now if page is not at top
+		navbarCollapse();
+		// Collapse the navbar when page is scrolled
+		$(window).scroll(navbarCollapse);
+
+	})
 
 })(jQuery); // End of use strict

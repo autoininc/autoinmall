@@ -1,18 +1,18 @@
-exports.show = function(req, res, db) {
+exports.show = function (req, res, db) {
 	var sess = req.session;
 	db.query("SELECT DISTINCT NAME FROM CAR_BRAND", (err2, row2) => {
-		if(err2){
+		if (err2) {
 			console.log(err2);
-		}else{
+		} else {
 			db.query("SELECT DISTINCT NAME FROM ITEM_BRAND", (err3, row3) => {
-					if(err3){
+					if (err3) {
 						console.log(err3);
-					}else{
+					} else {
 						var data2 = JSON.stringify(row2);
 						data2 = data2.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
 						var data3 = JSON.stringify(row3);
 						data3 = data3.replace(/\\r/gi, '').replace(/\\n/gi, '<br>').replace(/\\t/gi, '_&nbsp;').replace(/\\f/gi, ' ');
-						res.render("item_info.html", { category: sess.category,carbrand:data2,itembrand:data3 });
+						res.render("item_info.html", {category: sess.category, carbrand: data2, itembrand: data3});
 					}
 				}
 			)
@@ -21,15 +21,11 @@ exports.show = function(req, res, db) {
 }
 
 
-exports.add = function(req, res, db, crypto) {
-	// console.log("add");
-	//console.log(req.body);
-	//console.log(req.files);
+exports.add = function (req, res, db, crypto) {
 	var item = req.body.item_name;
 	var parts_num = req.body.parts_num;
 	var price = req.body.item_price;
 	var volume = Number(req.body.item_volume);
-	//console.log("Number tesst: "+ volume);
 	var mainc = req.body.category_main;
 	var subc = req.body.category_sub;
 	var desc = req.body.item_desc;
@@ -95,29 +91,24 @@ exports.add = function(req, res, db, crypto) {
 }
 
 
-exports.delete = function(req, res, db, fs) {
-	console.log(req.body);
+exports.delete = function (req, res, db, fs) {
 	var img_list = ["", "", "", "", ""];
 	//delete item img
 	db.query("SELECT IMG1,IMG2,IMG3,IMG4,IMG5,FILE_LIST FROM ITEMINFO WHERE ITEM_NUM = ?", [req.body.pin], (err, row) => {
 		if (err) {
 			console.log(err);
 		} else {
-			console.log(row);
 			img_list[0] = row[0].IMG1;
 			img_list[1] = row[0].IMG2;
 			img_list[2] = row[0].IMG3;
 			img_list[3] = row[0].IMG4;
 			img_list[4] = row[0].IMG5;
-			console.log(img_list);
-			if(row[0].FILE_LIST){
+			if (row[0].FILE_LIST) {
 				var file_list = row[0].FILE_LIST.split(";");
 				for (var j = 0; j < file_list.length; j++) {
 					fs.unlink("./public/img/item/" + file_list[i], (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
-						} else {
-							console.log("success");
 						}
 					})
 				}
@@ -152,7 +143,7 @@ exports.delete = function(req, res, db, fs) {
 }
 
 
-exports.search = function(req, res, db) {
+exports.search = function (req, res, db) {
 	db.query("SELECT * FROM ITEMINFO,ITEM WHERE PIN = ITEM_NUM AND PIN = ?", [req.body.pin], function (err, row) {
 		if (err) {
 			console.log(err);
@@ -163,30 +154,28 @@ exports.search = function(req, res, db) {
 }
 
 
-exports.setting = function(req, res, db) {
-	console.log(req.body);
-	console.log(req.files);
-	var filelist=req.body.filelist;
+exports.setting = function (req, res, db) {
+	var filelist = req.body.filelist;
 	var img = ["no_img.png", "no_img.png", "no_img.png", "no_img.png", "no_img.png"];
 	var imglist = req.body.imglist.split(";");
 	var imgnamelist = req.body.imgnamelist.split(";");
-	for(var i=0;i<imglist.length;i++){
-		if(imglist[i] === "img1"){
+	for (var i = 0; i < imglist.length; i++) {
+		if (imglist[i] === "img1") {
 			img[0] = imgnamelist[i];
-		}else if(imglist[i] === "img2"){
+		} else if (imglist[i] === "img2") {
 			img[1] = imgnamelist[i];
-		}else if(imglist[i] === "img3"){
+		} else if (imglist[i] === "img3") {
 			img[2] = imgnamelist[i];
-		}else if(imglist[i] === "img4"){
+		} else if (imglist[i] === "img4") {
 			img[3] = imgnamelist[i];
-		}else if(imglist[i] === "img5"){
+		} else if (imglist[i] === "img5") {
 			img[4] = imgnamelist[i];
 		}
 	}
-	if(req.files.img){
-		for(var l=0;l<req.files.img.length;l++){
-			for(var k=0;k<5;k++){
-				if(img[k]==="no_img.png"){
+	if (req.files.img) {
+		for (var l = 0; l < req.files.img.length; l++) {
+			for (var k = 0; k < 5; k++) {
+				if (img[k] === "no_img.png") {
 					img[k] = req.files.img[l].filename;
 					break;
 				}
@@ -194,14 +183,12 @@ exports.setting = function(req, res, db) {
 
 		}
 	}
-	console.log(img);
-	if(req.files.file){
+	if (req.files.file) {
 
-		for(var j=0;j<req.files.file.length;j++){
-			filelist = filelist+req.files.file[j].filename+";";
+		for (var j = 0; j < req.files.file.length; j++) {
+			filelist = filelist + req.files.file[j].filename + ";";
 		}
 	}
-	console.log(filelist);
 	var data = {
 		ITEM_NAME: req.body.name,
 		PARTS_NUM: req.body.parts_num,
@@ -215,7 +202,7 @@ exports.setting = function(req, res, db) {
 		IMG3: img[2],
 		IMG4: img[3],
 		IMG5: img[4],
-		FILE_LIST:filelist,
+		FILE_LIST: filelist,
 		BRAND_I: req.body.item_brand,
 		MAIN_C: req.body.category_main,
 		SUB_C: req.body.category_sub,
