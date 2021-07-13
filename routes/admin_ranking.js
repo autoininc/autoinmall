@@ -27,6 +27,8 @@ exports.add = function (req, res, db) {
 		TOP1: req.body.top1,
 		TOP2: req.body.top2,
 		TOP3: req.body.top3,
+		TOP4: req.body.top4,
+		TOP5: req.body.top5
 	}
 	db.query("INSERT INTO RANKING SET ?", [data], (err, row) => {
 		if (err) {

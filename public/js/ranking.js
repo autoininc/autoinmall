@@ -8,6 +8,7 @@ for (var i = 0; i < 3; i++) {
 	}
 }
 $(".btn").off("click").on("click", (e) => {
+	console.log(e);
 	var id = e.target.id;
 	var number = id.substring(5, 6);
 	var value = e.target.value;
@@ -24,25 +25,53 @@ $(".btn").off("click").on("click", (e) => {
 				location.reload();
 			}
 		})
-	} else if (value === "setting") {
+	}
+	else if (value === "edit") {
 		for (var i = 1; i <= 5; i++)
 			$(`#theme${number}_top${i}`).attr("disabled", false);
 		$("#" + id).val('finish');
-	} else if (value === "delete") {
-		alert('Delete complete');
-		$.ajax({
-			url: "/admin/ranking/delete",
-			type: "post",
-			data: {theme: $("#theme" + number).val()},
-			success: function (data) {
-				location.reload();
-			},
-			error: function () {
-				alert("delete error");
-				location.reload();
+	}
+	else if (value === "delete") {
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'OK',
+			cancelButtonText: 'Cancel',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$.ajax({
+					url: "/admin/ranking/delete",
+					type: "post",
+					data: {theme: $("#theme" + number).val()},
+					success: function (data) {
+						swal('success', 'Success', 'Delete complete.', {
+							closeOnClickOutside: false,
+							closeOnEsc: false,
+							buttons : {
+								confirm : {
+									text : '확인',
+									value : true,
+									className : 'btn btn-outline-primary'
+								}
+							}
+						});
+						swalWithBootstrapButtons.fire('Deleted!', 'Your file has been deleted.', 'success')
+					},
+					error: function () {
+						alert("delete error");
+						location.reload();
+					}
+				})
+			} else if (result.dismiss === Swal.DismissReason.cancel) {
+				swalWithBootstrapButtons.fire('Cancelled', '', 'error')
 			}
 		})
-	} else if (value === "finish") {
+	}
+	else if (value === "finish") {
 		$.ajax({
 			url: "/admin/ranking/setting",
 			type: "post",
