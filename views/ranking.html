@@ -8,25 +8,26 @@
 
 <body>
 	<div class="contianer">
-		<% var titleArr = ['Best Items', 'Most Popular', 'Steady Seller']; %>
+		<% var titleArr = ['Best Item', 'Most Popular', 'Steady Seller']; %>
 		<% for (var i = 1; i <= 3; i++) { %>
 		<form id="form_theme<%= i %>">
 			<div class="input-group mb-1">
 				<div class="input-group-text col-md-10"><%= titleArr[i - 1] %></div>
 			</div>
 			<div class="row" style="text-align: center;margin-left:0.3%;margin-right:0.3%;padding-bottom:1%">
+			<input type="hidden" name="theme" value="<%= titleArr[i - 1] %>" />
 				<% for (var j = 1; j <= 5; j++) { %>
 				<div class="col-md-2 mt-2" style="border:1px solid silver;padding-top:1%;padding-bottom:1%">
 					<h3>Top<%= j %></h3>
 					<img class="'img-ranking" id="theme<%= i %>_top<%= j %>_img">
-					<input class="form-control" id="theme<%= i %>_top<%= j %>" name="top<%= j %>" placeholder="Pin" style="margin-top:5%" type="text">
+					<input class="form-control" id="theme<%= i %>_top<%= j %>" name="top<%= j %>" placeholder="Pin" style="margin-top:5%" type="text" disabled>
 					<p id="theme<%= i %>_top<%= j %>_name"></p>
 				</div>
 				<% } %>
 			</div>
-			<div style="text-align:right!important">
-				<input class="btn btn-danger mb-2" id="theme1_delete" style="display: none;" type="button" value="delete">
-				<input class="btn btn-secondary mb-2" id="theme1_setting" type="button" value="add">
+			<div style="text-align:right!important; width: 83%; margin-bottom: 40px;">
+				<input class="btn btn-secondary mb-2" id="theme1_setting" type="button" value="edit">
+				<input class="btn btn-danger mb-2" id="theme1_delete" type="button" value="delete">
 			</div>
 		</form>
 		<% } %>

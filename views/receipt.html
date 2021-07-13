@@ -6,10 +6,6 @@
 	<%- include('head') %>
 	<link href="/css/index.css" rel="stylesheet">
 	<style>
-		#mainNav {
-			background-color: #212529;
-		}
-
 		td .btn {
 			margin-left: 20%;
 			margin-right: 20%;
@@ -17,55 +13,35 @@
 			padding-left: 5%;
 			padding-right: 5%;
 		}
-
-		.dropdown-menu {
-			background-color: #212529;
-		}
-
-		.dropdown-item {
-			color: white !important;
-		}
-
 		.dropdown-item:hover {
 			background-color: silver !important;
 		}
-
-		.brand-card {
-			text-align: center;
-			margin-bottom: 1%;
-		}
-
 		.brand-card a {
 			color: black !important;
-
 		}
-
 		.brand-card img {
 			width: 30%;
-
 		}
 	</style>
-	<script>
-		function go_main() {
-			location.href = "/";
-		}
-	</script>
 </head>
 
 <body id="page-top">
 	<%- include('body_nav') %>
 	<div class="container" style="margin-top:10%;margin-bottom:5%;border:silver solid 1px;padding:1% 1% 1% 1%">
 		<h3 style="border-bottom:#212529 solid 1px">&nbsp;&nbsp;Receipt</h3>
-		<div class="result-container" style="text-align: center;margin-top:10%;margin-bottom:10%">
-
-		</div>
+		<div class="result-container" style="text-align: center;margin-top:10%;margin-bottom:10%"></div>
 	</div>
 
 	<!-- Footer-->
 	<%- include('footer') %>
 
+	<!-- hidden -->
+	<input type="hidden" id="e_username" value="<%= username %>" />
+
+	<!-- Core theme JS-->
+	<script src="/js/nav.js"></script>
+
 	<script>
-		var username = '<%- username %>';
 		var data = JSON.parse('<%- data %>');
 
 		if (data.condition === "success") {
@@ -87,66 +63,6 @@
 				'<input type="button" class="btn btn-primary" value="Go Main page" onClick="go_main();">'
 			)
 		}
-
-		if (username) {
-			$("#account_ctrl").html('Signout');
-			$("#account_ctrl").attr("href", "/signout");
-			$("#accountMenu").append('<a class="dropdown-item" id="management" href="/management">Management</a>');
-		} else {
-			$("#account_ctrl").html('Signin');
-			$("#account_ctrl").attr("href", "/signin");
-			$("#accountMenu").remove("#management");
-		}
-
-		if ($(window).width() < 976) {
-			if (username) {
-				$("#resizemenu").html(
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout" id="account_ctrl">Signout</a></li>' +
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-				);
-			} else {
-				$("#resizemenu").html(
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>'
-				);
-			}
-		}
-		$(window).resize(function () {
-			if ($(window).width() < 976) {
-				if (username) {
-					$("#resizemenu").html(
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout id="account_ctrl">Signout</a></li>' +
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-					);
-				} else {
-					$("#resizemenu").html(
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>');
-				}
-
-			} else {
-				if (username) {
-					$("#resizemenu").html(
-						'<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
-						'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
-						'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-						'<a class="dropdown-item" href="/signout" id="account_ctrl">Signout</a>' +
-						'<a class="dropdown-item" href="/cart">Cart</a>' +
-						'<a class="dropdown-item" href="/management">Management</a></div></div>'
-					);
-				} else {
-					$("#resizemenu").html(
-						'<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
-						'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
-						'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-						'<a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>' +
-						'<a class="dropdown-item" href="/cart">Cart</a>'
-					);
-				}
-			}
-		});
 	</script>
 </body>
 
