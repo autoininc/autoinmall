@@ -110,10 +110,15 @@
 	<!-- Footer-->
 	<%- include('footer') %>
 
+	<!-- hidden -->
+	<input type="hidden" id="e_username" value="<%= username %>" />
+
+	<!-- Core theme JS-->
+	<script src="/js/nav.js"></script>
+
 	<!-- iamport.payment.js -->
 	<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 	<script src="/js/paypal.js"></script>
-
 
 	<script>
 		var username = '<%- username %>';
@@ -153,67 +158,6 @@
 				$("#email").attr("disabled", true);
 			}
 		})
-
-		if (username) {
-			$("#account_ctrl").html('Signout');
-			$("#account_ctrl").attr("href", "/signout");
-			$("#accountMenu").append('<a class="dropdown-item" id="management" href="/management">Management</a>');
-		} else {
-			$("#account_ctrl").html('Signin');
-			$("#account_ctrl").attr("href", "/signin");
-			$("#accountMenu").remove("#management");
-		}
-
-		if ($(window).width() < 976) {
-			if (username) {
-				$("#resizemenu").html(
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout" id="account_ctrl">Signout</a></li>' +
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-				);
-			} else {
-				$("#resizemenu").html(
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-					'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>'
-				);
-			}
-		}
-		$(window).resize(function () {
-			if ($(window).width() < 976) {
-				if (username) {
-					$("#resizemenu").html(
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signout id="account_ctrl">Signout</a></li>' +
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>' +
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/management">Management</a></li>'
-					);
-				} else {
-					$("#resizemenu").html(
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signin" id="account_ctrl">Signin</a></li>' +
-						'<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/cart">Cart</a></li>');
-				}
-
-			} else {
-				if (username) {
-					$("#resizemenu").html(
-						'<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
-						'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
-						'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-						'<a class="dropdown-item" href="/signout" id="account_ctrl">Signout</a>' +
-						'<a class="dropdown-item" href="/cart">Cart</a>' +
-						'<a class="dropdown-item" href="/management">Management</a></div></div>'
-					);
-				} else {
-					$("#resizemenu").html(
-						'<div class="dropdown"><a class="nav-link js-scroll-trigger dropdown-toggle" href="#"' +
-						'data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Account</a>' +
-						'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
-						'<a class="dropdown-item" href="/signin" id="account_ctrl">Signin</a>' +
-						'<a class="dropdown-item" href="/cart">Cart</a>'
-					);
-				}
-			}
-		});
-
 
 		if (cart) {
 			var length = cart.length;
