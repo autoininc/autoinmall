@@ -8,7 +8,7 @@ exports.password = function (req, res, db, crypto, nodemailer) {
 			if (!row[0]) {
 				res.send("Please check your ID");
 			} else {
-				if (row[0].EMAIL === req.body.to) {
+				if (row[0].EMAIL == req.body.to) {
 					var ranNum = Math.floor(Math.random() * ((1024 * 1024) + 1)).toString(); //0~1024*1024
 					db.query("UPDATE USER SET USER_PW = ? WHERE USER_ID = ?", [crypto.createHash("sha512").update(ranNum + row[0].SALT).digest("hex"), req.body.id], (err2, row2) => {
 						if (err2) {

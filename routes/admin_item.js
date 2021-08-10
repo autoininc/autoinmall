@@ -123,7 +123,7 @@ exports.delete = function (req, res, db, fs) {
 							console.log(err3);
 						} else {
 							for (var i = 0; i < 5; i++) {
-								if (img_list[i] !== "no_img.png") {
+								if (img_list[i] != "no_img.png") {
 									fs.unlink("./public/img/item/" + img_list[i], (del_err) => {
 										if (del_err) {
 											console.log(err);
@@ -160,22 +160,22 @@ exports.setting = function (req, res, db) {
 	var imglist = req.body.imglist.split(";");
 	var imgnamelist = req.body.imgnamelist.split(";");
 	for (var i = 0; i < imglist.length; i++) {
-		if (imglist[i] === "img1") {
+		if (imglist[i] == "img1") {
 			img[0] = imgnamelist[i];
-		} else if (imglist[i] === "img2") {
+		} else if (imglist[i] == "img2") {
 			img[1] = imgnamelist[i];
-		} else if (imglist[i] === "img3") {
+		} else if (imglist[i] == "img3") {
 			img[2] = imgnamelist[i];
-		} else if (imglist[i] === "img4") {
+		} else if (imglist[i] == "img4") {
 			img[3] = imgnamelist[i];
-		} else if (imglist[i] === "img5") {
+		} else if (imglist[i] == "img5") {
 			img[4] = imgnamelist[i];
 		}
 	}
 	if (req.files.img) {
 		for (var l = 0; l < req.files.img.length; l++) {
 			for (var k = 0; k < 5; k++) {
-				if (img[k] === "no_img.png") {
+				if (img[k] == "no_img.png") {
 					img[k] = req.files.img[l].filename;
 					break;
 				}

@@ -60,7 +60,7 @@ exports.delete = function (req, res, db, fs) {
 
 
 exports.change = function (req, res, db) {
-	if (req.file !== null) {
+	if (req.file != null) {
 		db.query("UPDATE ITEM_BRAND SET CITY = ?, COUNTRY = ?, IMG = ? WHERE NAME = ?", [req.body.city, req.body.country, req.file.filename, req.body.name], (err, row) => {
 			if (err) {
 				console.log(err);

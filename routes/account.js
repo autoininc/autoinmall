@@ -1,6 +1,6 @@
 exports.certification = function (req, res, db, nodemailer) {
 	var attr = req.body;
-	if (attr.orgemail === attr.useremail) {
+	if (attr.orgemail == attr.useremail) {
 		if (!isNaN(attr.userphone) && !isNaN(attr.userzipcode)) {
 			db.query("UPDATE USER SET NAME = ?, PHONE=?, ADDRESS=?, ZIPCODE=? WHERE USER_ID = ?", [attr.username, attr.userphone, attr.useraddress, attr.userzipcode, attr.userid], function (err, row) {
 				if (err) {

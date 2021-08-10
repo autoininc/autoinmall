@@ -53,7 +53,7 @@ exports.delete = function (req, res, db, fs) {
 
 
 exports.change = function (req, res, db) {
-	if (req.file !== null) {
+	if (req.file != null) {
 		db.query("UPDATE CAR_BRAND SET IMG = ? WHERE NAME = ?", [req.file.filename, req.body.name], (err, row) => {
 			if (err) {
 				console.log(err);

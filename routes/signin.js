@@ -10,15 +10,15 @@ exports.confirm = function (req, res, db, crypto) {
 		if (err) {
 			console.log("err:" + err);
 		} else {
-			if (row === "") {
+			if (row == "") {
 				res.send("signin fail:wrong Id#");
 			} else {
-				if (row[0].LOCK_ACC === 1) {
+				if (row[0].LOCK_ACC == 1) {
 					var salt = row[0].SALT;
 					var pw = row[0].USER_PW;
 					var name = row[0].NAME;
 					var hashPassword = crypto.createHash("sha512").update(userpw + salt).digest("hex");
-					if (hashPassword === pw) {
+					if (hashPassword == pw) {
 						sess = req.session;
 						sess.username = name;
 						sess.userid = userid;

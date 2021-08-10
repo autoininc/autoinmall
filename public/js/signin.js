@@ -66,75 +66,61 @@
 
 
 		$("#confirm").off("click").on("click", function () {
-				var userid = $("#userId").val();
-				var userpw = $("#userPw").val();
-				//alert(userid+"  "+userpw);
-				if (userid != null && userpw != null) {
-					$.ajax({
-						url: '/signin/confirm',
-						type: 'post',
-						data: $('form').serialize(),
-						success: function (data) {
-							if (data === "signin fail:wrong Id#") {
-								Swal.fire({
-									icon: 'error',
-									title: 'Wrong ID',
-									text: 'Sign in Fail!',
-
-								})
-
-							} else if (data === "signin fail:wrong password$") {
-								Swal.fire({
-									icon: 'error',
-									title: 'Wrong Password',
-									text: 'Sign in Fail!',
-
-								})
-
-							} else if (data === "signin fail:check Email first@") {
-								Swal.fire({
-									icon: 'error',
-									title: 'Not checking Email',
-									text: 'Sign in Fail!',
-
-								})
-							} else {
-								Swal.fire({
-									icon: 'success',
-									title: 'Sign in',
-									text: 'Welcome ' + data + "!!!",
-								}).then(function () {
-									location.href = "/";
-								})
-
-							}
-
-						},
-						error: function () {
+			var userid = $("#userId").val();
+			var userpw = $("#userPw").val();
+			//alert(userid+"  "+userpw);
+			if (userid != null && userpw != null) {
+				$.ajax({
+					url: '/signin/confirm',
+					type: 'post',
+					data: $('form').serialize(),
+					success: function (data) {
+						if (data === "signin fail:wrong Id#") {
 							Swal.fire({
 								icon: 'error',
-								title: 'Fail',
+								title: 'Wrong ID',
 								text: 'Sign in Fail!',
-
+							})
+						} else if (data === "signin fail:wrong password$") {
+							Swal.fire({
+								icon: 'error',
+								title: 'Wrong Password',
+								text: 'Sign in Fail!',
+							})
+						} else if (data === "signin fail:check Email first@") {
+							Swal.fire({
+								icon: 'error',
+								title: 'Not checking Email',
+								text: 'Sign in Fail!',
 							})
 						}
-					})
-				}
+						else {
+							Swal.fire({
+								icon: 'success',
+								title: 'Sign in',
+								text: 'Welcome ' + data + "!!!",
+							}).then(function () {
+								location.href = "/";
+							})
+						}
+					},
+					error: function () {
+						Swal.fire({
+							icon: 'error',
+							title: 'Fail',
+							text: 'Sign in Fail!',
+						})
+					}
+				})
 			}
-		);
+		});
 
 
 		// Smooth scrolling using jQuery easing
 		$('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-			if (
-				location.pathname.replace(/^\//, "") ==
-				this.pathname.replace(/^\//, "") &&
-				location.hostname == this.hostname
-			) {
+			if ( location.pathname.replace(/^\//, "") === this.pathname.replace(/^\//, "") && location.hostname === this.hostname ) {
 				var target = $(this.hash);
-				target = target.length
-					? target
-					: $("[name=" + this.hash.slice(1) + "]");
+				target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
 				if (target.length) {
 					$("html, body").animate(
 						{

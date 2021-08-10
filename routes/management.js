@@ -1,6 +1,6 @@
 exports.show = function (req, res, db) {
 	var sess = req.session;
-	if (sess.token === 0) {
+	if (sess.token == 0) {
 		db.query("SELECT * FROM USER WHERE USER_ID=?", [sess.userid], function (err, row) {
 			if (err) {
 				console.log(err);
@@ -16,7 +16,7 @@ exports.show = function (req, res, db) {
 				});
 			}
 		})
-	} else if (sess.token === 1) {
+	} else if (sess.token == 1) {
 		res.render("admin.html", {username: sess.username});
 	}
 }

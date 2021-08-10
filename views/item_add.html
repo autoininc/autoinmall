@@ -11,11 +11,7 @@
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
-        type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://fonts.googleapis.com/css?family=NotoSans:500,700" rel="stylesheet" type="text/css" />
     <link href="../css/styles.css" rel="stylesheet" />
 
     <!--sweetalert2-->
@@ -287,16 +283,16 @@
             })
 
             var fileTarget = $("#item_file");
-            console.log(fileTarget); 
-            fileTarget.on("change", function(){ // 값이 변경되면 
-                 
+            console.log(fileTarget);
+            fileTarget.on("change", function(){ // 값이 변경되면
+
                 var file_len = $('#item_file')[0].files.length;
                 if(file_len==1){
-                    if(window.FileReader){ // modern browser 
-                        var filename = $(this)[0].files[0].name; 
+                    if(window.FileReader){ // modern browser
+                        var filename = $(this)[0].files[0].name;
                     }
-                    else { // old IE 
-                        var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+                    else { // old IE
+                        var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
                     } // 추출한 파일명 삽입
                     $(this).siblings(".upload-name-file").val(filename);
                 }
@@ -304,18 +300,18 @@
                     var text = "파일 "+file_len+"개"
                     $(this).siblings(".upload-name-file").val(text);
                 }
-            }); 
+            });
 
             var imgTarget = $("#item_img");
-            imgTarget.on("change", function(){ // 값이 변경되면 
-                 
+            imgTarget.on("change", function(){ // 값이 변경되면
+
                 var img_len = $("#item_img")[0].files.length;
                 if(img_len==1){
-                    if(window.FileReader){ // modern browser 
-                        var imgname = $(this)[0].files[0].name; 
+                    if(window.FileReader){ // modern browser
+                        var imgname = $(this)[0].files[0].name;
                     }
-                    else { // old IE 
-                        var imgname = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+                    else { // old IE
+                        var imgname = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
                     } // 추출한 파일명 삽입}
                     $(this).siblings(".upload-name-img").val(imgname);
                 }
@@ -323,8 +319,8 @@
                     var text = "사진 "+img_len+"개"
                     $(this).siblings(".upload-name-img").val(text);
                 }
-            }); 
- 
+            });
+
             //insert img and check it
             $("#item_img").on("change", function () {
                 var file = $('#item_img')[0].files;

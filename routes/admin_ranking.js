@@ -7,7 +7,7 @@ exports.show = function (req, res, db) {
 			for (var i = 0; i < 15; i++) {
 				var rank = `TOP${i % 5 + 1}`;
 				for (var j = 0; j < 15; j++) {
-					if (data[j]['PIN'] === data[i][rank]) {
+					if (data[j]['PIN'] == data[i][rank]) {
 						arr['name'].push(data[j]['ITEM_NAME']);
 						arr['imgPath'].push(`/img/item/${data[j]['IMG1']}`);
 						arr['pin'].push(data[j]['PIN']);

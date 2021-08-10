@@ -13,7 +13,7 @@ exports.show = function (req, res, db) {
 	var cart_id = "AM" + req.session.userid + date;
 	var data;
 	var sess = req.session;
-	if (condition === "success") {
+	if (condition == "success") {
 		data = {
 			condition: condition,
 			id: id,

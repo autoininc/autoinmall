@@ -27,7 +27,7 @@ exports.complete = async function (req, res, db) {
 
 		// 결제 검증하기
 		const {amount, status} = paymentData;
-		if (amount === amountToBePaid) { // 결제 금액 일치. 결제 된 금액 === 결제 되어야 하는 금액
+		if (amount == amountToBePaid) { // 결제 금액 일치. 결제 된 금액 == 결제 되어야 하는 금액
 			await Orders.findByIdAndUpdate(merchant_uid, {$set: paymentData}); // DB에 결제 정보 저장
 
 			switch (status) {

@@ -60,7 +60,7 @@ exports.cart = function (req, res, db) {
 	var original = req.body.volume_original;
 	var data;
 	//no price
-	if (price === "") {
+	if (price == "") {
 		data = {
 			ID: user,
 			ITEM: name,
@@ -91,7 +91,7 @@ exports.cart = function (req, res, db) {
 				console.log("err1" + err);
 			} else {
 				//first item input
-				if (row[0] === null) {
+				if (row[0] == null) {
 					db.query("INSERT INTO CART SET ?", data, (err2, row2) => {
 						if (err2) {
 							console.log("err2" + err2);

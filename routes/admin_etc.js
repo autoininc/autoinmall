@@ -46,7 +46,7 @@ exports.shopimg = function (req, res, db) {
 			console.log(err);
 		} else {
 			var data = JSON.stringify(row);
-			if (row === "") {
+			if (row == "") {
 				data = {info: "noinfo"};
 			}
 			res.render('shopimg.html', {img_list: data});
@@ -63,7 +63,7 @@ exports.file_delete = function (req, res, db, fs) {
 			var list = row[0].FILE_LIST.split(';');
 			var new_list = "";
 			for (var i = 0; i < list.length; i++) {
-				if (list[i] === req.body.filename) {
+				if (list[i] == req.body.filename) {
 					fs.unlink("./public/img/item/" + list[i], (del_file_err) => {
 						if (del_file_err) {
 							console.log(err);
@@ -73,7 +73,7 @@ exports.file_delete = function (req, res, db, fs) {
 					})
 					list.splice(i, 1);
 					i = i - 1;
-				} else if (list[i] !== "") {
+				} else if (list[i] != "") {
 					new_list = new_list + list[i] + ";";
 				}
 			}

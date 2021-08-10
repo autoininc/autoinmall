@@ -1,3 +1,21 @@
+async function checkEmail(nodemailer, param) {
+	var data = {
+		fromEmail: "service@autoinmall.com",
+		toEmail: param.EMAIL,
+		subject: "Email Verification-AutoinMall",
+		html: "<p>Hello " + param.NAME + "</p>" +
+			"<p>Thank you for sign up to AutoinMall!</p>" +
+			"<p>Please use the verification button below to confirm your email address</p>" +
+			"<a href='https://autoinmall.com/signup/checkaccount?email=" + param.EMAIL + "&id=" + param.ID + "' target = '_blank'><img src = 'https://ifh.cc/g/bXCkYZ.png' style='width:300px;height:100px'></a>" +
+			"<p>Thank you</p>" +
+			"<p>Autoinmall</p>"
+
+	};
+	await nodemailer.sendmail(data);
+}
+
+
+
 exports.show = function (req, res, db) {
 	res.render("signup.html");
 }
@@ -71,7 +89,7 @@ exports.overlap = function (req, res, db) {
 		if (err) {
 			console.log(err);
 		} else {
-			if (row[0] === null) {
+			if (row[0] == null) {
 				res.send("ok");
 			} else {
 				res.send("fail");
@@ -92,7 +110,7 @@ exports.effectiveness = function (req, res, db) {
 	var c_p = attr.c_p;
 	var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 	var koreancheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-	if (false === reg.test(pw)) {
+	if (false == reg.test(pw)) {
 		//error all
 		res.send("errortype1");
 	} else if (/(\w)\1\1\1/.test(pw)) {
@@ -103,7 +121,7 @@ exports.effectiveness = function (req, res, db) {
 		//pw have id error
 		res.send("errortype3");
 
-	} else if (pw.search(/\s/) !== -1) {
+	} else if (pw.search(/\s/) != -1) {
 		//blank error
 		res.send("errortype4");
 
@@ -111,7 +129,7 @@ exports.effectiveness = function (req, res, db) {
 		//korean error
 		res.send("errortype5");
 
-	} else if (c_p === pw) {
+	} else if (c_p == pw) {
 		//success
 		res.send("errortype0");
 	} else {

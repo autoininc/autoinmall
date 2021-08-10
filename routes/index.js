@@ -5,7 +5,7 @@ module.exports = function (db) {
 
 	var multer = require('multer');
 	var crypto = require('crypto');
-	var nodemailer = require('nodemailer');
+	var nodemailer = require('../mail/mail');
 
 	var account = require('./account');
 	var brand = require('./brand');
