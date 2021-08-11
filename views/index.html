@@ -11,49 +11,49 @@
 	<%- include('body_nav') %>
 	<header class="masthead" id="home">
 		<div class="container">
-			<div class="masthead-heading text-uppercase" style="color:deeppink">AUTOIN SHOPPING MALL</div>
-			<input class="btn  mb-1" id="mode_change_parts" style="float:left !important;margin-left:15%!important;width:35%;border:red solid 2px;background-color: #212529!important;color:white; opacity: 0.9;" type="button" value="Parts">
-			<input class="btn  mb-1" id="mode_change_reference" style="float:right !important;margin-right:15%;width:35%;background-color:silver!important;color:white; opacity: 0.9;" type="button" value="Reference">
+			<div class="masthead-heading text-uppercase">AUTOIN SHOPPING MALL</div>
+			<input class="btn  mb-1" id="mode_change_parts" style="margin-left:15%!important;width:35%;background:linear-gradient(to right, #E6235B, #9B1D43);color:white;transition:inherit" type="button" value="Parts">
+			<input class="btn  mb-1" id="mode_change_reference" style="float:right;margin-right:15%;width:35%;background-color:#494A51!important;color:white;transition:inherit" type="button" value="Reference">
 
-			<form action="/search" id="search_form" method="GET">
+			<form action="/search" id="search_form" method="GET" style="height: 302px;">
 				<input name="page" type="hidden" value="1">
 				<div class="masthead-subheading" id="reference" style="width:70%;margin-left:15%;margin-right:15%;display:none">
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width:120px;">PARTS NUM</span></div>
+							<span class="input-group-text input-group-text-main" style="width:120px;">PARTS NUM</span></div>
 						<input class="form-control" name="parts_num" type="text">
 					</div>
 				</div>
 				<div class="masthead-subheading" id="parts" style="width:70%;margin-left:15%;margin-right:15%;">
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width:120px;">CATEGORY</span></div>
+							<span class="input-group-text input-group-text-main" style="width:120px;">CATEGORY</span></div>
 						<select class="custom-select" id="category" name="category">
 						</select>
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width:120px;">BRANDS</span></div>
+							<span class="input-group-text input-group-text-main" style="width:120px;">BRANDS</span></div>
 						<select class="custom-select" id="select_brands" name="brands">
 							<option value="">Choose...</option>
 						</select>
 					</div>
 					<div class="input-group mb-1">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width:120px;">MODEL</span></div>
+							<span class="input-group-text input-group-text-main" style="width:120px;">MODEL</span></div>
 						<select class="custom-select" disabled id="model" name="model">
 							<option value="">Choose...</option>
 						</select>
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width:120px;">VERSION</span></div>
+							<span class="input-group-text input-group-text-main" style="width:120px;">VERSION</span></div>
 						<select class="custom-select" disabled id="version" name="version">
 							<option value="">Choose...</option>
 						</select>
 					</div>
 				</div>
-				<input class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="shop_now" type="submit" value="SHOPPING NOW">
+				<input class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="shop_now" style="background-color: #E6235B; border: 0; font-size: 1.5rem; padding: 1rem;" type="submit" value="SHOPPING NOW">
 			</form>
 		</div>
 		<div class="container"></div>
@@ -66,21 +66,25 @@
 			<div class="text-center">
 				<% if (i == 1) { %>
 				<h2 class="section-heading text-uppercase">Rank</h2>
-				<h3 class="section-subheading text-muted" id="theme1"><strong></strong></h3>
+				<h3 class="section-subheading text-muted" id="theme1"><strong style="font-size: 1.5rem"></strong></h3>
 				<% } else { %>
-				<h3 class="section-subheading text-muted" id="theme<%= i %>" style="margin-top:7%;"><strong></strong></h3>
+				<h3 class="section-subheading text-muted" id="theme<%= i %>" style="margin-top:7%;"><strong style="font-size: 1.5rem"></strong></h3>
 				<% } %>
 			</div>
 			<div class="row">
 				<% for (var j = 1; j <= 5; j++) { %>
 				<div class="col-md-2half text-center">
-					<div>
+					<% if (j & 1 == 1) { %>
+						<div class="rank-col-odd">
+					<% } else { %>
+							<div class="rank-col-even">
+					<% } %>
 						<a id="theme<%= i %>_top<%= j %>_link">
 							<h4 class="my-3">TOP <%= j %></h4>
 							<span class="text-center">
-                                <img alt="No image" class="img-fluid rounded" id="theme<%= i %>_top<%= j %>" style="width:400px;height:150px">
-                            </span>
-							<p class="text-muted" id="theme<%= i %>_top<%= j %>_name" style="margin-bottom:1%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><strong></strong></p>
+								<img alt="No image" class="img-fluid" id="theme<%= i %>_top<%= j %>" style="width:400px;height:150px">
+							</span>
+							<p class="text-muted" id="theme<%= i %>_top<%= j %>_name" style="margin:5px 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><strong style="padding: 7px; color: black;"></strong></p>
 						</a>
 					</div>
 				</div>
@@ -94,18 +98,18 @@
 		<h2 class="section-heading text-uppercase" id="brand">Brands</h2>
 		<br>
 		<div style="text-align: center;">
-			<h3 class="section-subheading text-muted"><strong>Car Brands</strong></h3>
+			<h3 class="section-subheading text-muted"><strong style="font-size: 1.5rem">Car Brands</strong></h3>
 		</div>
 		<div class="swiper-container" id="brand_swiper">
 			<div class="swiper-wrapper"></div>
 			<br>
 		</div>
 		<div style="text-align: center;margin-bottom:3%">
-			<input class="btn brand-link" style="background-color: #212529!important;color:white;" type="button" value="show more...">
+			<input class="btn btn-warning brand-link" type="button" value="show more...">
 		</div>
 		<br>
 		<div style="text-align: center;">
-			<h3 class="section-subheading text-muted"><strong>Item Brands</strong></h3>
+			<h3 class="section-subheading text-muted"><strong style="font-size: 1.5rem">Item Brands</strong></h3>
 		</div>
 
 		<div class="container itembrand-container">

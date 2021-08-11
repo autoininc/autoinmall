@@ -14,8 +14,8 @@
 			</div>
 			<div class="col-md-6" style="padding:0">
 				<div class="form-control-upload filebox">
-					<label for="img">사진 업로드</label>
-					<input type="file" display="none" class="filebox" accept="image/*" id="img" name="brandimg" />
+					<label for="img1">사진 업로드</label>
+					<input type="file" name="img1" class="filebox" accept="image/*" id="img1" name="brandimg" />
 					<input type="text" class="upload-name-img" readonly="readonly" disabled="disabled" />
 				</div>
 				<input class="form-control mt-2" name="img1_url" placeholder="URL" style="width:100%!important" type="text">
@@ -29,8 +29,8 @@
 			</div>
 			<div class="col-md-6" style="padding:0">
 				<div class="form-control-upload filebox">
-					<label for="img">사진 업로드</label>
-					<input type="file" display="none" class="filebox" accept="image/*" id="img" name="brandimg" />
+					<label for="img2">사진 업로드</label>
+					<input type="file" name="img2" class="filebox" accept="image/*" id="img2" name="brandimg" />
 					<input type="text" class="upload-name-img" readonly="readonly" disabled="disabled" />
 				</div>
 				<input class="form-control mt-2" name="img2_url" placeholder="URL" type="text">
@@ -45,8 +45,8 @@
 			</div>
 			<div class="col-md-6" style="padding:0">
 				<div class="form-control-upload filebox">
-					<label for="img">사진 업로드</label>
-					<input type="file" display="none" class="filebox" accept="image/*" id="img" name="brandimg" />
+					<label for="img3">사진 업로드</label>
+					<input type="file" name="img3" class="filebox" accept="image/*" id="img3" name="brandimg" />
 					<input type="text" class="upload-name-img" readonly="readonly" disabled="disabled" />
 				</div>
 				<input class="form-control mt-2" name="img3_url" placeholder="URL" type="text">
@@ -55,7 +55,7 @@
 		</div>
 
 
-		<input class="btn btn-secondary mt-3 btn-block" type="button" value="setting">
+		<input class="btn btn-warning mt-3 btn-block" type="button" value="apply">
 
 
 	</div>
@@ -124,17 +124,17 @@
 			})
 
 			var imgTarget = $("#img");
-			imgTarget.on("change", function(){ // 값이 변경되면 
+			imgTarget.on("change", function(){ // 값이 변경되면
 				console.log($(this)[0].files[0].name);
-				if(window.FileReader) { // modern browser 
-					var imgname = $(this)[0].files[0].name; 
+				if(window.FileReader) { // modern browser
+					var imgname = $(this)[0].files[0].name;
 				}
-				else { // old IE 
-					var imgname = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+				else { // old IE
+					var imgname = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
 				} // 추출한 파일명 삽입
 				$(this).siblings(".upload-name-img").val(imgname);
     	});
-			
+
 		});
 
 	</script>

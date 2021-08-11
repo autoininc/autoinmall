@@ -31,8 +31,8 @@
 				'<td><input type="email" id="email' + i + '" disabled value="' + data[i].EMAIL + '" style="border:none;background-color:white"</td>' +
 				'<td><input type="text" id="phone' + i + '" disabled value="' + data[i].PHONE + '" style="border:none;background-color:white"</td>' +
 
-				'<td><input type="button" id="setting' + i + '" class="btn btn-info" value="setting" onclick="set_user(' + i + ');"></td>' +
-				'<td><input type = "button" class = "btn btn-warning" value = "delete" onclick="del_user(' + i + ');"></td>' +
+				'<td><input type="button" id="setting' + i + '" class="btn btn-secondary" value="edit" onclick="set_user(' + i + ');"></td>' +
+				'<td><input type = "button" class = "btn btn-danger" value = "delete" onclick="del_user(' + i + ');"></td>' +
 				'</tr>'
 			)
 		}
@@ -57,7 +57,7 @@
 
 		//setting user
 		function set_user(i) {
-			if ($("#setting" + i).val() === "setting") {
+			if ($("#setting" + i).val() === "edit") {
 
 				$("#name" + i).attr("disabled", false);
 
@@ -71,7 +71,7 @@
 
 				$("#phone" + i).css("border", "1px solid black");
 				$("#setting" + i).val("finish");
-				$("#setting" + i).css("background-color", "red");
+				$("#setting" + i).css("background-color", "#28a745");
 			} else if ($("#setting" + i).val() === "finish") {
 
 				$("#name" + i).attr("disabled", true);

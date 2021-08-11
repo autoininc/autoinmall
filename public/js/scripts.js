@@ -86,26 +86,16 @@
 
 		//mode change
 		$("#mode_change_parts").off("click").on("click", function () {
-
 			$("#reference").css("display", "none");
 			$("#parts").css("display", "block");
-
-			$("#mode_change_reference").css("background-color", "silver");
-			$("#mode_change_parts").css("background-color", "#212529");
-			$("#mode_change_parts").css("border", "red solid 2px");
-			$("#mode_change_reference").css("border", "none");
-
+			$("#mode_change_parts").css("background", "linear-gradient(to right, #E6235B, #9B1D43)");
+			$("#mode_change_reference").css("background","#494A51");
 		})
 		$("#mode_change_reference").off("click").on("click", function () {
-
 			$("#reference").css("display", "block");
 			$("#parts").css("display", "none");
-			$("#mode_change_reference").css("background-color", "#212529");
-			$("#mode_change_parts").css("background-color", "silver");
-			$("#mode_change_parts").css("border", "none");
-			$("#mode_change_reference").css("border", "red solid 2px");
-
-
+			$("#mode_change_reference").css("background", "linear-gradient(to right, #E6235B, #9B1D43)");
+			$("#mode_change_parts").css("background", "#494A51");
 		})
 
 		//show brands

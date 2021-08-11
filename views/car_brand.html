@@ -40,8 +40,8 @@
 				'<td><input type="text" id="name' + i + '" disabled value="' + data[i].NAME + '" style="border:none;background-color:white; text-align: center;"></td>' +
 
 				'<td><img src="/img/car_brands/' + data[i].IMG + '" id="img' + i + '" style="width:100px;height:100px"></td>' +
-				'<td><input type="button" id="setting' + i + '" class="btn btn-info" value="setting" onclick="set_item(' + i + ');"></td>' +
-				'<td><input type="button" class="btn btn-warning" value="delete" onclick="del_item(' + i + ');"></td>' +
+				'<td><input type="button" id="setting' + i + '" class="btn btn-secondary" value="edit" onclick="set_item(' + i + ');"></td>' +
+				'<td><input type="button" class="btn btn-danger" value="delete" onclick="del_item(' + i + ');"></td>' +
 				'</tr>'
 			)
 		}
@@ -49,13 +49,13 @@
 
 		$(document).ready(function () {
 			var imgTarget = $("#img");
-			imgTarget.on("change", function(){ // 값이 변경되면 
+			imgTarget.on("change", function(){ // 값이 변경되면
 				console.log($(this)[0].files[0].name);
-				if(window.FileReader) { // modern browser 
-					var imgname = $(this)[0].files[0].name; 
+				if(window.FileReader) { // modern browser
+					var imgname = $(this)[0].files[0].name;
 				}
-				else { // old IE 
-					var imgname = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+				else { // old IE
+					var imgname = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
 				} // 추출한 파일명 삽입
 				$(this).siblings(".upload-name-img").val(imgname);
     	});
@@ -106,19 +106,19 @@
 		//setting car brand
 		function set_item(i) {
 
-			if ($("#setting" + i).val() === "setting") {
+			if ($("#setting" + i).val() === "edit") {
 
 				$("#img" + i).attr("disabled", false);
 				$("#img" + i).attr("type", "file");
 				$("#img" + i).css("border", "1px solid black");
 				$("#setting" + i).val("finish");
-				$("#setting" + i).css("background-color", "red");
+				$("#setting" + i).css("background-color", "#28a745");
 			} else if ($("#setting" + i).val() === "finish") {
 
 				$("#img" + i).attr("disabled", true);
 				$("#img" + i).css("border", "none");
-				$("#setting" + i).val("setting");
-				$("#setting" + i).css("background-color", "#17a2b8");
+				$("#setting" + i).val("edit");
+				$("#setting" + i).css("background-color", "");
 				const formdata = new FormData();
 				formdata.append("name", $("#name" + i).val());
 				formdata.append("img", $("#img" + i)[0].files[0]);

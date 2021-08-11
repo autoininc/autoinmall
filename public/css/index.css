@@ -2,9 +2,21 @@
     text-decoration: none;
 }
 .text-center div{
-    background-color:#212529;
-    box-shadow: 5px 5px 5px 5px gray;
+    box-shadow: 3px 3px 3px 3px rgba(138, 138, 138, 0.5);
     padding-top:0.5%;
+    background: gray;
+    border: 1px solid #8a8a8a;
+    border-radius: 15px;
+}
+
+.text-center .rank-col-odd{
+  background-color: white;
+  padding-top:0.5%;
+}
+
+.text-center .rank-col-even{
+  background-color:#B5B5B6;
+  padding-top:0.5%;
 }
 
 .swiper-container {
@@ -63,6 +75,5 @@
 #category_link a{
   color:white;
   text-decoration: none;
-  
-}
 
+}

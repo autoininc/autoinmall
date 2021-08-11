@@ -3,7 +3,7 @@ var username =$('#e_username').val();
 if (username) {
 	$("#account_ctrl").html('Signout');
 	$("#account_ctrl").attr("href", "/signout");
-	$("#accountMenu").append('<a class="dropdown-item" id="management" href="/management">Management</a>');
+	$("#accountMenu").append('<a class="dropdown-item" style="color:white;" id="management" href="/management">Management</a>');
 } else {
 	$("#account_ctrl").html('Signin');
 	$("#account_ctrl").attr("href", "/signin");
