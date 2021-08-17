@@ -2652,6 +2652,7 @@ fieldset:disabled a.btn {
 
 .btn-warning {
   color: black;
+  font-weight: 600;
   background-color: #fed136;
   border-color: #fed136;
 }
@@ -7636,6 +7637,7 @@ button.bg-dark:focus {
 .ml-2 {
   margin-left: 0.5rem !important;
   color: #EE125B;
+  font-weight: 500;
 }
 
 .mx-2 {
